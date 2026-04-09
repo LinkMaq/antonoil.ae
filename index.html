@@ -49,11 +49,8 @@
     </script>
     <!-- Animate On Scroll (AOS) -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
-    <!-- Swiper CSS for Carousel -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
-    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Manrope:wght@300;400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
 
         :root {
             --bg-page: #f6efe3;
@@ -80,7 +77,7 @@
             --hero-bottom: #19404a;
             --hero-text: #f7efe2;
             --hero-muted: rgba(241, 232, 220, 0.78);
-            --hero-slide-image: url("assets/hero/strategy-middle-east.svg");
+            --hero-slide-image: url("assets/hero/strategy-middle-east.png");
             --hero-kicker-bg: rgba(255, 244, 229, 0.14);
             --hero-kicker-border: rgba(214, 175, 104, 0.26);
             --hero-button-shadow: 0 18px 40px rgba(15, 118, 110, 0.24);
@@ -126,7 +123,9 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.005em;
             overflow-x: hidden;
             transition: background-color 0.3s ease, color 0.3s ease;
             background:
@@ -134,6 +133,12 @@
                 radial-gradient(circle at bottom right, rgba(15, 118, 110, 0.08), transparent 28%),
                 var(--bg-page);
             color: var(--text-primary);
+        }
+
+        html[lang="zh"] body {
+            font-family: 'Noto Sans SC', sans-serif;
+            font-weight: 400;
+            letter-spacing: 0.01em;
         }
 
         body[dir="rtl"] {
@@ -161,12 +166,18 @@
         }
 
         .site-logo-main {
+            font-family: 'Manrope', sans-serif;
             color: var(--text-primary);
+            font-weight: 600;
+            letter-spacing: 0.03em;
             transition: color 0.3s ease;
         }
 
         .site-logo-accent {
+            font-family: 'Manrope', sans-serif;
             color: var(--accent-copper);
+            font-weight: 300;
+            letter-spacing: 0.05em;
             transition: color 0.3s ease;
         }
 
@@ -186,6 +197,8 @@
         .nav-link {
             color: var(--text-secondary);
             position: relative;
+            font-weight: 500;
+            letter-spacing: 0.01em;
             transition: color 0.2s ease;
         }
 
@@ -264,6 +277,7 @@
             position: absolute;
             inset: 0;
             overflow: hidden;
+            opacity: 1;
             background:
                 linear-gradient(90deg, rgba(8, 16, 21, 0.82) 0%, rgba(8, 16, 21, 0.64) 30%, rgba(8, 16, 21, 0.28) 62%, rgba(8, 16, 21, 0.52) 100%),
                 linear-gradient(180deg, rgba(8, 16, 21, 0.18) 0%, rgba(8, 16, 21, 0.12) 36%, rgba(8, 16, 21, 0.42) 100%),
@@ -300,7 +314,7 @@
         }
 
         .hero-content {
-            max-width: 44rem;
+            max-width: 56rem;
             padding-top: 5rem;
             padding-bottom: 6rem;
             transition: opacity 0.32s ease, transform 0.32s ease;
@@ -325,21 +339,17 @@
         }
 
         .hero-title {
+            font-family: 'Manrope', sans-serif;
             color: var(--hero-text);
             text-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
             font-weight: 300;
-            letter-spacing: -0.03em;
-            max-width: 46rem;
+            letter-spacing: -0.04em;
+            line-height: 0.92;
+            max-width: 56rem;
         }
 
         .hero-title-accent {
             color: rgba(251, 246, 238, 0.96);
-        }
-
-        .hero-desc {
-            color: var(--hero-muted);
-            max-width: 34rem;
-            font-size: 1.125rem;
         }
 
         .hero-actions {
@@ -427,7 +437,7 @@
         }
 
         .hero-story {
-            color: rgba(248, 236, 214, 0.82);
+            color: rgba(248, 236, 214, 0.92);
             font-size: 0.85rem;
             line-height: 1.55;
             background: transparent;
@@ -464,105 +474,389 @@
         }
 
         .section-title {
+            font-family: 'Manrope', sans-serif;
             color: var(--text-primary);
+            font-weight: 500;
+            letter-spacing: -0.03em;
         }
 
         .section-copy {
             color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: 0.008em;
         }
 
-        .system-slider {
-            padding: 2rem 0 4rem 0;
+        .pattern-panel {
+            width: min(100%, 72%);
+            margin-right: auto;
+            text-align: left;
         }
-        
-        .swiper-slide {
-            background: linear-gradient(180deg, var(--bg-card) 0%, rgba(255, 255, 255, 0.35) 100%);
-            color: var(--text-primary);
-            border-radius: 20px;
-            box-shadow: var(--shadow-soft);
+
+        .systems-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+
+        .systems-shell {
+            min-height: calc(100vh - 4rem);
+            display: grid;
+            grid-template-rows: auto 1fr;
+            gap: 2rem;
+        }
+
+        .systems-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 2rem;
+        }
+
+        .systems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1rem;
+            min-height: 0;
+            align-content: start;
+        }
+
+        .system-card {
+            position: relative;
+            min-height: 18rem;
+            padding: 1.25rem;
+            border-radius: 28px;
             overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
             border: 1px solid var(--border-soft);
+            background: linear-gradient(180deg, rgba(255, 250, 243, 0.84), rgba(255, 255, 255, 0.36));
+            box-shadow: var(--shadow-soft);
             display: flex;
             flex-direction: column;
-            height: auto;
+            justify-content: space-between;
+            text-align: left;
+            isolation: isolate;
+            cursor: pointer;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
         }
 
-        .swiper-slide:hover {
-            transform: translateY(-10px);
+        .system-card:hover {
+            transform: translateY(-6px);
             box-shadow: var(--shadow-strong);
             border-color: var(--border-strong);
         }
 
-        .system-img-placeholder {
-            width: 100%;
-            height: 220px;
-            background:
-                linear-gradient(135deg, rgba(15, 118, 110, 0.16), rgba(185, 138, 63, 0.18)),
-                linear-gradient(120deg, var(--bg-card-alt) 0%, var(--bg-card) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-primary-strong);
-            font-weight: 600;
-            font-size: 1.25rem;
-            position: relative;
-            overflow: hidden;
-            border-bottom: 1px solid var(--border-soft);
-        }
-
-        .system-img-placeholder::after {
-            content: '';
+        .system-card::after {
+            content: "";
             position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(to right, transparent, rgba(255, 244, 229, 0.36), transparent);
-            transform: skewX(-20deg);
-            animation: shimmer 3s infinite;
+            inset: auto 0 0 0;
+            height: 46%;
+            background: linear-gradient(180deg, transparent 0%, rgba(8, 19, 24, 0.28) 100%);
+            z-index: 1;
         }
 
-        .system-card-glow {
-            background: linear-gradient(135deg, var(--accent-secondary-soft), var(--accent-primary-soft));
+        .system-card-media {
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(160deg, rgba(7, 17, 21, 0.08), rgba(7, 17, 21, 0.28)),
+                var(--system-gradient, linear-gradient(135deg, rgba(15, 118, 110, 0.6), rgba(185, 138, 63, 0.5)));
+            background-size: cover;
+            background-position: center;
+            opacity: 0.96;
+            z-index: -2;
+        }
+
+        .system-card-media::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at top right, rgba(255, 255, 255, 0.26), transparent 32%),
+                linear-gradient(130deg, transparent 0%, rgba(255, 255, 255, 0.08) 38%, transparent 62%);
+        }
+
+        .system-card-media-art {
+            position: absolute;
+            right: 1.2rem;
+            bottom: 0.6rem;
+            font-size: clamp(3.2rem, 6vw, 5.8rem);
+            line-height: 1;
+            font-weight: 700;
+            letter-spacing: -0.08em;
+            color: rgba(255, 248, 240, 0.24);
+            z-index: -1;
+        }
+
+        .system-card-top,
+        .system-card-bottom {
+            position: relative;
+            z-index: 2;
         }
 
         .system-label {
-            z-index: 10;
+            display: inline-flex;
+            width: fit-content;
+            padding: 0.45rem 0.75rem;
+            border-radius: 999px;
+            background: rgba(255, 247, 237, 0.18);
+            border: 1px solid rgba(255, 247, 237, 0.22);
+            backdrop-filter: blur(10px);
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            font-size: 0.75rem;
-            color: var(--accent-primary-strong);
-        }
-
-        .system-status-dot {
-            background: var(--accent-secondary);
-            box-shadow: 0 0 0 5px rgba(215, 171, 89, 0.08);
+            font-size: 0.7rem;
+            color: rgba(255, 248, 240, 0.88);
         }
 
         .system-card-title {
-            color: var(--accent-primary);
+            color: #fffaf2;
+            font-family: 'Manrope', sans-serif;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+        }
+
+        body[dir="rtl"] .site-logo-main,
+        body[dir="rtl"] .site-logo-accent,
+        body[dir="rtl"] .hero-title,
+        body[dir="rtl"] .section-title,
+        body[dir="rtl"] .system-card-title {
+            font-family: 'Cairo', sans-serif;
+            letter-spacing: 0;
         }
 
         .system-card-icon {
-            color: var(--accent-copper);
+            color: rgba(255, 241, 221, 0.9);
         }
 
         .system-card-text {
-            color: var(--text-secondary);
+            color: rgba(252, 245, 236, 0.82);
+            font-weight: 400;
         }
 
-        .slider-nav-btn {
-            border: 1px solid var(--border-soft);
+        .system-card-hint {
+            color: rgba(255, 248, 240, 0.88);
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+        }
+
+        .system-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 80;
+            display: flex;
+            align-items: stretch;
+            justify-content: center;
+            padding: 1rem;
+            background: rgba(6, 14, 18, 0.5);
+            backdrop-filter: blur(16px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .system-modal.is-open {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .system-modal-dialog {
+            width: min(100%, 1180px);
+            min-height: 100%;
+            border-radius: 32px;
+            overflow: hidden;
+            display: grid;
+            grid-template-rows: minmax(28rem, 1.45fr) minmax(14rem, 0.55fr);
             background: var(--bg-card);
-            color: var(--text-primary);
-            box-shadow: 0 12px 24px rgba(24, 39, 45, 0.06);
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-strong);
+            transform: translateY(28px) scale(0.98);
+            transition: transform 0.32s ease;
         }
 
-        .slider-nav-btn:hover {
-            background: var(--bg-card-alt);
-            border-color: var(--border-strong);
+        .system-modal.is-open .system-modal-dialog {
+            transform: translateY(0) scale(1);
+        }
+
+        .system-modal-media {
+            position: relative;
+            min-height: 28rem;
+            overflow: hidden;
+            background: #0c1c22;
+        }
+
+        .system-modal-slides {
+            position: absolute;
+            inset: 0;
+        }
+
+        .system-modal-slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 0.45s ease;
+            background-image:
+                linear-gradient(160deg, rgba(8, 16, 21, 0.18), rgba(8, 16, 21, 0.48)),
+                var(--slide-gradient, linear-gradient(135deg, rgba(15, 118, 110, 0.6), rgba(185, 138, 63, 0.5)));
+            background-size: cover;
+            background-position: center;
+        }
+
+        .system-modal-slide.is-active {
+            opacity: 1;
+        }
+
+        .system-modal-slide::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at top right, rgba(255, 255, 255, 0.28), transparent 28%),
+                linear-gradient(140deg, transparent 0%, rgba(255, 255, 255, 0.08) 34%, transparent 58%);
+        }
+
+        .system-modal-slide::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 44%;
+            background: linear-gradient(180deg, transparent 0%, rgba(6, 14, 18, 0.38) 100%);
+        }
+
+        .system-modal-art {
+            position: absolute;
+            right: 2rem;
+            bottom: 1rem;
+            font-size: clamp(6rem, 14vw, 11rem);
+            line-height: 0.9;
+            font-weight: 700;
+            letter-spacing: -0.08em;
+            color: rgba(255, 248, 240, 0.18);
+        }
+
+        .system-modal-viewport-label {
+            position: absolute;
+            left: 2rem;
+            bottom: 2rem;
+            z-index: 2;
+            padding: 0.55rem 0.9rem;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 248, 240, 0.16);
+            background: rgba(255, 248, 240, 0.12);
+            backdrop-filter: blur(10px);
+            color: rgba(255, 248, 240, 0.92);
+            font-size: 0.75rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .system-modal-dots {
+            position: absolute;
+            right: 2rem;
+            bottom: 2rem;
+            z-index: 2;
+            display: flex;
+            gap: 0.55rem;
+        }
+
+        .system-modal-dot {
+            width: 0.6rem;
+            height: 0.6rem;
+            border-radius: 999px;
+            border: 0;
+            background: rgba(255, 248, 240, 0.28);
+        }
+
+        .system-modal-dot.is-active {
+            background: rgba(255, 248, 240, 0.9);
+        }
+
+        .system-modal-panel {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 2rem;
+            padding: 2rem;
+            background:
+                linear-gradient(180deg, rgba(255, 250, 243, 0.82), rgba(247, 236, 221, 0.64)),
+                var(--bg-card);
+        }
+
+        .system-modal-copy {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .system-modal-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+
+        .system-modal-heading {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            min-width: 0;
+        }
+
+        .system-modal-label {
             color: var(--accent-primary);
+            font-size: 0.78rem;
+            letter-spacing: 0.16em;
+            text-transform: uppercase;
+        }
+
+        .system-modal-title {
+            color: var(--text-primary);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            line-height: 0.95;
+        }
+
+        .system-modal-desc {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.8;
+            max-width: 32rem;
+        }
+
+        .system-modal-actions {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            flex-shrink: 0;
+        }
+
+        .system-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.55rem 1rem;
+            border-radius: 999px;
+            background: var(--accent-primary);
+            color: #fffaf2;
+            font-weight: 500;
+            font-size: 0.92rem;
+            text-decoration: none;
+            box-shadow: 0 18px 36px rgba(15, 118, 110, 0.2);
+        }
+
+        .system-cta::after {
+            content: "\2192";
+            font-size: 0.92rem;
+        }
+
+        .system-modal-note {
+            color: var(--text-soft);
+            font-size: 0.92rem;
+        }
+
+        body.system-modal-open {
+            overflow: hidden;
         }
 
         .site-footer {
@@ -600,6 +894,12 @@
         [dir="rtl"] .hero-actions,
         [dir="rtl"] .hero-rail {
             justify-content: flex-end;
+        }
+
+        [dir="rtl"] .systems-header,
+        [dir="rtl"] .system-card,
+        [dir="rtl"] .system-modal-panel {
+            text-align: right;
         }
 
         [dir="rtl"] .hero-rail-line::after {
@@ -660,6 +960,27 @@
                 gap: 1rem;
             }
 
+            .pattern-panel {
+                width: 100%;
+            }
+
+            .systems-shell {
+                min-height: auto;
+                gap: 1.5rem;
+            }
+
+            .systems-header {
+                align-items: flex-start;
+            }
+
+            .systems-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .system-modal-dialog {
+                grid-template-rows: minmax(20rem, 1.2fr) auto;
+            }
+
         }
 
         @media (max-width: 640px) {
@@ -668,12 +989,49 @@
                 line-height: 1.05;
             }
 
-            .hero-desc {
-                font-size: 1rem;
-            }
-
             .hero-stories {
                 grid-template-columns: 1fr;
+            }
+
+            .systems-section {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+
+            .systems-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .system-card {
+                min-height: 16rem;
+            }
+
+            .system-modal {
+                padding: 0.5rem;
+            }
+
+            .system-modal-panel {
+                padding: 1.25rem;
+            }
+
+            .system-modal-head {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .system-modal-actions {
+                width: 100%;
+                justify-content: flex-start;
+            }
+
+            .system-modal-viewport-label {
+                left: 1rem;
+                bottom: 1rem;
+            }
+
+            .system-modal-dots {
+                right: 1rem;
+                bottom: 1rem;
             }
         }
     </style>
@@ -745,9 +1103,6 @@
                 <h1 class="hero-title text-5xl lg:text-7xl leading-tight mb-8" id="hero-title">
                     Smart regional operations.<br><span class="hero-title-accent">Built for Anton in Dubai.</span>
                 </h1>
-                <p class="hero-desc mb-10 leading-relaxed" id="hero-desc">
-                    A modern enterprise platform coordinating AI systems, digital workflows, and cross-border service delivery across the Middle East and global emerging markets.
-                </p>
                 <div class="hero-actions">
                     <a href="#systems" class="btn-primary px-8 py-4 font-semibold text-lg" id="hero-btn1">Explore Platform</a>
                 </div>
@@ -771,44 +1126,55 @@
     <section id="about" class="section-ivory py-24 relative transition-colors duration-300">
         <div class="section-pattern absolute inset-0 z-0"></div>
         <div class="container mx-auto px-6 lg:px-12 relative z-10">
-            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
-                <h2 class="section-title text-3xl lg:text-4xl font-bold mb-6" id="about-title">Leading the Future of Digital Oilfields</h2>
-                <p class="section-copy text-lg leading-relaxed" id="about-desc">
+            <div class="pattern-panel" data-aos="fade-up">
+                <p class="section-copy text-xl lg:text-2xl leading-relaxed" id="about-desc">
                     Strategically headquartered in Dubai, our regional operations platform is dedicated to maintaining the technical superiority and professional integrity of Anton's IT infrastructure. By utilizing Dubai's robust business ecosystem, we foster synergistic development and unified management for projects throughout the Middle East and worldwide emerging sectors.
                 </p>
             </div>
         </div>
     </section>
 
-    <!-- IT Systems Showcase (Carousel) -->
-    <section id="systems" class="section-sand py-24 overflow-hidden transition-colors duration-300">
-        <div class="container mx-auto px-6 lg:px-12 mb-12">
-            <div class="flex flex-col md:flex-row justify-between items-end gap-6" data-aos="fade-right">
-                <div class="max-w-2xl">
+    <!-- IT Systems Showcase -->
+    <section id="systems" class="section-sand systems-section overflow-hidden transition-colors duration-300">
+        <div class="container mx-auto px-6 lg:px-12 systems-shell">
+            <div class="systems-header" data-aos="fade-right">
+                <div class="max-w-3xl">
                     <h2 class="section-title text-3xl lg:text-4xl font-bold mb-4" id="systems-title">Our Core IT Systems</h2>
                     <p class="section-copy" id="systems-desc">A unified suite of AI-powered digital applications empowering our engineering and enterprise management across the globe.</p>
                 </div>
-                <!-- Custom Swiper Navigation -->
-                <div class="flex gap-3">
-                    <button class="slider-nav-btn swiper-btn-prev w-12 h-12 rounded-full flex items-center justify-center transition">
-                        &larr;
-                    </button>
-                    <button class="slider-nav-btn swiper-btn-next w-12 h-12 rounded-full flex items-center justify-center transition">
-                        &rarr;
-                    </button>
-                </div>
+                <div class="system-modal-note" id="systems-hint">Select a system to expand into a full-screen product view.</div>
             </div>
-        </div>
 
-        <div class="container mx-auto px-6 lg:px-12" data-aos="fade-up" data-aos-delay="200">
-            <!-- Swiper -->
-            <div class="swiper system-slider">
-                <div class="swiper-wrapper" id="systems-container">
-                    <!-- dynamic content via JS -->
-                </div>
+            <div class="systems-grid" id="systems-container" data-aos="fade-up" data-aos-delay="160">
+                <!-- dynamic content via JS -->
             </div>
         </div>
     </section>
+
+    <div class="system-modal" id="system-modal" aria-hidden="true">
+        <div class="system-modal-dialog">
+            <div class="system-modal-media" id="system-modal-media">
+                <div class="system-modal-slides" id="system-modal-slides"></div>
+                <div class="system-modal-art" id="system-modal-art">VGIS</div>
+                <div class="system-modal-viewport-label" id="system-modal-viewport-label">Product Views</div>
+                <div class="system-modal-dots" id="system-modal-dots"></div>
+            </div>
+            <div class="system-modal-panel">
+                <div class="system-modal-copy">
+                    <div class="system-modal-head">
+                        <div class="system-modal-heading">
+                            <div class="system-modal-label" id="system-modal-label">Platform Product</div>
+                            <h3 class="section-title system-modal-title" id="system-modal-title">VGIS</h3>
+                        </div>
+                        <div class="system-modal-actions">
+                            <a href="product/vgis" class="system-cta" id="system-modal-cta" target="_blank" rel="noopener noreferrer">Open Product</a>
+                        </div>
+                    </div>
+                    <p class="system-modal-desc" id="system-modal-desc">Digital Oilfield Spatial Management Platform. Unified spatial layer anchoring data to physical assets.</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer id="footer" class="site-footer py-12 transition-colors duration-300">
@@ -819,7 +1185,6 @@
 
     <!-- Scripts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <script>
         // Icons mapping for theme
         const themeIcons = {
@@ -891,14 +1256,12 @@
                 nav: ['Contact Us'],
                 heroTag: 'Dubai Regional IT Hub',
                 heroTitle: 'Smart regional operations.<br><span class="hero-title-accent">Built for Anton in Dubai.</span>',
-                heroDesc: 'A modern enterprise platform coordinating AI systems, digital workflows, and cross-border service delivery across the Middle East and global emerging markets.',
                 heroBtn1: 'Explore Platform',
                 heroBtn2: 'View Architecture',
                 heroSlides: [
                     {
                         tag: 'Middle East Strategy',
                         title: 'Powering Anton Oil\'s regional strategy.<br><span class="hero-title-accent">Built from Dubai for the Middle East.</span>',
-                        desc: 'A strategic digital platform aligning Anton Oil\'s regional operations, governance, and delivery capabilities across fast-growing Middle East markets.',
                         btn1: 'Explore Strategy',
                         btn1Href: '#about',
                         btn2: 'View Architecture',
@@ -908,7 +1271,6 @@
                     {
                         tag: 'Leading Technology',
                         title: 'Internationally leading technology.<br><span class="hero-title-accent">Engineered for energy operations.</span>',
-                        desc: 'Advanced AI, cloud-native systems, and enterprise data workflows create a modern digital foundation for complex field and corporate collaboration.',
                         btn1: 'Explore Platform',
                         btn1Href: '#systems',
                         btn2: 'View Technology',
@@ -918,7 +1280,6 @@
                     {
                         tag: 'Professional Services',
                         title: 'Professional service delivery.<br><span class="hero-title-accent">Reliable, secure, and execution-ready.</span>',
-                        desc: 'Purpose-built workflows support engineering oversight, secure operations, and dependable enterprise services for teams across the region.',
                         btn1: 'See Services',
                         btn1Href: '#systems',
                         btn2: 'Learn More',
@@ -928,7 +1289,6 @@
                     {
                         tag: 'Dubai Cloud Hub',
                         title: 'Dubai-localized cloud delivery.<br><span class="hero-title-accent">Closer to the market, ready to scale.</span>',
-                        desc: 'Localized cloud infrastructure and regional deployment patterns help Anton Oil operate with agility, compliance, and stronger service responsiveness.',
                         btn1: 'Explore Cloud Hub',
                         btn1Href: '#about',
                         btn2: 'View Platform',
@@ -963,14 +1323,12 @@
                 nav: ['联系我们'],
                 heroTag: '迪拜区域 IT 中枢',
                 heroTitle: '面向区域运营的智能平台。<br><span class="hero-title-accent">在迪拜，为安东而建。</span>',
-                heroDesc: '围绕中东与全球新兴市场业务，构建统一的 AI 系统、数字化流程与跨区域服务协同平台。',
                 heroBtn1: '探索智能平台',
                 heroBtn2: '查看系统架构',
                 heroSlides: [
                     {
                         tag: '中东战略',
                         title: '支撑安东石油中东战略。<br><span class="hero-title-accent">立足迪拜，服务中东。</span>',
-                        desc: '围绕安东石油在中东市场的发展节奏，构建统一的区域运营、治理与交付数字化平台。',
                         btn1: '查看战略平台',
                         btn1Href: '#about',
                         btn2: '查看系统架构',
@@ -980,7 +1338,6 @@
                     {
                         tag: '领先技术',
                         title: '国际领先的技术体系。<br><span class="hero-title-accent">面向能源场景深度构建。</span>',
-                        desc: '以 AI、云原生平台与企业级数据能力为底座，支撑复杂工程现场与总部协同运营。',
                         btn1: '探索技术平台',
                         btn1Href: '#systems',
                         btn2: '了解技术能力',
@@ -990,7 +1347,6 @@
                     {
                         tag: '专业服务',
                         title: '专业化服务交付。<br><span class="hero-title-accent">稳定、安全、面向执行。</span>',
-                        desc: '通过标准化流程与专业系统能力，支撑中东区域工程管理、现场执行与企业服务协同。',
                         btn1: '查看服务能力',
                         btn1Href: '#systems',
                         btn2: '了解更多',
@@ -1000,7 +1356,6 @@
                     {
                         tag: '迪拜云化',
                         title: '立足迪拜的本土云化交付。<br><span class="hero-title-accent">更贴近市场，更易规模化。</span>',
-                        desc: '通过本地化云基础设施与区域部署体系，提升安东石油在迪拜及中东市场的响应效率与合规能力。',
                         btn1: '探索云化能力',
                         btn1Href: '#about',
                         btn2: '查看平台',
@@ -1035,14 +1390,12 @@
                 nav: ['اتصل بنا'],
                 heroTag: 'مركز دبي الإقليمي لتقنية المعلومات',
                 heroTitle: 'منصة ذكية للعمليات الإقليمية.<br><span class="hero-title-accent">مصممة لأنطون في دبي.</span>',
-                heroDesc: 'منصة مؤسسية حديثة تنسق أنظمة الذكاء الاصطناعي وسير العمل الرقمي وتسليم الخدمات عبر الشرق الأوسط والأسواق الناشئة.',
                 heroBtn1: 'استكشف المنصة',
                 heroBtn2: 'عرض البنية المعمارية',
                 heroSlides: [
                     {
                         tag: 'استراتيجية الشرق الأوسط',
                         title: 'تمكين استراتيجية أنطون في الشرق الأوسط.<br><span class="hero-title-accent">من دبي إلى الأسواق الإقليمية.</span>',
-                        desc: 'منصة رقمية استراتيجية توحد التشغيل الإقليمي والحوكمة وقدرات التسليم لأنطون عبر أسواق الشرق الأوسط المتسارعة.',
                         btn1: 'استكشف الاستراتيجية',
                         btn1Href: '#about',
                         btn2: 'عرض البنية المعمارية',
@@ -1052,7 +1405,6 @@
                     {
                         tag: 'تقنيات رائدة',
                         title: 'تقنيات رائدة عالميًا.<br><span class="hero-title-accent">مصممة لعمليات الطاقة.</span>',
-                        desc: 'يعزز الذكاء الاصطناعي والمنصات السحابية الأصلية وتدفقات البيانات المؤسسية بيئة رقمية حديثة للتعاون الميداني والمؤسسي.',
                         btn1: 'استكشف التقنية',
                         btn1Href: '#systems',
                         btn2: 'تعرف على القدرات',
@@ -1062,7 +1414,6 @@
                     {
                         tag: 'الخدمات الاحترافية',
                         title: 'خدمات احترافية للتنفيذ.<br><span class="hero-title-accent">موثوقة وآمنة وجاهزة للتشغيل.</span>',
-                        desc: 'تدعم سير العمل المخصص الإشراف الهندسي والعمليات الآمنة والخدمات المؤسسية الموثوقة لفرق المنطقة.',
                         btn1: 'عرض الخدمات',
                         btn1Href: '#systems',
                         btn2: 'اعرف المزيد',
@@ -1072,7 +1423,6 @@
                     {
                         tag: 'سحابة دبي المحلية',
                         title: 'تسليم سحابي محلي في دبي.<br><span class="hero-title-accent">أقرب إلى السوق وأكثر قابلية للتوسع.</span>',
-                        desc: 'تساعد البنية السحابية المحلية وأنماط النشر الإقليمي أنطون على العمل بمرونة وامتثال واستجابة أسرع للخدمة.',
                         btn1: 'استكشف السحابة',
                         btn1Href: '#about',
                         btn2: 'عرض المنصة',
@@ -1105,19 +1455,103 @@
             }
         };
 
-        // Swiper Instance
-        let mySwiper;
         let currentLanguage = 'en';
         let currentHeroIndex = 0;
         let heroAutoplayTimer = null;
         let heroTransitionTimer = null;
         const HERO_AUTOPLAY_MS = 10000;
         const heroSlideImages = [
-            'assets/hero/strategy-middle-east.svg',
-            'assets/hero/leading-technology.svg',
-            'assets/hero/professional-services.svg',
-            'assets/hero/dubai-cloud.svg'
+            'assets/hero/strategy-middle-east.png',
+            'assets/hero/leading-technology.png',
+            'assets/hero/professional-services.png',
+            'assets/hero/dubai-cloud.png'
         ];
+        const systemVisuals = {
+            VGIS: {
+                art: 'VGIS',
+                colSpan: 5,
+                rowSpan: 3,
+                href: 'https://vgis.antonoil.ae/vgis',
+                gradient: 'linear-gradient(135deg, #0b5f6c 0%, #17837d 42%, #d2a24f 100%)'
+            },
+            VPMS: {
+                art: 'VPMS',
+                colSpan: 4,
+                rowSpan: 2,
+                href: 'https://vpms.antonoil.ae',
+                gradient: 'linear-gradient(135deg, #143d5a 0%, #245d8c 48%, #8fc8d8 100%)'
+            },
+            BLMS: {
+                art: 'BLMS',
+                colSpan: 3,
+                rowSpan: 2,
+                href: 'https://blms.antonoil.ae',
+                gradient: 'linear-gradient(135deg, #553723 0%, #9f5d35 42%, #efc98a 100%)'
+            },
+            IPMS: {
+                art: 'IPMS',
+                colSpan: 4,
+                rowSpan: 3,
+                href: 'https://ipms.antonoil.ae',
+                gradient: 'linear-gradient(135deg, #1c284f 0%, #3c4fb5 50%, #98b5ff 100%)'
+            },
+            EZsign: {
+                art: 'EZ',
+                colSpan: 3,
+                rowSpan: 2,
+                href: 'https://ezsign.antonoil.ae',
+                gradient: 'linear-gradient(135deg, #21463e 0%, #2f7f72 40%, #82d0c0 100%)'
+            },
+            HRIS: {
+                art: 'HR',
+                colSpan: 4,
+                rowSpan: 2,
+                href: 'https://hris.antonoil.ae',
+                gradient: 'linear-gradient(135deg, #51412c 0%, #947553 40%, #f1c98f 100%)'
+            },
+            PLMS: {
+                art: 'PLMS',
+                colSpan: 5,
+                rowSpan: 2,
+                href: 'https://plms.antonoil.ae',
+                gradient: 'linear-gradient(135deg, #2c4050 0%, #45657c 40%, #91c6cf 100%)'
+            }
+        };
+        const systemUi = {
+            en: {
+                hint: 'Select a system to expand into a full-screen product view.',
+                label: 'Platform Product',
+                open: 'Open Product',
+                request: 'Request Demo',
+                close: 'Close system panel',
+                tap: 'Tap To Expand',
+                views: 'Product Views',
+                slides: ['Overview', 'Interface', 'Operations']
+            },
+            zh: {
+                hint: '点击任一系统卡片，展开查看全屏产品详情。',
+                label: '产品系统',
+                open: '打开产品页',
+                request: '预约演示',
+                close: '关闭产品弹层',
+                tap: '点击展开',
+                views: '产品画面',
+                slides: ['产品总览', '界面视图', '业务场景']
+            },
+            ar: {
+                hint: 'اختر أي نظام لفتحه في عرض منتج كامل الشاشة.',
+                label: 'منتج المنصة',
+                open: 'فتح المنتج',
+                request: 'طلب عرض',
+                close: 'إغلاق نافذة النظام',
+                tap: 'اضغط للتوسيع',
+                views: 'مشاهد المنتج',
+                slides: ['نظرة عامة', 'الواجهة', 'سيناريو التشغيل']
+            }
+        };
+        let activeSystemName = null;
+        let systemModalSlideIndex = 0;
+        let systemModalSlideTimer = null;
 
         function updateElementContent(id, value, useHtml = false) {
             const element = document.getElementById(id);
@@ -1157,6 +1591,195 @@
             }
         }
 
+        function getSystemVisual(name, index = 0) {
+            const fallbackGradients = [
+                'linear-gradient(135deg, #0f766e 0%, #2ea8a0 55%, #d7ab59 100%)',
+                'linear-gradient(135deg, #253b6c 0%, #4564b0 55%, #a8bdf2 100%)',
+                'linear-gradient(135deg, #6d4828 0%, #b46a41 55%, #efc98a 100%)'
+            ];
+            const visual = systemVisuals[name] || {};
+
+            return {
+                art: visual.art || name,
+                colSpan: visual.colSpan || 4,
+                rowSpan: visual.rowSpan || 2,
+                href: visual.href || '#footer',
+                gradient: visual.gradient || fallbackGradients[index % fallbackGradients.length]
+            };
+        }
+
+        function getSystemSlides(name) {
+            const visual = getSystemVisual(name);
+            return [
+                visual.gradient,
+                `linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0)), ${visual.gradient}`,
+                `linear-gradient(135deg, rgba(9,22,28,0.08), rgba(9,22,28,0.22)), ${visual.gradient}`
+            ];
+        }
+
+        function stopSystemModalSlideshow() {
+            if (systemModalSlideTimer) {
+                clearInterval(systemModalSlideTimer);
+                systemModalSlideTimer = null;
+            }
+        }
+
+        function setSystemModalSlide(index) {
+            const slides = Array.from(document.querySelectorAll('.system-modal-slide'));
+            const dots = Array.from(document.querySelectorAll('.system-modal-dot'));
+            if (!slides.length) return;
+
+            systemModalSlideIndex = ((index % slides.length) + slides.length) % slides.length;
+            slides.forEach((slide, slideIndex) => {
+                slide.classList.toggle('is-active', slideIndex === systemModalSlideIndex);
+            });
+            dots.forEach((dot, dotIndex) => {
+                dot.classList.toggle('is-active', dotIndex === systemModalSlideIndex);
+            });
+        }
+
+        function startSystemModalSlideshow() {
+            stopSystemModalSlideshow();
+            const slides = document.querySelectorAll('.system-modal-slide');
+            if (slides.length < 2) return;
+
+            systemModalSlideTimer = window.setInterval(() => {
+                setSystemModalSlide(systemModalSlideIndex + 1);
+            }, 2600);
+        }
+
+        function renderSystems(dict) {
+            const container = document.getElementById('systems-container');
+            if (!container) return;
+
+            const ui = systemUi[currentLanguage] || systemUi.en;
+            container.innerHTML = (dict.systems || []).map((sys, index) => {
+                const visual = getSystemVisual(sys.name, index);
+                return `
+                    <button
+                        type="button"
+                        class="system-card group"
+                        data-system-name="${sys.name}"
+                        style="--system-gradient:${visual.gradient};"
+                    >
+                        <div class="system-card-media" aria-hidden="true"></div>
+                        <div class="system-card-media-art" aria-hidden="true">${visual.art}</div>
+                        <div class="system-card-top">
+                            <span class="system-label">${sys.name}</span>
+                        </div>
+                        <div class="system-card-bottom">
+                            <h3 class="system-card-title text-2xl lg:text-3xl mb-3 flex items-center gap-2">
+                                ${sys.name}
+                                <svg class="system-card-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                            </h3>
+                            <p class="system-card-text text-sm leading-relaxed">${sys.desc}</p>
+                            <div class="system-card-hint mt-5">${ui.tap}</div>
+                        </div>
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function syncSystemModalContent() {
+            if (!activeSystemName) return;
+
+            const dict = i18n[currentLanguage];
+            const ui = systemUi[currentLanguage] || systemUi.en;
+            const system = (dict.systems || []).find((item) => item.name === activeSystemName);
+            if (!system) return;
+
+            const visual = getSystemVisual(system.name);
+            const modal = document.getElementById('system-modal');
+            const modalMedia = document.getElementById('system-modal-media');
+            const modalCta = document.getElementById('system-modal-cta');
+            const modalSlides = document.getElementById('system-modal-slides');
+            const modalDots = document.getElementById('system-modal-dots');
+            const gradients = getSystemSlides(system.name);
+
+            if (modalMedia) {
+                modalMedia.style.setProperty('--system-gradient', visual.gradient);
+            }
+
+            if (modalSlides) {
+                modalSlides.innerHTML = gradients.map((gradient, index) => `
+                    <div class="system-modal-slide${index === 0 ? ' is-active' : ''}" style="--slide-gradient:${gradient};"></div>
+                `).join('');
+            }
+
+            if (modalDots) {
+                modalDots.innerHTML = gradients.map((_, index) => `
+                    <button
+                        type="button"
+                        class="system-modal-dot${index === 0 ? ' is-active' : ''}"
+                        data-system-slide="${index}"
+                        aria-label="${(ui.slides || [])[index] || `Slide ${index + 1}`}"
+                    ></button>
+                `).join('');
+            }
+
+            updateElementContent('system-modal-art', visual.art);
+            updateElementContent('system-modal-label', ui.label);
+            updateElementContent('system-modal-title', system.name);
+            updateElementContent('system-modal-desc', system.desc);
+            updateElementContent('system-modal-viewport-label', ui.views);
+            setSystemModalSlide(0);
+
+            if (modalCta) {
+                modalCta.textContent = visual.href === '#footer' ? ui.request : ui.open;
+                modalCta.setAttribute('href', visual.href);
+                modalCta.setAttribute('target', '_blank');
+                modalCta.setAttribute('rel', 'noopener noreferrer');
+            }
+
+            if (modal) {
+                modal.setAttribute('aria-hidden', 'false');
+            }
+        }
+
+        function openSystemModal(systemName) {
+            activeSystemName = systemName;
+            syncSystemModalContent();
+            document.getElementById('system-modal')?.classList.add('is-open');
+            document.body.classList.add('system-modal-open');
+            startSystemModalSlideshow();
+        }
+
+        function closeSystemModal() {
+            stopSystemModalSlideshow();
+            document.getElementById('system-modal')?.classList.remove('is-open');
+            document.getElementById('system-modal')?.setAttribute('aria-hidden', 'true');
+            document.body.classList.remove('system-modal-open');
+            activeSystemName = null;
+        }
+
+        function bindSystemInteractions() {
+            const container = document.getElementById('systems-container');
+            const modal = document.getElementById('system-modal');
+
+            container?.addEventListener('click', (event) => {
+                const trigger = event.target.closest('[data-system-name]');
+                if (!trigger) return;
+                openSystemModal(trigger.getAttribute('data-system-name'));
+            });
+
+            modal?.addEventListener('click', (event) => {
+                if (event.target === modal) {
+                    closeSystemModal();
+                }
+
+                const dot = event.target.closest('[data-system-slide]');
+                if (!dot) return;
+                setSystemModalSlide(Number(dot.getAttribute('data-system-slide')));
+                startSystemModalSlideshow();
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (event.key === 'Escape') {
+                    closeSystemModal();
+                }
+            });
+        }
+
         function commitHeroSlide(dict, index) {
             const slides = dict.heroSlides || [];
             if (!slides.length) return;
@@ -1167,7 +1790,6 @@
 
             updateElementContent('hero-tag', slide.tag);
             updateElementContent('hero-title', slide.title, true);
-            updateElementContent('hero-desc', slide.desc);
             updateHeroButton('hero-btn1', slide.btn1, slide.btn1Href);
             updateHeroButton('hero-btn2', slide.btn2, slide.btn2Href);
             renderHeroStories(slides, currentHeroIndex);
@@ -1262,7 +1884,6 @@
             } else {
                 updateElementContent('hero-tag', dict.heroTag, true);
                 updateElementContent('hero-title', dict.heroTitle, true);
-                updateElementContent('hero-desc', dict.heroDesc);
                 updateElementContent('hero-btn1', dict.heroBtn1);
                 updateElementContent('hero-btn2', dict.heroBtn2);
                 renderHeroStories((dict.heroStories || []).map((story) => ({ story })), 0);
@@ -1277,53 +1898,12 @@
             // Systems
             updateElementContent('systems-title', dict.systemsTitle);
             updateElementContent('systems-desc', dict.systemsDesc);
-            
-            // Generate Carousel items
-            const container = document.getElementById('systems-container');
-            container.innerHTML = dict.systems.map(sys => `
-                <div class="swiper-slide p-4 group">
-                    <div class="system-img-placeholder rounded-lg mb-6 relative overflow-hidden">
-                        <div class="system-card-glow absolute inset-0 transition-opacity group-hover:opacity-100 opacity-50 z-0"></div>
-                        <div class="absolute inset-0 backdrop-blur-[2px]"></div>
-                        <!-- Placeholder Graphic for ${sys.name} -->
-                        <span class="system-label font-semibold">${sys.name} SYSTEM</span>
-                        
-                        <!-- AI Elements -->
-                        <div class="absolute top-2 right-2 flex gap-1">
-                            <span class="system-status-dot w-1.5 h-1.5 rounded-full animate-ping"></span>
-                            <span class="system-status-dot w-1.5 h-1.5 rounded-full animate-ping" style="animation-delay: 0.2s"></span>
-                            <span class="system-status-dot w-1.5 h-1.5 rounded-full animate-ping" style="animation-delay: 0.4s"></span>
-                        </div>
-                    </div>
-                    <div class="px-2 pb-4">
-                        <h3 class="system-card-title text-xl font-bold mb-3 flex items-center gap-2">
-                            ${sys.name}
-                            <svg class="system-card-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                        </h3>
-                        <p class="system-card-text text-sm leading-relaxed">${sys.desc}</p>
-                    </div>
-                </div>
-            `).join('');
+            updateElementContent('systems-hint', (systemUi[lang] || systemUi.en).hint);
+            renderSystems(dict);
+            syncSystemModalContent();
 
             // Footer
             updateElementContent('footer-text', dict.footerText, true);
-
-            // Re-init Swiper
-            if (mySwiper) mySwiper.destroy(true, true);
-            mySwiper = new Swiper('.system-slider', {
-                slidesPerView: 1.2,
-                spaceBetween: 20,
-                dir: lang === 'ar' ? 'rtl' : 'ltr',
-                navigation: {
-                    nextEl: '.swiper-btn-next',
-                    prevEl: '.swiper-btn-prev',
-                },
-                breakpoints: {
-                    640: { slidesPerView: 2.2, spaceBetween: 20 },
-                    1024: { slidesPerView: 3.5, spaceBetween: 30 },
-                    1280: { slidesPerView: 4.2, spaceBetween: 30 }
-                }
-            });
             
             // Unfocus button to close dropdown
             document.activeElement?.blur();
@@ -1331,6 +1911,7 @@
 
         // Init Default Lang
         bindHeroInteractions();
+        bindSystemInteractions();
         setLanguage('en');
         startHeroAutoplay();
 
