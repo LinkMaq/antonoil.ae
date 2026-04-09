@@ -1,0 +1,1353 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anton Oil - Dubai IT Regional Hub</title>
+    <!-- Tailwind CSS for rapid styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            copper: '#B65035',
+                            gold: '#B98A3F',
+                            teal: '#0F766E'
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulse-glow 8s infinite alternate ease-in-out',
+                        'pulse-glow-reverse': 'pulse-glow 6s infinite alternate-reverse ease-in-out',
+                        'shimmer': 'shimmer 3s infinite',
+                        'gradient-x': 'gradient-x 15s ease infinite',
+                    },
+                    keyframes: {
+                        'pulse-glow': {
+                            '0%': { transform: 'scale(1)', opacity: '0.8' },
+                            '100%': { transform: 'scale(1.1)', opacity: '1' }
+                        },
+                        'shimmer': {
+                            '100%': { left: '200%' }
+                        },
+                        'gradient-x': {
+                            '0%, 100%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'left center'
+                            },
+                            '50%': {
+                                'background-size': '200% 200%',
+                                'background-position': 'right center'
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Animate On Scroll (AOS) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <!-- Swiper CSS for Carousel -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Inter:wght@300;400;600;700&display=swap');
+
+        :root {
+            --bg-page: #f6efe3;
+            --bg-section: #fff8f0;
+            --bg-section-soft: #efe2cf;
+            --bg-surface: rgba(255, 249, 241, 0.82);
+            --bg-card: #fffaf3;
+            --bg-card-alt: #f7ecdd;
+            --bg-footer: #f2e5d3;
+            --text-primary: #18272d;
+            --text-secondary: #5c6a70;
+            --text-soft: #7a868b;
+            --text-inverse: #f8f1e7;
+            --border-soft: rgba(90, 74, 49, 0.14);
+            --border-strong: rgba(176, 135, 63, 0.28);
+            --accent-primary: #0f766e;
+            --accent-primary-strong: #0a5a55;
+            --accent-primary-soft: rgba(15, 118, 110, 0.16);
+            --accent-secondary: #b98a3f;
+            --accent-secondary-soft: rgba(185, 138, 63, 0.18);
+            --accent-copper: #b65035;
+            --accent-copper-soft: rgba(182, 80, 53, 0.18);
+            --hero-top: #0e2229;
+            --hero-bottom: #19404a;
+            --hero-text: #f7efe2;
+            --hero-muted: rgba(241, 232, 220, 0.78);
+            --hero-slide-image: url("assets/hero/strategy-middle-east.svg");
+            --hero-kicker-bg: rgba(255, 244, 229, 0.14);
+            --hero-kicker-border: rgba(214, 175, 104, 0.26);
+            --hero-button-shadow: 0 18px 40px rgba(15, 118, 110, 0.24);
+            --shadow-soft: 0 16px 40px rgba(24, 39, 45, 0.08);
+            --shadow-strong: 0 24px 60px rgba(12, 35, 40, 0.14);
+        }
+
+        html.dark {
+            --bg-page: #09161b;
+            --bg-section: #0d1d24;
+            --bg-section-soft: #112730;
+            --bg-surface: rgba(10, 26, 32, 0.84);
+            --bg-card: #12262d;
+            --bg-card-alt: #17333b;
+            --bg-footer: #08141a;
+            --text-primary: #f3e8d7;
+            --text-secondary: #b9c7c3;
+            --text-soft: #93a39f;
+            --text-inverse: #071217;
+            --border-soft: rgba(217, 188, 133, 0.14);
+            --border-strong: rgba(211, 170, 92, 0.3);
+            --accent-primary: #35b6aa;
+            --accent-primary-strong: #73d9cd;
+            --accent-primary-soft: rgba(53, 182, 170, 0.18);
+            --accent-secondary: #d7ab59;
+            --accent-secondary-soft: rgba(215, 171, 89, 0.18);
+            --accent-copper: #de7b58;
+            --accent-copper-soft: rgba(222, 123, 88, 0.18);
+            --hero-top: #071318;
+            --hero-bottom: #11343e;
+            --hero-text: #f4ead8;
+            --hero-muted: rgba(222, 214, 198, 0.76);
+            --hero-kicker-bg: rgba(19, 45, 53, 0.54);
+            --hero-kicker-border: rgba(215, 171, 89, 0.28);
+            --hero-button-shadow: 0 18px 40px rgba(7, 22, 27, 0.42);
+            --shadow-soft: 0 18px 44px rgba(0, 0, 0, 0.28);
+            --shadow-strong: 0 28px 64px rgba(0, 0, 0, 0.4);
+        }
+
+        html {
+            background: var(--bg-page);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            background:
+                radial-gradient(circle at top left, rgba(185, 138, 63, 0.1), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(15, 118, 110, 0.08), transparent 28%),
+                var(--bg-page);
+            color: var(--text-primary);
+        }
+
+        body[dir="rtl"] {
+            font-family: 'Cairo', sans-serif;
+        }
+
+        ::selection {
+            background: var(--accent-secondary-soft);
+            color: var(--text-primary);
+        }
+
+        .site-header {
+            background: transparent;
+            border-bottom: 1px solid transparent;
+            backdrop-filter: blur(0);
+            z-index: 50;
+            transition: background-color 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .site-header.is-scrolled {
+            background: var(--bg-surface);
+            backdrop-filter: blur(18px);
+            border-bottom-color: var(--border-soft);
+            box-shadow: 0 18px 40px rgba(7, 22, 27, 0.08);
+        }
+
+        .site-logo-main {
+            color: var(--text-primary);
+            transition: color 0.3s ease;
+        }
+
+        .site-logo-accent {
+            color: var(--accent-copper);
+            transition: color 0.3s ease;
+        }
+
+        .region-pill {
+            background: linear-gradient(135deg, var(--accent-secondary-soft), rgba(255, 255, 255, 0.4));
+            color: var(--accent-primary-strong);
+            border: 1px solid var(--border-strong);
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        html.dark .region-pill {
+            background: linear-gradient(135deg, rgba(215, 171, 89, 0.16), rgba(53, 182, 170, 0.12));
+            color: var(--accent-secondary);
+        }
+
+        .nav-link {
+            color: var(--text-secondary);
+            position: relative;
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-primary);
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -0.45rem;
+            width: 100%;
+            height: 2px;
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.25s ease;
+            background: linear-gradient(90deg, var(--accent-secondary), var(--accent-primary));
+        }
+
+        .nav-link:hover::after {
+            transform: scaleX(1);
+        }
+
+        .control-button {
+            border: 1px solid var(--border-soft);
+            background: var(--bg-card);
+            color: var(--accent-primary);
+            box-shadow: 0 10px 24px rgba(24, 39, 45, 0.06);
+            transition: all 0.25s ease;
+        }
+
+        .control-button:hover {
+            background: var(--bg-card-alt);
+            border-color: var(--border-strong);
+        }
+
+        .dropdown-menu {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-10px) scale(0.95);
+            transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+            background: var(--bg-card);
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-soft);
+        }
+        
+        .group:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+
+        .dropdown-item {
+            color: var(--text-secondary);
+        }
+
+        .dropdown-item:hover {
+            background: var(--accent-primary-soft);
+            color: var(--text-primary);
+        }
+
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+            background: linear-gradient(135deg, var(--hero-top) 8%, var(--hero-bottom) 52%, #235362 100%);
+            color: var(--hero-text);
+            min-height: 100vh;
+        }
+
+        .hero-media {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            background:
+                linear-gradient(90deg, rgba(8, 16, 21, 0.82) 0%, rgba(8, 16, 21, 0.64) 30%, rgba(8, 16, 21, 0.28) 62%, rgba(8, 16, 21, 0.52) 100%),
+                linear-gradient(180deg, rgba(8, 16, 21, 0.18) 0%, rgba(8, 16, 21, 0.12) 36%, rgba(8, 16, 21, 0.42) 100%),
+                var(--hero-slide-image);
+            background-size: cover, cover, cover;
+            background-position: center, center, center;
+            background-repeat: no-repeat;
+            transition: background-image 0.35s ease, opacity 0.35s ease;
+        }
+
+        .hero-media::after {
+            content: "";
+            position: absolute;
+            inset: auto 0 0 0;
+            height: 22%;
+            background: linear-gradient(180deg, transparent 0%, rgba(7, 17, 22, 0.76) 100%);
+        }
+
+        .hero-shell {
+            position: relative;
+            z-index: 2;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding-top: 7.5rem;
+            padding-bottom: 2rem;
+        }
+
+        .hero-shell.is-fading .hero-content,
+        .hero-shell.is-fading .hero-rail-track {
+            opacity: 0.04;
+            transform: translateY(10px);
+        }
+
+        .hero-content {
+            max-width: 44rem;
+            padding-top: 5rem;
+            padding-bottom: 6rem;
+            transition: opacity 0.32s ease, transform 0.32s ease;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.95rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: rgba(248, 236, 214, 0.92);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .hero-eyebrow::after {
+            content: "";
+            display: block;
+            width: 5rem;
+            height: 2px;
+            margin-top: 0.8rem;
+            background: linear-gradient(90deg, var(--accent-secondary), rgba(247, 239, 226, 0.2));
+        }
+
+        .hero-title {
+            color: var(--hero-text);
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+            font-weight: 300;
+            letter-spacing: -0.03em;
+            max-width: 46rem;
+        }
+
+        .hero-title-accent {
+            color: rgba(251, 246, 238, 0.96);
+        }
+
+        .hero-desc {
+            color: var(--hero-muted);
+            max-width: 34rem;
+            font-size: 1.125rem;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--accent-copper);
+            color: #fffdf8;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 18px 36px rgba(182, 80, 53, 0.28);
+            border: none;
+            min-width: 15rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background: #cb6244;
+            box-shadow: 0 22px 45px rgba(7, 22, 27, 0.3);
+        }
+
+        .btn-link-light {
+            color: rgba(249, 239, 227, 0.94);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.9rem;
+            font-weight: 600;
+        }
+
+        .btn-link-light::after,
+        .btn-primary::after {
+            content: "\2192";
+            font-size: 1rem;
+        }
+
+        .btn-link-light:hover {
+            color: #ffffff;
+        }
+
+        .hero-rail {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: 2rem;
+            padding-top: 0.5rem;
+            transform: translateY(-1.25rem);
+        }
+
+        .hero-rail-track {
+            flex: 1;
+            transition: opacity 0.32s ease, transform 0.32s ease;
+        }
+
+        .hero-rail-line {
+            position: relative;
+            height: 1px;
+            background: rgba(247, 239, 226, 0.36);
+            margin-bottom: 1.3rem;
+            --hero-active-index: 0;
+        }
+
+        .hero-rail-line::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 25%;
+            top: -1px;
+            height: 3px;
+            background: var(--accent-copper);
+            transform: translateX(calc(var(--hero-active-index) * 100%));
+            transition: transform 0.35s ease;
+        }
+
+        .hero-stories {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 1.5rem;
+        }
+
+        .hero-story {
+            color: rgba(248, 236, 214, 0.82);
+            font-size: 0.85rem;
+            line-height: 1.55;
+            background: transparent;
+            border: 0;
+            padding: 0;
+            text-align: left;
+            transition: color 0.25s ease;
+        }
+
+        .hero-story.active {
+            color: #fffdf8;
+        }
+
+        .hero-story:hover {
+            color: #fffdf8;
+        }
+
+        .section-ivory {
+            background: var(--bg-section);
+        }
+
+        .section-sand {
+            background:
+                linear-gradient(180deg, rgba(255, 248, 240, 0.3), rgba(239, 226, 207, 0.5)),
+                var(--bg-section-soft);
+        }
+
+        .section-pattern {
+            background-image:
+                radial-gradient(circle at 1px 1px, rgba(185, 138, 63, 0.14) 1px, transparent 0),
+                linear-gradient(135deg, rgba(15, 118, 110, 0.03), rgba(182, 80, 53, 0.03));
+            background-size: 24px 24px, auto;
+            opacity: 0.7;
+        }
+
+        .section-title {
+            color: var(--text-primary);
+        }
+
+        .section-copy {
+            color: var(--text-secondary);
+        }
+
+        .system-slider {
+            padding: 2rem 0 4rem 0;
+        }
+        
+        .swiper-slide {
+            background: linear-gradient(180deg, var(--bg-card) 0%, rgba(255, 255, 255, 0.35) 100%);
+            color: var(--text-primary);
+            border-radius: 20px;
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+            border: 1px solid var(--border-soft);
+            display: flex;
+            flex-direction: column;
+            height: auto;
+        }
+
+        .swiper-slide:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-strong);
+            border-color: var(--border-strong);
+        }
+
+        .system-img-placeholder {
+            width: 100%;
+            height: 220px;
+            background:
+                linear-gradient(135deg, rgba(15, 118, 110, 0.16), rgba(185, 138, 63, 0.18)),
+                linear-gradient(120deg, var(--bg-card-alt) 0%, var(--bg-card) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-primary-strong);
+            font-weight: 600;
+            font-size: 1.25rem;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-soft);
+        }
+
+        .system-img-placeholder::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(255, 244, 229, 0.36), transparent);
+            transform: skewX(-20deg);
+            animation: shimmer 3s infinite;
+        }
+
+        .system-card-glow {
+            background: linear-gradient(135deg, var(--accent-secondary-soft), var(--accent-primary-soft));
+        }
+
+        .system-label {
+            z-index: 10;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            color: var(--accent-primary-strong);
+        }
+
+        .system-status-dot {
+            background: var(--accent-secondary);
+            box-shadow: 0 0 0 5px rgba(215, 171, 89, 0.08);
+        }
+
+        .system-card-title {
+            color: var(--accent-primary);
+        }
+
+        .system-card-icon {
+            color: var(--accent-copper);
+        }
+
+        .system-card-text {
+            color: var(--text-secondary);
+        }
+
+        .slider-nav-btn {
+            border: 1px solid var(--border-soft);
+            background: var(--bg-card);
+            color: var(--text-primary);
+            box-shadow: 0 12px 24px rgba(24, 39, 45, 0.06);
+        }
+
+        .slider-nav-btn:hover {
+            background: var(--bg-card-alt);
+            border-color: var(--border-strong);
+            color: var(--accent-primary);
+        }
+
+        .site-footer {
+            background: var(--bg-footer);
+            border-top: 1px solid var(--border-soft);
+        }
+
+        .footer-copy {
+            color: var(--text-soft);
+        }
+
+        @keyframes pulse-glow {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(1.08); opacity: 1; }
+        }
+
+        @keyframes shimmer {
+            100% { left: 200%; }
+        }
+
+        [dir="rtl"] .text-left { text-align: right; }
+        [dir="rtl"] .ml-auto { margin-right: auto; margin-left: 0; }
+        [dir="rtl"] .mr-4 { margin-left: 1rem; margin-right: 0; }
+        [dir="rtl"] .pl-8 { padding-right: 2rem; padding-left: 0; }
+        [dir="rtl"] .hero-section,
+        [dir="rtl"] .hero-content {
+            text-align: right;
+        }
+
+        [dir="rtl"] .hero-eyebrow::after {
+            margin-right: 0;
+            margin-left: auto;
+        }
+
+        [dir="rtl"] .hero-actions,
+        [dir="rtl"] .hero-rail {
+            justify-content: flex-end;
+        }
+
+        [dir="rtl"] .hero-rail-line::after {
+            left: auto;
+            right: 0;
+            transform: translateX(calc(var(--hero-active-index) * -100%));
+        }
+
+        [dir="rtl"] .btn-link-light::after,
+        [dir="rtl"] .btn-primary::after {
+            content: "\2190";
+        }
+
+        .site-header:not(.is-scrolled) .site-logo-main,
+        .site-header:not(.is-scrolled) .site-logo-accent,
+        .site-header:not(.is-scrolled) .nav-link,
+        .site-header:not(.is-scrolled) .control-button {
+            color: rgba(255, 249, 241, 0.94);
+        }
+
+        .site-header:not(.is-scrolled) .region-pill {
+            background: rgba(255, 249, 241, 0.08);
+            color: rgba(255, 244, 229, 0.92);
+            border-color: rgba(255, 244, 229, 0.2);
+        }
+
+        .site-header:not(.is-scrolled) .control-button {
+            background: rgba(255, 255, 255, 0.06);
+            border-color: rgba(255, 255, 255, 0.18);
+            box-shadow: none;
+        }
+
+        .site-header:not(.is-scrolled) .nav-link:hover {
+            color: #ffffff;
+        }
+
+        .site-header:not(.is-scrolled) .nav-link::after {
+            background: linear-gradient(90deg, rgba(255, 255, 255, 0.84), var(--accent-copper));
+        }
+
+        @media (max-width: 768px) {
+            .hero-shell {
+                padding-top: 6rem;
+            }
+
+            .hero-content {
+                padding-top: 4rem;
+                padding-bottom: 4rem;
+            }
+
+            .hero-rail {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .hero-stories {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+
+        }
+
+        @media (max-width: 640px) {
+            .hero-title {
+                font-size: 3rem;
+                line-height: 1.05;
+            }
+
+            .hero-desc {
+                font-size: 1rem;
+            }
+
+            .hero-stories {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header -->
+    <header class="site-header fixed w-full top-0 py-4 transition-all duration-300">
+        <div class="container mx-auto px-6 lg:px-12 flex justify-between items-center relative z-10">
+            <div class="flex items-center">
+                <!-- Logo -->
+                <div class="text-2xl font-bold tracking-tighter flex items-center gap-2">
+                    <span class="site-logo-main">ANTON</span>
+                    <span class="site-logo-accent font-light">OIL</span>
+                </div>
+            </div>
+            
+            <div class="flex items-center space-x-6" style="gap: 1.5rem;">
+                <nav class="hidden md:flex space-x-8 font-semibold text-sm mr-8" id="nav-menu">
+                    <!-- Nav items will be populated by JS -->
+                </nav>
+                
+                <!-- Theme Switcher Dropdown -->
+                <div class="relative group" id="theme-switcher">
+                    <button class="control-button flex items-center justify-center w-10 h-10 rounded-full transition">
+                        <svg id="current-theme-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu absolute right-0 mt-2 w-32 rounded-xl py-1 z-50">
+                        <button onclick="setTheme('light')" class="dropdown-item flex items-center w-full px-4 py-2.5 text-sm gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
+                            Light
+                        </button>
+                        <button onclick="setTheme('dark')" class="dropdown-item flex items-center w-full px-4 py-2.5 text-sm gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
+                            Dark
+                        </button>
+                        <button onclick="setTheme('system')" class="dropdown-item flex items-center w-full px-4 py-2.5 text-sm gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            System
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Language Switcher Dropdown -->
+                <div class="relative group" id="lang-switcher">
+                    <button class="control-button flex items-center justify-between w-[80px] px-3 py-2 rounded-full transition text-sm font-semibold">
+                        <span id="current-lang-text">EN</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <div class="dropdown-menu absolute right-0 mt-2 w-24 rounded-xl py-1 z-50 origin-top-right">
+                        <button onclick="setLanguage('en')" class="dropdown-item w-full text-left px-4 py-2.5 text-sm font-medium">EN</button>
+                        <button onclick="setLanguage('zh')" class="dropdown-item w-full text-left px-4 py-2.5 text-sm font-medium">中文</button>
+                        <button onclick="setLanguage('ar')" class="dropdown-item w-full text-left px-4 py-2.5 text-sm font-medium font-cairo">عربي</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section w-full">
+        <div class="hero-media" aria-hidden="true"></div>
+
+        <div class="hero-shell container mx-auto px-6 lg:px-12">
+            <div data-aos="fade-up" data-aos-duration="1000" class="hero-content">
+                <div class="hero-eyebrow" id="hero-tag">Dubai Regional IT Hub</div>
+                <h1 class="hero-title text-5xl lg:text-7xl leading-tight mb-8" id="hero-title">
+                    Smart regional operations.<br><span class="hero-title-accent">Built for Anton in Dubai.</span>
+                </h1>
+                <p class="hero-desc mb-10 leading-relaxed" id="hero-desc">
+                    A modern enterprise platform coordinating AI systems, digital workflows, and cross-border service delivery across the Middle East and global emerging markets.
+                </p>
+                <div class="hero-actions">
+                    <a href="#systems" class="btn-primary px-8 py-4 font-semibold text-lg" id="hero-btn1">Explore Platform</a>
+                </div>
+            </div>
+
+            <div class="hero-rail" data-aos="fade-up" data-aos-delay="150">
+                <div class="hero-rail-track">
+                    <div class="hero-rail-line"></div>
+                    <div class="hero-stories" id="hero-stories">
+                        <div class="hero-story">Middle East digital operations platform</div>
+                        <div class="hero-story">AI-enabled engineering coordination</div>
+                        <div class="hero-story active">Dubai regional command and service hub</div>
+                        <div class="hero-story">Secure enterprise systems for field execution</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section-ivory py-24 relative transition-colors duration-300">
+        <div class="section-pattern absolute inset-0 z-0"></div>
+        <div class="container mx-auto px-6 lg:px-12 relative z-10">
+            <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+                <h2 class="section-title text-3xl lg:text-4xl font-bold mb-6" id="about-title">Leading the Future of Digital Oilfields</h2>
+                <p class="section-copy text-lg leading-relaxed" id="about-desc">
+                    Strategically headquartered in Dubai, our regional operations platform is dedicated to maintaining the technical superiority and professional integrity of Anton's IT infrastructure. By utilizing Dubai's robust business ecosystem, we foster synergistic development and unified management for projects throughout the Middle East and worldwide emerging sectors.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- IT Systems Showcase (Carousel) -->
+    <section id="systems" class="section-sand py-24 overflow-hidden transition-colors duration-300">
+        <div class="container mx-auto px-6 lg:px-12 mb-12">
+            <div class="flex flex-col md:flex-row justify-between items-end gap-6" data-aos="fade-right">
+                <div class="max-w-2xl">
+                    <h2 class="section-title text-3xl lg:text-4xl font-bold mb-4" id="systems-title">Our Core IT Systems</h2>
+                    <p class="section-copy" id="systems-desc">A unified suite of AI-powered digital applications empowering our engineering and enterprise management across the globe.</p>
+                </div>
+                <!-- Custom Swiper Navigation -->
+                <div class="flex gap-3">
+                    <button class="slider-nav-btn swiper-btn-prev w-12 h-12 rounded-full flex items-center justify-center transition">
+                        &larr;
+                    </button>
+                    <button class="slider-nav-btn swiper-btn-next w-12 h-12 rounded-full flex items-center justify-center transition">
+                        &rarr;
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="container mx-auto px-6 lg:px-12" data-aos="fade-up" data-aos-delay="200">
+            <!-- Swiper -->
+            <div class="swiper system-slider">
+                <div class="swiper-wrapper" id="systems-container">
+                    <!-- dynamic content via JS -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="footer" class="site-footer py-12 transition-colors duration-300">
+        <div class="footer-copy container mx-auto px-6 lg:px-12 text-center text-sm">
+            <p id="footer-text">&copy; 2026 Anton Oilfield Services Group. All Rights Reserved. Dubai IT Regional Operations.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <script>
+        // Icons mapping for theme
+        const themeIcons = {
+            light: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>',
+            dark: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path>',
+            system: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>'
+        };
+
+        // Theme Management
+        function setTheme(theme) {
+            const html = document.documentElement;
+            const currentThemeIcon = document.getElementById('current-theme-icon');
+            
+            if (theme === 'system') {
+                localStorage.removeItem('theme');
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    html.classList.add('dark');
+                } else {
+                    html.classList.remove('dark');
+                }
+                currentThemeIcon.innerHTML = themeIcons.system;
+            } else {
+                localStorage.setItem('theme', theme);
+                if (theme === 'dark') {
+                    html.classList.add('dark');
+                    currentThemeIcon.innerHTML = themeIcons.dark;
+                } else {
+                    html.classList.remove('dark');
+                    currentThemeIcon.innerHTML = themeIcons.light;
+                }
+            }
+            
+            // Unfocus button to close dropdown on touch devices
+            document.activeElement?.blur();
+        }
+
+        // Initialize Theme
+        if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            if (localStorage.getItem('theme') === 'dark') {
+                setTheme('dark');
+            } else {
+                setTheme('system');
+            }
+        } else {
+            if (localStorage.getItem('theme') === 'light') {
+                setTheme('light');
+            } else {
+                setTheme('system');
+            }
+        }
+
+        // Listen for system theme changes
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+            if (!localStorage.getItem('theme')) {
+                if (e.matches) {
+                    document.documentElement.classList.add('dark');
+                } else {
+                    document.documentElement.classList.remove('dark');
+                }
+            }
+        });
+
+        // Init Animations
+        AOS.init({ once: true, offset: 50 });
+
+        // Translations Data
+        const i18n = {
+            en: {
+                nav: ['Contact Us'],
+                heroTag: 'Dubai Regional IT Hub',
+                heroTitle: 'Smart regional operations.<br><span class="hero-title-accent">Built for Anton in Dubai.</span>',
+                heroDesc: 'A modern enterprise platform coordinating AI systems, digital workflows, and cross-border service delivery across the Middle East and global emerging markets.',
+                heroBtn1: 'Explore Platform',
+                heroBtn2: 'View Architecture',
+                heroSlides: [
+                    {
+                        tag: 'Middle East Strategy',
+                        title: 'Powering Anton Oil\'s regional strategy.<br><span class="hero-title-accent">Built from Dubai for the Middle East.</span>',
+                        desc: 'A strategic digital platform aligning Anton Oil\'s regional operations, governance, and delivery capabilities across fast-growing Middle East markets.',
+                        btn1: 'Explore Strategy',
+                        btn1Href: '#about',
+                        btn2: 'View Architecture',
+                        btn2Href: '#systems',
+                        story: 'Anton Oil Middle East strategic operations platform'
+                    },
+                    {
+                        tag: 'Leading Technology',
+                        title: 'Internationally leading technology.<br><span class="hero-title-accent">Engineered for energy operations.</span>',
+                        desc: 'Advanced AI, cloud-native systems, and enterprise data workflows create a modern digital foundation for complex field and corporate collaboration.',
+                        btn1: 'Explore Platform',
+                        btn1Href: '#systems',
+                        btn2: 'View Technology',
+                        btn2Href: '#about',
+                        story: 'Internationally leading digital and AI technologies'
+                    },
+                    {
+                        tag: 'Professional Services',
+                        title: 'Professional service delivery.<br><span class="hero-title-accent">Reliable, secure, and execution-ready.</span>',
+                        desc: 'Purpose-built workflows support engineering oversight, secure operations, and dependable enterprise services for teams across the region.',
+                        btn1: 'See Services',
+                        btn1Href: '#systems',
+                        btn2: 'Learn More',
+                        btn2Href: '#about',
+                        story: 'Professional services for secure field execution'
+                    },
+                    {
+                        tag: 'Dubai Cloud Hub',
+                        title: 'Dubai-localized cloud delivery.<br><span class="hero-title-accent">Closer to the market, ready to scale.</span>',
+                        desc: 'Localized cloud infrastructure and regional deployment patterns help Anton Oil operate with agility, compliance, and stronger service responsiveness.',
+                        btn1: 'Explore Cloud Hub',
+                        btn1Href: '#about',
+                        btn2: 'View Platform',
+                        btn2Href: '#systems',
+                        story: 'Dubai-localized cloud infrastructure and delivery'
+                    }
+                ],
+                heroStories: [
+                    'Anton Oil Middle East strategic operations platform',
+                    'Internationally leading digital and AI technologies',
+                    'Professional services for secure field execution',
+                    'Dubai-localized cloud infrastructure and delivery'
+                ],
+                heroCardTitle: 'Digital Twin & AI Hub',
+                heroCardDesc: 'Connecting seamlessly with Anton\'s global entities for unparalleled data synergy and predictive analytics.',
+                aboutTitle: 'Leading the Future of Autonomous Oilfields',
+                aboutDesc: 'Strategically headquartered in Dubai, our regional operations platform integrates advanced Machine Learning and IoT to maintain the technical superiority of Anton\'s infrastructure. We foster synergistic development and unified autonomous management for projects throughout the Middle East and worldwide emerging sectors.',
+                systemsTitle: 'Next-Gen IT Infrastructure',
+                systemsDesc: 'A unified suite of cloud-native, AI-powered applications empowering our engineering and enterprise management across the globe.',
+                footerText: '&copy; 2026 Anton Oilfield Services Group. All Rights Reserved. AI & Data Operations Hub - Dubai.',
+                systems: [
+                    { name: 'VGIS', desc: 'Digital Oilfield Spatial Management Platform. Unified spatial layer anchoring data to physical assets.' },
+                    { name: 'VPMS', desc: 'Visualized Project Management System for real-time engineering oversight.' },
+                    { name: 'BLMS', desc: 'Budget Lifecycle Management System ensuring precision in financial administration.' },
+                    { name: 'IPMS', desc: 'Intelligent Project Management System powered by advanced analytics.' },
+                    { name: 'EZsign', desc: 'Electronic Signature System for secure, compliant cross-border document workflows.' },
+                    { name: 'HRIS', desc: 'Human Resources Information System for optimized global talent management.' },
+                    { name: 'PLMS', desc: 'Passport and Visa Management System facilitating global mobility and compliance.' }
+                ]
+            },
+            zh: {
+                nav: ['联系我们'],
+                heroTag: '迪拜区域 IT 中枢',
+                heroTitle: '面向区域运营的智能平台。<br><span class="hero-title-accent">在迪拜，为安东而建。</span>',
+                heroDesc: '围绕中东与全球新兴市场业务，构建统一的 AI 系统、数字化流程与跨区域服务协同平台。',
+                heroBtn1: '探索智能平台',
+                heroBtn2: '查看系统架构',
+                heroSlides: [
+                    {
+                        tag: '中东战略',
+                        title: '支撑安东石油中东战略。<br><span class="hero-title-accent">立足迪拜，服务中东。</span>',
+                        desc: '围绕安东石油在中东市场的发展节奏，构建统一的区域运营、治理与交付数字化平台。',
+                        btn1: '查看战略平台',
+                        btn1Href: '#about',
+                        btn2: '查看系统架构',
+                        btn2Href: '#systems',
+                        story: '安东石油中东战略运营平台'
+                    },
+                    {
+                        tag: '领先技术',
+                        title: '国际领先的技术体系。<br><span class="hero-title-accent">面向能源场景深度构建。</span>',
+                        desc: '以 AI、云原生平台与企业级数据能力为底座，支撑复杂工程现场与总部协同运营。',
+                        btn1: '探索技术平台',
+                        btn1Href: '#systems',
+                        btn2: '了解技术能力',
+                        btn2Href: '#about',
+                        story: '国际领先的数字化与 AI 技术能力'
+                    },
+                    {
+                        tag: '专业服务',
+                        title: '专业化服务交付。<br><span class="hero-title-accent">稳定、安全、面向执行。</span>',
+                        desc: '通过标准化流程与专业系统能力，支撑中东区域工程管理、现场执行与企业服务协同。',
+                        btn1: '查看服务能力',
+                        btn1Href: '#systems',
+                        btn2: '了解更多',
+                        btn2Href: '#about',
+                        story: '面向现场执行的专业化服务体系'
+                    },
+                    {
+                        tag: '迪拜云化',
+                        title: '立足迪拜的本土云化交付。<br><span class="hero-title-accent">更贴近市场，更易规模化。</span>',
+                        desc: '通过本地化云基础设施与区域部署体系，提升安东石油在迪拜及中东市场的响应效率与合规能力。',
+                        btn1: '探索云化能力',
+                        btn1Href: '#about',
+                        btn2: '查看平台',
+                        btn2Href: '#systems',
+                        story: '立足迪拜的本土云化基础设施与交付'
+                    }
+                ],
+                heroStories: [
+                    '安东石油中东战略运营平台',
+                    '国际领先的数字化与 AI 技术能力',
+                    '面向现场执行的专业化服务体系',
+                    '立足迪拜的本土云化基础设施与交付'
+                ],
+                heroCardTitle: '数字孪生与全球中枢',
+                heroCardDesc: '无缝连接安东全球各业务单元，通过算法模型打造空前数据协同效率。',
+                aboutTitle: '引领“自动驾驶”油田未来',
+                aboutDesc: '作为安东国际化智能变革的核心节点，迪拜平台深度融合边缘计算与物联网技术构建工程执行“超级大脑”，为全球资源配置、跨国项目协同提供预测性分析与智能决策支撑。',
+                systemsTitle: '新一代智能核心系统',
+                systemsDesc: '统一的 AI 云原生应用矩阵，全面智能化赋能一线工程执行与高阶企业管理。',
+                footerText: '&copy; 2026 安东石油技术（集团） 版权所有 | 迪拜 AI 与数据运营中心',
+                systems: [
+                    { name: 'VGIS', desc: '数字油田空间管理平台。构建统一空间图层，将数据锚定至物理资产。' },
+                    { name: 'VPMS', desc: '可视化工程项目管理系统，实现工程进度的实时监督与精准把控。' },
+                    { name: 'BLMS', desc: '预算生命周期管理系统，确保跨国财务管理的合规与精细化。' },
+                    { name: 'IPMS', desc: '智能项目管理系统，依托先进分析技术驱动的高效项目追踪。' },
+                    { name: 'EZsign', desc: '电子签名系统，保障跨境文档流转的安全与合规性。' },
+                    { name: 'HRIS', desc: '人力资源管理系统，优化安东全球化人才配置与团队发展。' },
+                    { name: 'PLMS', desc: '护照和签证管理系统，高效保障国际人员流动与属地合规。' }
+                ]
+            },
+            ar: {
+                nav: ['اتصل بنا'],
+                heroTag: 'مركز دبي الإقليمي لتقنية المعلومات',
+                heroTitle: 'منصة ذكية للعمليات الإقليمية.<br><span class="hero-title-accent">مصممة لأنطون في دبي.</span>',
+                heroDesc: 'منصة مؤسسية حديثة تنسق أنظمة الذكاء الاصطناعي وسير العمل الرقمي وتسليم الخدمات عبر الشرق الأوسط والأسواق الناشئة.',
+                heroBtn1: 'استكشف المنصة',
+                heroBtn2: 'عرض البنية المعمارية',
+                heroSlides: [
+                    {
+                        tag: 'استراتيجية الشرق الأوسط',
+                        title: 'تمكين استراتيجية أنطون في الشرق الأوسط.<br><span class="hero-title-accent">من دبي إلى الأسواق الإقليمية.</span>',
+                        desc: 'منصة رقمية استراتيجية توحد التشغيل الإقليمي والحوكمة وقدرات التسليم لأنطون عبر أسواق الشرق الأوسط المتسارعة.',
+                        btn1: 'استكشف الاستراتيجية',
+                        btn1Href: '#about',
+                        btn2: 'عرض البنية المعمارية',
+                        btn2Href: '#systems',
+                        story: 'منصة أنطون الاستراتيجية لعمليات الشرق الأوسط'
+                    },
+                    {
+                        tag: 'تقنيات رائدة',
+                        title: 'تقنيات رائدة عالميًا.<br><span class="hero-title-accent">مصممة لعمليات الطاقة.</span>',
+                        desc: 'يعزز الذكاء الاصطناعي والمنصات السحابية الأصلية وتدفقات البيانات المؤسسية بيئة رقمية حديثة للتعاون الميداني والمؤسسي.',
+                        btn1: 'استكشف التقنية',
+                        btn1Href: '#systems',
+                        btn2: 'تعرف على القدرات',
+                        btn2Href: '#about',
+                        story: 'تقنيات رقمية وذكاء اصطناعي رائدة عالميًا'
+                    },
+                    {
+                        tag: 'الخدمات الاحترافية',
+                        title: 'خدمات احترافية للتنفيذ.<br><span class="hero-title-accent">موثوقة وآمنة وجاهزة للتشغيل.</span>',
+                        desc: 'تدعم سير العمل المخصص الإشراف الهندسي والعمليات الآمنة والخدمات المؤسسية الموثوقة لفرق المنطقة.',
+                        btn1: 'عرض الخدمات',
+                        btn1Href: '#systems',
+                        btn2: 'اعرف المزيد',
+                        btn2Href: '#about',
+                        story: 'خدمات احترافية لتنفيذ الأعمال الميدانية بأمان'
+                    },
+                    {
+                        tag: 'سحابة دبي المحلية',
+                        title: 'تسليم سحابي محلي في دبي.<br><span class="hero-title-accent">أقرب إلى السوق وأكثر قابلية للتوسع.</span>',
+                        desc: 'تساعد البنية السحابية المحلية وأنماط النشر الإقليمي أنطون على العمل بمرونة وامتثال واستجابة أسرع للخدمة.',
+                        btn1: 'استكشف السحابة',
+                        btn1Href: '#about',
+                        btn2: 'عرض المنصة',
+                        btn2Href: '#systems',
+                        story: 'بنية سحابية محلية في دبي وتسليم محلي'
+                    }
+                ],
+                heroStories: [
+                    'منصة أنطون الاستراتيجية لعمليات الشرق الأوسط',
+                    'تقنيات رقمية وذكاء اصطناعي رائدة عالميًا',
+                    'خدمات احترافية لتنفيذ الأعمال الميدانية بأمان',
+                    'بنية سحابية محلية في دبي وتسليم محلي'
+                ],
+                heroCardTitle: 'التوأم الرقمي والتحليلاتالتنبؤية',
+                heroCardDesc: 'تواصل ذكي مع كيانات أنطون العالمية لقرارات مدعومة بالبيانات.',
+                aboutTitle: 'ريادة حقول النفط ذاتية القيادة',
+                aboutDesc: 'تعمل منصتنا الإقليمية على دمج التعلم الآلي وإنترنت الأشياء للحفاظ على التفوق التقني. نحن نطور أنظمة إدارة استباقية للمشاريع في الشرق الأوسط.',
+                systemsTitle: 'أنظمة الجيل القادم الذكية',
+                systemsDesc: 'مجموعة موحدة سحابية مدعمة بالذكاء الاصطناعي لدفع الهندسة عبر العالم.',
+                footerText: '&copy; 2026 مجموعة أنطون. جميع الحقوق محفوظة. مركز عمليات الذكاء الاصطناعي - دبي.',
+                systems: [
+                    { name: 'VGIS', desc: 'منصة إدارة المساحات لحقول النفط الرقمية، ربط البيانات بالأصول المادية.' },
+                    { name: 'VPMS', desc: 'نظام إدارة المشاريع الهندسية المرئية للإشراف المباشر.' },
+                    { name: 'BLMS', desc: 'نظام إدارة دورة حياة الميزانية لضمان الدقة الإدارية المالية.' },
+                    { name: 'IPMS', desc: 'نظام إدارة المشاريع الذكي المدعوم بالتحليلات المتقدمة.' },
+                    { name: 'EZsign', desc: 'نظام التوقيع الإلكتروني لسير عمل آمن للمستندات عبر الحدود.' },
+                    { name: 'HRIS', desc: 'نظام معلومات الموارد البشرية لتحسين إدارة المواهب العالمية.' },
+                    { name: 'PLMS', desc: 'نظام إدارة الجوازات والتأشيرات لتسهيل التنقل والامتثال العالمي.' }
+                ]
+            }
+        };
+
+        // Swiper Instance
+        let mySwiper;
+        let currentLanguage = 'en';
+        let currentHeroIndex = 0;
+        let heroAutoplayTimer = null;
+        let heroTransitionTimer = null;
+        const HERO_AUTOPLAY_MS = 10000;
+        const heroSlideImages = [
+            'assets/hero/strategy-middle-east.svg',
+            'assets/hero/leading-technology.svg',
+            'assets/hero/professional-services.svg',
+            'assets/hero/dubai-cloud.svg'
+        ];
+
+        function updateElementContent(id, value, useHtml = false) {
+            const element = document.getElementById(id);
+            if (!element || typeof value === 'undefined') return;
+
+            if (useHtml) {
+                element.innerHTML = value;
+            } else {
+                element.textContent = value;
+            }
+        }
+
+        function updateHeroButton(id, label, href) {
+            const element = document.getElementById(id);
+            if (!element) return;
+            if (typeof label !== 'undefined') {
+                element.textContent = label;
+            }
+            if (href) {
+                element.setAttribute('href', href);
+            }
+        }
+
+        function renderHeroStories(slides = [], activeIndex = 0) {
+            const container = document.getElementById('hero-stories');
+            const line = document.querySelector('.hero-rail-line');
+            if (!container) return;
+
+            container.innerHTML = slides.map((slide, index) => `
+                <button type="button" class="hero-story${index === activeIndex ? ' active' : ''}" data-hero-index="${index}" aria-pressed="${index === activeIndex}">
+                    ${slide.story}
+                </button>
+            `).join('');
+
+            if (line) {
+                line.style.setProperty('--hero-active-index', activeIndex);
+            }
+        }
+
+        function commitHeroSlide(dict, index) {
+            const slides = dict.heroSlides || [];
+            if (!slides.length) return;
+
+            currentHeroIndex = ((index % slides.length) + slides.length) % slides.length;
+            const slide = slides[currentHeroIndex];
+            const heroMedia = document.querySelector('.hero-media');
+
+            updateElementContent('hero-tag', slide.tag);
+            updateElementContent('hero-title', slide.title, true);
+            updateElementContent('hero-desc', slide.desc);
+            updateHeroButton('hero-btn1', slide.btn1, slide.btn1Href);
+            updateHeroButton('hero-btn2', slide.btn2, slide.btn2Href);
+            renderHeroStories(slides, currentHeroIndex);
+            if (heroMedia && heroSlideImages[currentHeroIndex]) {
+                heroMedia.style.setProperty('--hero-slide-image', `url("${heroSlideImages[currentHeroIndex]}")`);
+            }
+        }
+
+        function applyHeroSlide(dict, index, options = {}) {
+            const { animate = true } = options;
+            const shell = document.querySelector('.hero-shell');
+
+            if (!animate || !shell) {
+                commitHeroSlide(dict, index);
+                return;
+            }
+
+            if (heroTransitionTimer) {
+                clearTimeout(heroTransitionTimer);
+                heroTransitionTimer = null;
+            }
+
+            shell.classList.add('is-fading');
+            heroTransitionTimer = window.setTimeout(() => {
+                commitHeroSlide(dict, index);
+                requestAnimationFrame(() => {
+                    shell.classList.remove('is-fading');
+                });
+                heroTransitionTimer = null;
+            }, 180);
+        }
+
+        function stopHeroAutoplay() {
+            if (heroAutoplayTimer) {
+                clearInterval(heroAutoplayTimer);
+                heroAutoplayTimer = null;
+            }
+        }
+
+        function startHeroAutoplay() {
+            stopHeroAutoplay();
+            heroAutoplayTimer = window.setInterval(() => {
+                const dict = i18n[currentLanguage];
+                if (!dict?.heroSlides?.length) return;
+                applyHeroSlide(dict, currentHeroIndex + 1, { animate: true });
+            }, HERO_AUTOPLAY_MS);
+        }
+
+        function bindHeroInteractions() {
+            const stories = document.getElementById('hero-stories');
+
+            stories?.addEventListener('click', (event) => {
+                const target = event.target.closest('[data-hero-index]');
+                if (!target) return;
+
+                const nextIndex = Number(target.getAttribute('data-hero-index'));
+                if (Number.isNaN(nextIndex)) return;
+
+                applyHeroSlide(i18n[currentLanguage], nextIndex, { animate: true });
+                startHeroAutoplay();
+            });
+        }
+
+        function setLanguage(lang) {
+            const langLabels = { en: 'EN', zh: '中文', ar: 'عربي' };
+            const currentLangText = document.getElementById('current-lang-text');
+            if (currentLangText) currentLangText.textContent = langLabels[lang];
+            currentLanguage = lang;
+            
+            // Set Direction
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.body.setAttribute('dir', document.documentElement.dir);
+
+            // Update DOM Texts
+            const dict = i18n[lang];
+            
+            // Nav
+            updateElementContent(
+                'nav-menu',
+                dict.nav.map((n, index) => {
+                    const hrefs = ['#home', '#about', '#systems', '#footer'];
+                    return `<a href="${hrefs[index] || '#'}" class="nav-link transition">${n}</a>`;
+                }).join(''),
+                true
+            );
+            
+            // Hero
+            if (dict.heroSlides?.length) {
+                currentHeroIndex = currentHeroIndex % dict.heroSlides.length;
+                applyHeroSlide(dict, currentHeroIndex, { animate: false });
+            } else {
+                updateElementContent('hero-tag', dict.heroTag, true);
+                updateElementContent('hero-title', dict.heroTitle, true);
+                updateElementContent('hero-desc', dict.heroDesc);
+                updateElementContent('hero-btn1', dict.heroBtn1);
+                updateElementContent('hero-btn2', dict.heroBtn2);
+                renderHeroStories((dict.heroStories || []).map((story) => ({ story })), 0);
+            }
+            updateElementContent('hero-card-title', dict.heroCardTitle);
+            updateElementContent('hero-card-desc', dict.heroCardDesc);
+
+            // About
+            updateElementContent('about-title', dict.aboutTitle);
+            updateElementContent('about-desc', dict.aboutDesc);
+
+            // Systems
+            updateElementContent('systems-title', dict.systemsTitle);
+            updateElementContent('systems-desc', dict.systemsDesc);
+            
+            // Generate Carousel items
+            const container = document.getElementById('systems-container');
+            container.innerHTML = dict.systems.map(sys => `
+                <div class="swiper-slide p-4 group">
+                    <div class="system-img-placeholder rounded-lg mb-6 relative overflow-hidden">
+                        <div class="system-card-glow absolute inset-0 transition-opacity group-hover:opacity-100 opacity-50 z-0"></div>
+                        <div class="absolute inset-0 backdrop-blur-[2px]"></div>
+                        <!-- Placeholder Graphic for ${sys.name} -->
+                        <span class="system-label font-semibold">${sys.name} SYSTEM</span>
+                        
+                        <!-- AI Elements -->
+                        <div class="absolute top-2 right-2 flex gap-1">
+                            <span class="system-status-dot w-1.5 h-1.5 rounded-full animate-ping"></span>
+                            <span class="system-status-dot w-1.5 h-1.5 rounded-full animate-ping" style="animation-delay: 0.2s"></span>
+                            <span class="system-status-dot w-1.5 h-1.5 rounded-full animate-ping" style="animation-delay: 0.4s"></span>
+                        </div>
+                    </div>
+                    <div class="px-2 pb-4">
+                        <h3 class="system-card-title text-xl font-bold mb-3 flex items-center gap-2">
+                            ${sys.name}
+                            <svg class="system-card-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                        </h3>
+                        <p class="system-card-text text-sm leading-relaxed">${sys.desc}</p>
+                    </div>
+                </div>
+            `).join('');
+
+            // Footer
+            updateElementContent('footer-text', dict.footerText, true);
+
+            // Re-init Swiper
+            if (mySwiper) mySwiper.destroy(true, true);
+            mySwiper = new Swiper('.system-slider', {
+                slidesPerView: 1.2,
+                spaceBetween: 20,
+                dir: lang === 'ar' ? 'rtl' : 'ltr',
+                navigation: {
+                    nextEl: '.swiper-btn-next',
+                    prevEl: '.swiper-btn-prev',
+                },
+                breakpoints: {
+                    640: { slidesPerView: 2.2, spaceBetween: 20 },
+                    1024: { slidesPerView: 3.5, spaceBetween: 30 },
+                    1280: { slidesPerView: 4.2, spaceBetween: 30 }
+                }
+            });
+            
+            // Unfocus button to close dropdown
+            document.activeElement?.blur();
+        }
+
+        // Init Default Lang
+        bindHeroInteractions();
+        setLanguage('en');
+        startHeroAutoplay();
+
+        // Header scroll effect
+        function syncHeaderState() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.classList.add('is-scrolled', 'shadow-md');
+                header.style.padding = '0.5rem 0';
+            } else {
+                header.classList.remove('is-scrolled', 'shadow-md');
+                header.style.padding = '1rem 0';
+            }
+        }
+
+        window.addEventListener('scroll', syncHeaderState);
+        syncHeaderState();
+    </script>
+</body>
+</html>

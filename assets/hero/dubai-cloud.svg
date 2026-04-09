@@ -1,0 +1,64 @@
+<svg width="1600" height="1200" viewBox="0 0 1600 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="1600" height="1200" fill="#08171C"/>
+<rect width="1600" height="1200" fill="url(#bg)"/>
+<circle cx="1170" cy="248" r="168" fill="url(#sun)" opacity="0.56"/>
+<path d="M0 980C220 902 406 872 650 892C898 912 1122 1004 1600 944V1200H0V980Z" fill="url(#ground)"/>
+<g opacity="0.9">
+<path d="M962 806H1238V456L1122 316L962 456V806Z" fill="url(#tower)"/>
+<path d="M1278 806H1458V524L1374 428L1278 524V806Z" fill="url(#tower2)"/>
+<path d="M792 806H930V586L870 512L792 586V806Z" fill="url(#tower3)"/>
+<path d="M1032 806V378" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+<path d="M1122 806V314" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+<path d="M1212 806V470" stroke="rgba(255,255,255,0.14)" stroke-width="2"/>
+</g>
+<g opacity="0.95">
+<path d="M402 454C402 394 450 344 510 344C542 344 571 358 592 380C612 344 652 320 698 320C765 320 820 375 820 442C820 445 820 449 820 452C866 458 902 497 902 544C902 596 860 638 808 638H516C453 638 402 587 402 524V454Z" fill="url(#cloud)"/>
+<path d="M514 492H782" stroke="rgba(255,255,255,0.42)" stroke-width="4" stroke-linecap="round"/>
+<path d="M546 548H750" stroke="rgba(255,255,255,0.34)" stroke-width="4" stroke-linecap="round"/>
+<circle cx="604" cy="438" r="10" fill="#47D0BF"/>
+<circle cx="706" cy="438" r="10" fill="#F4C980"/>
+</g>
+<g opacity="0.9">
+<path d="M702 574L850 574L986 496L1128 552L1264 492L1388 544" stroke="#49D4C2" stroke-width="3" stroke-linecap="round"/>
+<circle cx="702" cy="574" r="7" fill="#49D4C2"/>
+<circle cx="850" cy="574" r="7" fill="#F4C980"/>
+<circle cx="986" cy="496" r="7" fill="#49D4C2"/>
+<circle cx="1128" cy="552" r="7" fill="#F4C980"/>
+<circle cx="1264" cy="492" r="7" fill="#49D4C2"/>
+<circle cx="1388" cy="544" r="7" fill="#F4C980"/>
+</g>
+<rect x="162" y="166" width="320" height="156" rx="20" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.08)"/>
+<text x="198" y="228" fill="#F6E8D5" font-size="24" font-family="Inter, Arial, sans-serif" letter-spacing="2">DUBAI LOCAL CLOUD</text>
+<text x="198" y="276" fill="#DBE5E0" font-size="15" font-family="Inter, Arial, sans-serif">Localized cloud delivery, city-scale connectivity</text>
+<defs>
+<linearGradient id="bg" x1="214" y1="82" x2="1381" y2="1046" gradientUnits="userSpaceOnUse">
+<stop stop-color="#10252D"/>
+<stop offset="0.46" stop-color="#13343E"/>
+<stop offset="1" stop-color="#675537"/>
+</linearGradient>
+<linearGradient id="ground" x1="800" y1="892" x2="800" y2="1200" gradientUnits="userSpaceOnUse">
+<stop stop-color="#695435" stop-opacity="0.24"/>
+<stop offset="1" stop-color="#19150F"/>
+</linearGradient>
+<linearGradient id="tower" x1="1100" y1="316" x2="1100" y2="806" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D8BB84" stop-opacity="0.45"/>
+<stop offset="1" stop-color="#7C6540" stop-opacity="0.18"/>
+</linearGradient>
+<linearGradient id="tower2" x1="1368" y1="428" x2="1368" y2="806" gradientUnits="userSpaceOnUse">
+<stop stop-color="#B99363" stop-opacity="0.36"/>
+<stop offset="1" stop-color="#B99363" stop-opacity="0.12"/>
+</linearGradient>
+<linearGradient id="tower3" x1="861" y1="512" x2="861" y2="806" gradientUnits="userSpaceOnUse">
+<stop stop-color="#A9E2D8" stop-opacity="0.28"/>
+<stop offset="1" stop-color="#A9E2D8" stop-opacity="0.08"/>
+</linearGradient>
+<linearGradient id="cloud" x1="652" y1="320" x2="652" y2="638" gradientUnits="userSpaceOnUse">
+<stop stop-color="#DDE8E4" stop-opacity="0.24"/>
+<stop offset="1" stop-color="#DDE8E4" stop-opacity="0.12"/>
+</linearGradient>
+<radialGradient id="sun" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1170 248) rotate(90) scale(168)">
+<stop stop-color="#F6D18A"/>
+<stop offset="1" stop-color="#F6D18A" stop-opacity="0"/>
+</radialGradient>
+</defs>
+</svg>
