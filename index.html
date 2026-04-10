@@ -1216,15 +1216,15 @@
                     <div class="dropdown-menu absolute right-0 mt-2 w-32 rounded-xl py-1 z-50">
                         <button onclick="setTheme('light')" class="dropdown-item flex items-center w-full px-4 py-2.5 text-sm gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                            Light
+                            <span id="theme-light-label">Light</span>
                         </button>
                         <button onclick="setTheme('dark')" class="dropdown-item flex items-center w-full px-4 py-2.5 text-sm gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                            Dark
+                            <span id="theme-dark-label">Dark</span>
                         </button>
                         <button onclick="setTheme('system')" class="dropdown-item flex items-center w-full px-4 py-2.5 text-sm gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                            System
+                            <span id="theme-system-label">System</span>
                         </button>
                     </div>
                 </div>
@@ -1444,6 +1444,11 @@
         AOS.init({ once: true, offset: 50 });
 
         // Translations Data
+        function getQueryValue(key) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(key);
+        }
+
         const i18n = {
             en: {
                 nav: ['Contact Us'],
@@ -1459,7 +1464,7 @@
                         btn1Href: '#about',
                         btn2: 'View Architecture',
                         btn2Href: '#systems',
-                        story: 'Anton Oilfield DMCC Middle East strategic operations platform'
+                        story: 'Middle East strategic operations platform'
                     },
                     {
                         tag: 'Leading Technology',
@@ -1490,7 +1495,7 @@
                     }
                 ],
                 heroStories: [
-                    'Anton Oilfield DMCC Middle East strategic operations platform',
+                    'Middle East strategic operations platform',
                     'Internationally leading digital and AI technologies',
                     'Professional services for secure field execution',
                     'Dubai-localized cloud infrastructure and delivery'
@@ -1506,8 +1511,8 @@
                     { name: 'VGIS', desc: 'Spatial digital twin platform for oilfields, unifying production, safety, equipment, and logistics data on one operational map.' },
                     { name: 'VPMS', desc: 'Visualized Project Management System for real-time engineering oversight.' },
                     { name: 'BLMS', desc: 'Budget Lifecycle Management System ensuring precision in financial administration.' },
-                    { name: 'IPMS', desc: 'Intelligent Project Management System powered by advanced analytics.' },
-                    { name: 'EZsign', desc: 'Electronic Signature System for secure, compliant cross-border document workflows.' },
+                    { name: 'IPMS', desc: 'Strategy-driven project management hub connecting projects, resources, workflows, and people into standardized execution.' },
+                    { name: 'EZsign', desc: 'PDF e-signature platform supporting multi-party signing, external participants, OCR search, and compliant audit trails.' },
                     { name: 'HRIS', desc: 'Human Resources Information System for optimized global talent management.' },
                     { name: 'PLMS', desc: 'Passport and Visa Management System facilitating global mobility and compliance.' }
                 ]
@@ -1573,8 +1578,8 @@
                     { name: 'VGIS', desc: '面向油田的空间化数字孪生平台，将生产、安全、设备与物流信息统一整合到一张图上。' },
                     { name: 'VPMS', desc: '可视化工程项目管理系统，实现工程进度的实时监督与精准把控。' },
                     { name: 'BLMS', desc: '预算生命周期管理系统，确保跨国财务管理的合规与精细化。' },
-                    { name: 'IPMS', desc: '智能项目管理系统，依托先进分析技术驱动的高效项目追踪。' },
-                    { name: 'EZsign', desc: '电子签名系统，保障跨境文档流转的安全与合规性。' },
+                    { name: 'IPMS', desc: '以战略为核心驱动的智能项目管理中枢，打通项目、资源、流程与人员。' },
+                    { name: 'EZsign', desc: '聚焦 PDF 电子签场景，支持多方签署、外部链接签署、OCR 检索与合规留痕。' },
                     { name: 'HRIS', desc: '人力资源管理系统，优化安东全球化人才配置与团队发展。' },
                     { name: 'PLMS', desc: '护照和签证管理系统，高效保障国际人员流动与属地合规。' }
                 ]
@@ -1629,7 +1634,7 @@
                     'خدمات احترافية لتنفيذ الأعمال الميدانية بأمان',
                     'بنية سحابية محلية في دبي وتسليم محلي'
                 ],
-                heroCardTitle: 'التوأم الرقمي والتحليلاتالتنبؤية',
+                heroCardTitle: 'التوأم الرقمي والتحليلات التنبؤية',
                 heroCardDesc: 'تواصل ذكي مع كيانات أنطون العالمية لقرارات مدعومة بالبيانات.',
                 aboutTitle: 'ريادة حقول النفط ذاتية القيادة',
                 aboutDesc: 'تعمل منصتنا الإقليمية على دمج التعلم الآلي وإنترنت الأشياء للحفاظ على التفوق التقني. نحن نطور أنظمة إدارة استباقية للمشاريع في الشرق الأوسط.',
@@ -1640,8 +1645,8 @@
                     { name: 'VGIS', desc: 'منصة توأم رقمي مكاني لحقول النفط توحد بيانات الإنتاج والسلامة والمعدات والخدمات اللوجستية على خريطة تشغيلية واحدة.' },
                     { name: 'VPMS', desc: 'نظام إدارة المشاريع الهندسية المرئية للإشراف المباشر.' },
                     { name: 'BLMS', desc: 'نظام إدارة دورة حياة الميزانية لضمان الدقة الإدارية المالية.' },
-                    { name: 'IPMS', desc: 'نظام إدارة المشاريع الذكي المدعوم بالتحليلات المتقدمة.' },
-                    { name: 'EZsign', desc: 'نظام التوقيع الإلكتروني لسير عمل آمن للمستندات عبر الحدود.' },
+                    { name: 'IPMS', desc: 'مركز ذكي لإدارة المشاريع مدفوع بالاستراتيجية يربط المشاريع والموارد والعمليات والأفراد.' },
+                    { name: 'EZsign', desc: 'منصة توقيع إلكتروني لملفات PDF تدعم تعدد الأطراف والتوقيع الخارجي والبحث وترك أثر تدقيقي متوافق.' },
                     { name: 'HRIS', desc: 'نظام معلومات الموارد البشرية لتحسين إدارة المواهب العالمية.' },
                     { name: 'PLMS', desc: 'نظام إدارة الجوازات والتأشيرات لتسهيل التنقل والامتثال العالمي.' }
                 ]
@@ -1743,6 +1748,41 @@
                 slides: ['نظرة عامة', 'الواجهة', 'سيناريو التشغيل']
             }
         };
+        const themeUi = {
+            en: {
+                light: 'Light',
+                dark: 'Dark',
+                system: 'System'
+            },
+            zh: {
+                light: '浅色',
+                dark: '深色',
+                system: '跟随系统'
+            },
+            ar: {
+                light: 'فاتح',
+                dark: 'داكن',
+                system: 'النظام'
+            }
+        };
+        const accessibilityUi = {
+            en: {
+                closeProductPanel: 'Close product panel',
+                productPreview: '{name} product preview',
+                cookieConsent: 'Cookie consent'
+            },
+            zh: {
+                closeProductPanel: '关闭产品弹层',
+                productPreview: '{name} 产品预览',
+                cookieConsent: 'Cookie 使用授权'
+            },
+            ar: {
+                closeProductPanel: 'إغلاق نافذة المنتج',
+                productPreview: 'معاينة منتج {name}',
+                cookieConsent: 'موافقة ملفات تعريف الارتباط'
+            }
+        };
+        const LANGUAGE_STORAGE_KEY = 'site_language';
         let activeSystemName = null;
 
         const consentI18n = {
@@ -1877,6 +1917,22 @@
             updateElementContent('consent-accept', copy.accept);
             updateElementContent('consent-reject', copy.reject);
             updateElementContent('consent-open', copy.manage);
+            document.getElementById('consent-banner')?.setAttribute('aria-label', (accessibilityUi[lang] || accessibilityUi.en).cookieConsent);
+        }
+
+        function updateThemeLanguage(lang) {
+            const copy = themeUi[lang] || themeUi.en;
+            updateElementContent('theme-light-label', copy.light);
+            updateElementContent('theme-dark-label', copy.dark);
+            updateElementContent('theme-system-label', copy.system);
+        }
+
+        function updateAccessibilityLanguage(lang) {
+            const copy = accessibilityUi[lang] || accessibilityUi.en;
+            document.getElementById('system-modal-close')?.setAttribute('aria-label', copy.closeProductPanel);
+            if (!activeSystemName) {
+                document.getElementById('system-modal-frame')?.setAttribute('title', copy.productPreview.replace('{name}', 'Product'));
+            }
         }
 
         function trackEvent(name, params = {}) {
@@ -2060,7 +2116,7 @@
 
             if (modalFrame) {
                 modalFrame.setAttribute('src', embedUrl);
-                modalFrame.setAttribute('title', `${system.name} product preview`);
+                modalFrame.setAttribute('title', ((accessibilityUi[currentLanguage] || accessibilityUi.en).productPreview).replace('{name}', system.name));
             }
 
             if (modal) {
@@ -2185,15 +2241,21 @@
         }
 
         function setLanguage(lang) {
+            if (!i18n[lang]) lang = 'en';
             const langLabels = { en: 'EN', zh: '中文', ar: 'عربي' };
             const currentLangText = document.getElementById('current-lang-text');
             if (currentLangText) currentLangText.textContent = langLabels[lang];
             currentLanguage = lang;
+            localStorage.setItem(LANGUAGE_STORAGE_KEY, lang);
             
             // Set Direction
-            document.documentElement.lang = lang;
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
             document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
             document.body.setAttribute('dir', document.documentElement.dir);
+
+            const nextUrl = new URL(window.location.href);
+            nextUrl.searchParams.set('lang', lang);
+            window.history.replaceState({}, '', `${nextUrl.pathname}${nextUrl.search}${nextUrl.hash}`);
 
             // Update DOM Texts
             const dict = i18n[lang];
@@ -2234,12 +2296,24 @@
 
             // Footer
             updateElementContent('footer-text', dict.footerText, true);
+            updateThemeLanguage(lang);
+            updateAccessibilityLanguage(lang);
             updateConsentLanguage(lang);
             
             // Unfocus button to close dropdown
             document.activeElement?.blur();
             setAnalyticsUserProperties();
             trackEvent('language_change', { language_selected: lang });
+        }
+
+        function resolveInitialLanguage() {
+            const queryLang = (getQueryValue('lang') || '').toLowerCase();
+            if (i18n[queryLang]) return queryLang;
+
+            const storedLang = (localStorage.getItem(LANGUAGE_STORAGE_KEY) || '').toLowerCase();
+            if (i18n[storedLang]) return storedLang;
+
+            return 'en';
         }
 
         function bindAnalyticsInteractions() {
@@ -2279,7 +2353,7 @@
         bindAnalyticsInteractions();
         bindHeroInteractions();
         bindSystemInteractions();
-        setLanguage('en');
+        setLanguage(resolveInitialLanguage());
         startHeroAutoplay();
         initConsentState();
 

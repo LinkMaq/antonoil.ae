@@ -185,6 +185,9 @@
             gap: 14px;
             overflow-x: auto;
             padding-bottom: 4px;
+            justify-content: start;
+            justify-items: start;
+            align-items: start;
         }
 
         .shot {
@@ -199,13 +202,7 @@
             aspect-ratio: 16 / 10;
             display: block;
             object-fit: cover;
-        }
-
-        .shot span {
-            display: block;
-            padding: 12px 14px 14px;
-            color: var(--muted);
-            font-size: 13px;
+            object-position: left top;
         }
 
         .embed-mode .shell {
@@ -316,6 +313,153 @@
             }
         };
 
+        const tagTranslations = {
+            IoT: {
+                zh: '物联网',
+                ar: 'إنترنت الأشياء'
+            },
+            SCADA: {
+                zh: 'SCADA',
+                ar: 'سكادا'
+            },
+            ERP: {
+                zh: 'ERP',
+                ar: 'تخطيط موارد المؤسسة'
+            },
+            Video: {
+                zh: '视频',
+                ar: 'الفيديو'
+            },
+            'Spatial Layer': {
+                zh: '空间图层',
+                ar: 'الطبقة المكانية'
+            },
+            'Digital Twin': {
+                zh: '数字孪生',
+                ar: 'التوأم الرقمي'
+            },
+            BIM: {
+                zh: 'BIM',
+                ar: 'BIM'
+            },
+            GIS: {
+                zh: 'GIS',
+                ar: 'GIS'
+            },
+            '4D Simulation': {
+                zh: '4D 模拟',
+                ar: 'محاكاة رباعية الأبعاد'
+            },
+            Progress: {
+                zh: '进度',
+                ar: 'التقدم'
+            },
+            Quality: {
+                zh: '质量',
+                ar: 'الجودة'
+            },
+            Budget: {
+                zh: '预算',
+                ar: 'الميزانية'
+            },
+            Approval: {
+                zh: '审批',
+                ar: 'الموافقات'
+            },
+            Tracking: {
+                zh: '追踪',
+                ar: 'التتبع'
+            },
+            Forecast: {
+                zh: '预测',
+                ar: 'التنبؤ'
+            },
+            Governance: {
+                zh: '治理',
+                ar: 'الحوكمة'
+            },
+            Strategy: {
+                zh: '战略',
+                ar: 'الاستراتيجية'
+            },
+            Resources: {
+                zh: '资源',
+                ar: 'الموارد'
+            },
+            Workflow: {
+                zh: '流程',
+                ar: 'سير العمل'
+            },
+            Standardization: {
+                zh: '标准化',
+                ar: 'التوحيد القياسي'
+            },
+            Analytics: {
+                zh: '分析',
+                ar: 'التحليلات'
+            },
+            PDF: {
+                zh: 'PDF',
+                ar: 'PDF'
+            },
+            OCR: {
+                zh: 'OCR',
+                ar: 'OCR'
+            },
+            Token: {
+                zh: '令牌',
+                ar: 'الرمز'
+            },
+            Certificate: {
+                zh: '证书',
+                ar: 'الشهادة'
+            },
+            Audit: {
+                zh: '审计',
+                ar: 'التدقيق'
+            },
+            Notification: {
+                zh: '通知',
+                ar: 'الإشعارات'
+            },
+            Organization: {
+                zh: '组织',
+                ar: 'المؤسسة'
+            },
+            Talent: {
+                zh: '人才',
+                ar: 'المواهب'
+            },
+            Records: {
+                zh: '档案',
+                ar: 'السجلات'
+            },
+            Workforce: {
+                zh: '劳动力',
+                ar: 'القوى العاملة'
+            },
+            Operations: {
+                zh: '运营',
+                ar: 'العمليات'
+            },
+            Passport: {
+                zh: '护照',
+                ar: 'جواز السفر'
+            },
+            Visa: {
+                zh: '签证',
+                ar: 'التأشيرة'
+            },
+            Mobility: {
+                zh: '流动',
+                ar: 'التنقل'
+            },
+            Compliance: {
+                zh: '合规',
+                ar: 'الامتثال'
+            }
+        };
+
         const productCatalog = {
             vgis: {
                 id: 'vgis',
@@ -414,9 +558,9 @@
                 accentA: '#553723',
                 accentB: '#efc98a',
                 screenshots: [
-                    '../assets/products/blms/view-1.svg',
-                    '../assets/products/blms/view-2.svg',
-                    '../assets/products/blms/view-3.svg'
+                    '../assets/products/blms/view-1.png',
+                    '../assets/products/blms/view-2.png',
+                    '../assets/products/blms/view-3.png'
                 ],
                 tags: ['Budget', 'Approval', 'Tracking', 'Forecast', 'Governance'],
                 locales: {
@@ -456,18 +600,19 @@
                 accentA: '#1c284f',
                 accentB: '#98b5ff',
                 screenshots: [
-                    '../assets/products/ipms/view-1.svg',
-                    '../assets/products/ipms/view-2.svg',
-                    '../assets/products/ipms/view-3.svg'
+                    '../assets/products/ipms/view-1.png',
+                    '../assets/products/ipms/view-2.png',
+                    '../assets/products/ipms/view-3.png'
                 ],
                 tags: ['Strategy', 'Resources', 'Workflow', 'Standardization', 'Analytics'],
                 locales: {
                     en: {
                         eyebrow: 'Intelligent PM Center',
-                        subtitle: 'A strategy-driven intelligent project management hub that connects projects, resources, workflows, and people.',
+                        subtitle: 'A strategy-driven intelligent project management hub connecting projects, resources, workflows, and people into standardized execution.',
                         overview: [
-                            'IPMS is an intelligent project management center driven by strategy, turning fragmented execution into standardized, predictable, and continuously improvable delivery capability.',
-                            'It balances professional PM discipline with flexible adaptation to complex field scenarios, while also turning historical data and materials into reusable organizational assets.'
+                            'IPMS is a strategy-driven intelligent project management center that connects projects, resources, workflows, and people, transforming fragmented execution into standardized, predictable, and continuously optimizable business capability.',
+                            'It is not only a management tool, but also a key engine for translating organizational strategy into execution and improving long-term competitiveness.',
+                            'Through strong visualization and flexible configuration, IPMS balances professional project management discipline with the needs of complex operational scenarios such as oilfield business, while also turning historical data, resources, and materials into reusable organizational assets.'
                         ],
                         screenshotsLabel: ['Intelligent Overview', 'Data Workspace', 'Decision Flow']
                     },
@@ -476,16 +621,18 @@
                         subtitle: '以战略为核心驱动的智能化项目管理中枢，把项目、资源、流程与人员全面打通。',
                         overview: [
                             'IPMS 是一个以战略为核心驱动的智能化项目管理中枢，将项目、资源、流程与人员全面打通，让原本分散、不可控的项目执行，转变为标准化、可预测、可持续优化的业务能力。',
-                            '系统通过高度可视化与灵活定制能力，既遵循专业项目管理规范，又深度贴合油田等复杂业务场景，实现标准化与个性化的平衡。'
+                            '它不仅是管理工具，更是推动组织战略落地与竞争力提升的关键引擎。',
+                            '系统通过高度可视化与灵活定制能力，既遵循专业项目管理规范，又深度贴合油田等复杂业务场景，实现标准化与个性化的平衡。同时，IPMS 将资源、历史数据与物料统一沉淀为可复用资产，大幅提升决策效率与运营效率。'
                         ],
                         screenshotsLabel: ['智能总览', '数据工作台', '决策流程']
                     },
                     ar: {
                         eyebrow: 'مركز إدارة مشاريع ذكي',
-                        subtitle: 'مركز ذكي لإدارة المشاريع مدفوع بالاستراتيجية يربط المشاريع والموارد والعمليات والأفراد.',
+                        subtitle: 'مركز ذكي لإدارة المشاريع مدفوع بالاستراتيجية يربط المشاريع والموارد والعمليات والأفراد في تنفيذ موحد.',
                         overview: [
-                            'IPMS هو مركز ذكي لإدارة المشاريع تقوده الاستراتيجية، يحول التنفيذ المجزأ وغير القابل للتحكم إلى قدرة تنفيذ معيارية وقابلة للتنبؤ والتحسين المستمر.',
-                            'كما يوازن بين معايير إدارة المشاريع الاحترافية والمرونة اللازمة للسيناريوهات التشغيلية المعقدة، ويحول البيانات التاريخية والمواد إلى أصول قابلة لإعادة الاستخدام.'
+                            'IPMS هو مركز ذكي لإدارة المشاريع تقوده الاستراتيجية، يربط المشاريع والموارد والعمليات والأفراد، ويحول التنفيذ المجزأ وغير القابل للتحكم إلى قدرة تنفيذ معيارية وقابلة للتنبؤ والتحسين المستمر.',
+                            'وهو ليس مجرد أداة إدارة، بل محرك أساسي لترجمة استراتيجية المؤسسة إلى تنفيذ عملي وتعزيز القدرة التنافسية.',
+                            'ومن خلال مستوى عالٍ من التصور والمرونة في التخصيص، يوازن IPMS بين المعايير الاحترافية لإدارة المشاريع ومتطلبات السيناريوهات التشغيلية المعقدة مثل أعمال الحقول، كما يحول الموارد والبيانات التاريخية والمواد إلى أصول قابلة لإعادة الاستخدام.'
                         ],
                         screenshotsLabel: ['نظرة ذكية عامة', 'مساحة عمل البيانات', 'تدفق القرار']
                     }
@@ -498,36 +645,39 @@
                 accentA: '#21463e',
                 accentB: '#82d0c0',
                 screenshots: [
-                    '../assets/products/ezsign/view-1.svg',
-                    '../assets/products/ezsign/view-2.svg',
-                    '../assets/products/ezsign/view-3.svg'
+                    '../assets/products/ezsign/view-1.png',
+                    '../assets/products/ezsign/view-2.png',
+                    '../assets/products/ezsign/view-3.jpg'
                 ],
                 tags: ['PDF', 'OCR', 'Token', 'Certificate', 'Audit', 'Notification'],
                 locales: {
                     en: {
                         eyebrow: 'eSignature Platform',
-                        subtitle: 'A PDF-focused e-signature platform supporting multi-party signing, workflow control, and compliance traceability.',
+                        subtitle: 'A PDF-focused e-signature platform supporting multi-party signing, external participants, OCR search, and compliance traceability.',
                         overview: [
-                            'EZsign focuses on PDF signing scenarios and supports multiple signers, sequential or parallel signing, CC, review, reminders, and external participant access.',
-                            'It supports handwritten signatures, stamps, and digital certificates, while also offering OCR, search, signature verification, and audit logging for compliance.'
+                            'EZsign focuses on PDF signing workflows and supports multiple signers, sequential or parallel signing, CC, review, transfer, reminders, and external participant access through secure links, tokens, and verification codes.',
+                            'The platform supports handwritten signatures, company or personal stamps, and digital certificates, while also covering PDF generation, signature fields, stamping, and attachment handling.',
+                            'Beyond signing, EZsign includes OCR-based text extraction, full-text search, signature verification, audit logging, notifications, and organizational permission controls, making it suitable for enterprise-grade compliant document workflows.'
                         ],
                         screenshotsLabel: ['Sign Overview', 'Workflow Queue', 'Signature Status']
                     },
                     zh: {
                         eyebrow: '电子签名平台',
-                        subtitle: '聚焦 PDF 电子签场景的签署平台，支持多签署方、多流程模式与合规留痕。',
+                        subtitle: '聚焦 PDF 电子签场景的签署平台，支持多方签署、外部签署、OCR 检索与合规留痕。',
                         overview: [
-                            'EZsign 聚焦 PDF 电子签场景，支持多签署方、顺序 / 并行签署、抄送与复核等协作方式，并可结合短信、邮件、站内信等渠道完成通知与催办。',
-                            '系统支持手写签名、印章、数字证书等多种签署形态，并具备 OCR 与全文检索能力，便于事后检索与合规留痕。'
+                            'EZsign 聚焦 PDF 电子签场景，支持多签署方、顺序 / 并行签署、抄送、复核、转交与批量发送，并可结合短信、邮件、站内信等渠道完成通知与催办。',
+                            '系统支持手写签名、企业 / 个人印章、数字证书等多种签署形态，同时覆盖 PDF 生成与处理、签署字段、签名落章、补充图片等文档处理能力。',
+                            '除签署能力外，EZsign 还支持 OCR 文本提取、全文检索、签名验真、审计日志、组织权限、消息通知与多租户扩展，适合企业级合规文档流转场景。'
                         ],
                         screenshotsLabel: ['签署总览', '流程队列', '签署状态']
                     },
                     ar: {
                         eyebrow: 'منصة توقيع إلكتروني',
-                        subtitle: 'منصة توقيع إلكتروني تركز على PDF وتدعم تعدد الأطراف وتعدد المسارات والامتثال والتتبع.',
+                        subtitle: 'منصة توقيع إلكتروني تركز على PDF وتدعم تعدد الأطراف والتوقيع الخارجي والبحث والامتثال والتتبع.',
                         overview: [
-                            'تركز EZsign على سيناريوهات التوقيع على ملفات PDF، وتدعم تعدد الموقّعين، والتوقيع المتسلسل أو المتوازي، والنسخ، والمراجعة، والتذكير، وإشراك المستخدمين الخارجيين.',
-                            'كما تدعم التوقيع اليدوي والأختام والشهادات الرقمية، وتوفر OCR والبحث الكامل والتحقق من التوقيع وسجلات التدقيق لدعم الامتثال.'
+                            'تركز EZsign على سير عمل التوقيع على ملفات PDF، وتدعم تعدد الموقّعين، والتوقيع المتسلسل أو المتوازي، والنسخ، والمراجعة، والتحويل، والتذكير، وإشراك المستخدمين الخارجيين عبر الروابط الآمنة والرموز وأكواد التحقق.',
+                            'كما تدعم التوقيع اليدوي، والأختام المؤسسية أو الشخصية، والشهادات الرقمية، إلى جانب إنشاء ملفات PDF ومعالجتها وحقول التوقيع وإضافة الأختام والمواد المرفقة.',
+                            'وإلى جانب التوقيع، توفر EZsign استخراج النص عبر OCR، والبحث الكامل، والتحقق من التوقيع، وسجلات التدقيق، والإشعارات، وضبط الصلاحيات التنظيمية، مما يجعلها مناسبة لسير العمل المؤسسي المتوافق.'
                         ],
                         screenshotsLabel: ['نظرة عامة على التوقيع', 'قائمة سير العمل', 'حالة التوقيع']
                     }
@@ -634,8 +784,13 @@
         }
 
         function resolveLang() {
-            const lang = (getQueryValue('lang') || 'en').toLowerCase();
+            const lang = (getQueryValue('lang') || localStorage.getItem('site_language') || 'en').toLowerCase();
             return ['en', 'zh', 'ar'].includes(lang) ? lang : 'en';
+        }
+
+        function getLocalizedTag(tag, lang) {
+            if (lang === 'en') return tag;
+            return tagTranslations[tag]?.[lang] || tag;
         }
 
         function renderProduct(product, lang) {
@@ -648,6 +803,7 @@
             document.title = `${product.name} | Anton Oilfield DMCC`;
 
             document.getElementById('back-link').textContent = lang === 'ar' ? `${ui.back} →` : `← ${ui.back}`;
+            document.getElementById('back-link').setAttribute('href', `../index.html?lang=${encodeURIComponent(lang)}#systems`);
             document.getElementById('topbar-note').textContent = ui.note;
             document.getElementById('eyebrow').textContent = locale.eyebrow || ui.defaultEyebrow;
             document.getElementById('app-icon').textContent = product.icon;
@@ -658,7 +814,7 @@
             document.getElementById('overview-title').textContent = ui.overview;
 
             document.getElementById('tag-row').innerHTML = (product.tags || []).map((tag) => `
-                <span class="tag">${escapeHtml(tag)}</span>
+                <span class="tag">${escapeHtml(getLocalizedTag(tag, lang))}</span>
             `).join('');
 
             document.getElementById('overview-copy').innerHTML = (locale.overview || []).map((paragraph) => `
@@ -668,7 +824,6 @@
             document.getElementById('shot-strip').innerHTML = (product.screenshots || []).map((src, index) => `
                 <div class="shot">
                     <img src="${escapeHtml(src)}" alt="${escapeHtml(product.name)} screenshot ${index + 1}">
-                    <span>${escapeHtml((locale.screenshotsLabel || [])[index] || `Screenshot ${index + 1}`)}</span>
                 </div>
             `).join('');
         }
