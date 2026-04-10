@@ -4,30 +4,116 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Product Index | Anton Oilfield DMCC</title>
+    <meta name="description" content="Anton Oilfield DMCC product platform overview covering oilfield digital twins, engineering delivery systems, and enterprise operations software.">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <meta name="theme-color" content="#0f766e">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Anton Oilfield DMCC">
+    <meta property="og:title" content="Anton Oilfield DMCC Product Platform">
+    <meta property="og:description" content="Explore Anton Oilfield DMCC product platforms for digital twins, project delivery, e-signature, HR, and mobility operations.">
+    <meta property="og:url" content="https://antonoil.ae/product/index.html?id=vgis">
+    <meta property="og:image" content="https://antonoil.ae/assets/products/vgis/view-1.png">
+    <meta property="og:image:alt" content="Anton Oilfield DMCC product platform preview">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Anton Oilfield DMCC Product Platform">
+    <meta name="twitter:description" content="Explore Anton Oilfield DMCC product platforms for digital twins, project delivery, e-signature, HR, and mobility operations.">
+    <meta name="twitter:image" content="https://antonoil.ae/assets/products/vgis/view-1.png">
+    <link rel="canonical" href="https://antonoil.ae/product/index.html?id=vgis">
+    <script type="application/ld+json" id="structured-data-product">
+        {
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            "name": "VGIS",
+            "applicationCategory": "BusinessApplication",
+            "operatingSystem": "Web",
+            "url": "https://antonoil.ae/product/index.html?id=vgis",
+            "description": "Spatial digital twin platform for oilfields operated by Anton Oilfield DMCC.",
+            "image": "https://antonoil.ae/assets/products/vgis/view-1.png"
+        }
+    </script>
     <link rel="stylesheet" href="../assets/vendor/css/fonts.css">
+    <script>
+        (function initializeTheme() {
+            const storedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
     <style>
         :root {
-            --bg: #f4efe6;
-            --panel: rgba(255, 252, 246, 0.86);
-            --panel-strong: rgba(255, 252, 246, 0.96);
-            --line: rgba(17, 34, 41, 0.08);
-            --text: #132127;
-            --muted: rgba(19, 33, 39, 0.72);
-            --muted-soft: rgba(19, 33, 39, 0.5);
-            --shadow: 0 24px 60px rgba(31, 44, 51, 0.12);
+            --bg-page: #f6efe3;
+            --bg-section: #fff8f0;
+            --bg-section-soft: #efe2cf;
+            --bg-surface: rgba(255, 249, 241, 0.82);
+            --bg-card: #fffaf3;
+            --bg-card-alt: #f7ecdd;
+            --text-primary: #18272d;
+            --text-secondary: #5c6a70;
+            --text-soft: #7a868b;
+            --border-soft: rgba(90, 74, 49, 0.14);
+            --border-strong: rgba(176, 135, 63, 0.28);
+            --accent-primary: #0f766e;
+            --accent-primary-strong: #0a5a55;
+            --accent-primary-soft: rgba(15, 118, 110, 0.16);
+            --accent-secondary: #b98a3f;
+            --accent-secondary-soft: rgba(185, 138, 63, 0.18);
+            --accent-copper: #b65035;
+            --accent-copper-soft: rgba(182, 80, 53, 0.18);
+            --product-accent-a: #0b5f6c;
+            --product-accent-b: #d2a24f;
+            --product-accent-a-rgb: 11, 95, 108;
+            --product-accent-b-rgb: 210, 162, 79;
+            --shadow-soft: 0 16px 40px rgba(24, 39, 45, 0.08);
+            --shadow-strong: 0 24px 60px rgba(12, 35, 40, 0.14);
+        }
+
+        html.dark {
+            --bg-page: #09161b;
+            --bg-section: #0d1d24;
+            --bg-section-soft: #112730;
+            --bg-surface: rgba(10, 26, 32, 0.84);
+            --bg-card: #12262d;
+            --bg-card-alt: #17333b;
+            --text-primary: #f3e8d7;
+            --text-secondary: #b9c7c3;
+            --text-soft: #93a39f;
+            --border-soft: rgba(217, 188, 133, 0.14);
+            --border-strong: rgba(211, 170, 92, 0.3);
+            --accent-primary: #35b6aa;
+            --accent-primary-strong: #73d9cd;
+            --accent-primary-soft: rgba(53, 182, 170, 0.18);
+            --accent-secondary: #d7ab59;
+            --accent-secondary-soft: rgba(215, 171, 89, 0.18);
+            --accent-copper: #de7b58;
+            --accent-copper-soft: rgba(222, 123, 88, 0.18);
+            --shadow-soft: 0 18px 44px rgba(0, 0, 0, 0.28);
+            --shadow-strong: 0 28px 64px rgba(0, 0, 0, 0.4);
         }
 
         * {
             box-sizing: border-box;
         }
 
+        html {
+            background: var(--bg-page);
+            color-scheme: light;
+        }
+
+        html.dark {
+            color-scheme: dark;
+        }
+
         body {
             margin: 0;
             font-family: 'Noto Sans SC', 'Manrope', sans-serif;
-            color: var(--text);
+            color: var(--text-primary);
             background:
-                radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 28%),
-                linear-gradient(180deg, #fbf7ef 0%, #f4efe6 100%);
+                radial-gradient(circle at top left, rgba(185, 138, 63, 0.1), transparent 30%),
+                radial-gradient(circle at bottom right, rgba(15, 118, 110, 0.08), transparent 28%),
+                var(--bg-page);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         a {
@@ -53,42 +139,86 @@
             margin-bottom: 18px;
         }
 
+        .topbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
         .back-link {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            color: var(--muted);
+            color: var(--text-secondary);
             font-size: 14px;
             font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-primary);
         }
 
         .topbar-note {
-            color: var(--muted-soft);
+            color: var(--text-soft);
             font-size: 13px;
             letter-spacing: 0.06em;
             text-transform: uppercase;
         }
 
+        .control-button {
+            border: 1px solid var(--border-soft);
+            background: var(--bg-card);
+            color: var(--accent-primary);
+            box-shadow: 0 10px 24px rgba(24, 39, 45, 0.06);
+            transition: all 0.25s ease;
+        }
+
+        .control-button:hover {
+            background: var(--bg-card-alt);
+            border-color: var(--border-strong);
+        }
+
         .hero-card,
         .panel {
-            background: var(--panel);
-            border: 1px solid var(--line);
+            background:
+                linear-gradient(135deg, rgba(var(--product-accent-a-rgb), 0.1), rgba(var(--product-accent-b-rgb), 0.08)),
+                var(--bg-surface);
+            border: 1px solid rgba(var(--product-accent-b-rgb), 0.22);
             border-radius: 28px;
-            box-shadow: var(--shadow);
+            box-shadow: var(--shadow-strong);
             backdrop-filter: blur(20px);
         }
 
         .hero-card {
             padding: 28px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-card::after,
+        .panel::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            border-radius: inherit;
+        }
+
+        .hero-card::after {
+            background:
+                radial-gradient(circle at top right, rgba(var(--product-accent-b-rgb), 0.18), transparent 34%),
+                radial-gradient(circle at bottom left, rgba(var(--product-accent-a-rgb), 0.16), transparent 36%);
+            opacity: 0.9;
         }
 
         .eyebrow {
             display: inline-flex;
             padding: 9px 14px;
             border-radius: 999px;
-            background: rgba(19, 33, 39, 0.05);
-            border: 1px solid rgba(19, 33, 39, 0.08);
-            color: var(--muted);
+            background: linear-gradient(135deg, var(--accent-secondary-soft), rgba(255, 255, 255, 0.4));
+            border: 1px solid var(--border-strong);
+            color: var(--accent-primary-strong);
             font-size: 12px;
             letter-spacing: 0.12em;
             text-transform: uppercase;
@@ -125,7 +255,7 @@
 
         .app-subtitle {
             margin: 10px 0 0;
-            color: var(--muted);
+            color: var(--text-secondary);
             font-size: 17px;
             line-height: 1.65;
         }
@@ -140,10 +270,10 @@
         .tag {
             padding: 8px 12px;
             border-radius: 999px;
-            background: rgba(19, 33, 39, 0.05);
-            color: var(--muted);
+            background: linear-gradient(135deg, rgba(var(--product-accent-a-rgb), 0.14), rgba(var(--product-accent-b-rgb), 0.16));
+            color: var(--text-primary);
             font-size: 13px;
-            border: 1px solid rgba(19, 33, 39, 0.08);
+            border: 1px solid rgba(var(--product-accent-b-rgb), 0.18);
         }
 
         .content-grid {
@@ -160,6 +290,14 @@
 
         .panel {
             padding: 22px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .panel::before {
+            background:
+                linear-gradient(180deg, rgba(var(--product-accent-b-rgb), 0.06), transparent 30%),
+                linear-gradient(90deg, rgba(var(--product-accent-a-rgb), 0.06), transparent 40%);
         }
 
         .panel-title {
@@ -168,12 +306,13 @@
             font-size: 28px;
             line-height: 1;
             letter-spacing: -0.04em;
+            color: var(--text-primary);
         }
 
         .panel-copy,
         .copy-block p {
             margin: 0 0 14px;
-            color: var(--muted);
+            color: var(--text-secondary);
             line-height: 1.85;
             font-size: 15px;
         }
@@ -195,8 +334,9 @@
             min-width: 0;
             border-radius: 22px;
             overflow: hidden;
-            border: 1px solid rgba(19, 33, 39, 0.08);
-            background: rgba(255, 255, 255, 0.52);
+            border: 1px solid rgba(var(--product-accent-a-rgb), 0.18);
+            background: var(--bg-card);
+            box-shadow: var(--shadow-soft);
         }
 
         .shot img {
@@ -229,7 +369,7 @@
         .embed-mode .hero-card,
         .embed-mode .panel {
             border-radius: 24px;
-            box-shadow: 0 18px 40px rgba(31, 44, 51, 0.08);
+            box-shadow: var(--shadow-soft);
         }
 
         [dir="rtl"] .topbar,
@@ -242,6 +382,16 @@
             .shell {
                 width: min(100%, calc(100% - 24px));
                 padding-top: 16px;
+            }
+
+            .topbar {
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .topbar-actions {
+                width: 100%;
+                justify-content: space-between;
             }
 
             .hero-card,
@@ -265,7 +415,10 @@
         <div class="shell">
             <div class="topbar">
                 <a class="back-link" href="../index.html#systems" id="back-link">← Back to Products</a>
-                <div class="topbar-note" id="topbar-note">App Store Style Product Index</div>
+                <div class="topbar-actions">
+                    <div class="topbar-note" id="topbar-note">App Store Style Product Index</div>
+                    <button class="control-button" id="theme-toggle" type="button" aria-label="Toggle theme"></button>
+                </div>
             </div>
 
             <section class="hero">
@@ -306,23 +459,79 @@
                 note: 'Localized Product Index',
                 overview: 'Overview',
                 screenshots: 'Screenshots',
-                defaultEyebrow: 'Digital Product'
+                defaultEyebrow: 'Digital Product',
+                themeLight: 'Light',
+                themeDark: 'Dark',
+                themeSystem: 'System'
             },
             zh: {
                 back: '返回产品列表',
                 note: '国际化产品页',
                 overview: '产品概述',
                 screenshots: '产品截图',
-                defaultEyebrow: '数字产品'
+                defaultEyebrow: '数字产品',
+                themeLight: '浅色',
+                themeDark: '深色',
+                themeSystem: '跟随系统'
             },
             ar: {
                 back: 'العودة إلى المنتجات',
                 note: 'صفحة منتج متعددة اللغات',
                 overview: 'نظرة عامة',
                 screenshots: 'لقطات الشاشة',
-                defaultEyebrow: 'منتج رقمي'
+                defaultEyebrow: 'منتج رقمي',
+                themeLight: 'فاتح',
+                themeDark: 'داكن',
+                themeSystem: 'النظام'
             }
         };
+
+        const SITE_ORIGIN = 'https://antonoil.ae';
+
+        const themeOrder = ['system', 'light', 'dark'];
+
+        function getStoredTheme() {
+            return localStorage.getItem('theme') || 'system';
+        }
+
+        function getResolvedTheme(theme) {
+            if (theme === 'system') {
+                return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+            }
+            return theme;
+        }
+
+        function applyTheme(theme) {
+            const resolvedTheme = getResolvedTheme(theme);
+            document.documentElement.classList.toggle('dark', resolvedTheme === 'dark');
+        }
+
+        function updateThemeButton(lang) {
+            const ui = pageUi[lang] || pageUi.en;
+            const theme = getStoredTheme();
+            const labels = {
+                light: ui.themeLight,
+                dark: ui.themeDark,
+                system: ui.themeSystem
+            };
+            const button = document.getElementById('theme-toggle');
+            button.textContent = labels[theme];
+            button.dataset.theme = theme;
+            button.setAttribute('title', labels[theme]);
+            button.setAttribute('aria-label', labels[theme]);
+        }
+
+        function cycleTheme(lang) {
+            const currentTheme = getStoredTheme();
+            const nextTheme = themeOrder[(themeOrder.indexOf(currentTheme) + 1) % themeOrder.length];
+            if (nextTheme === 'system') {
+                localStorage.removeItem('theme');
+            } else {
+                localStorage.setItem('theme', nextTheme);
+            }
+            applyTheme(nextTheme);
+            updateThemeButton(lang);
+        }
 
         const tagTranslations = {
             IoT: {
@@ -804,6 +1013,67 @@
             return tagTranslations[tag]?.[lang] || tag;
         }
 
+        function updateMetaTag(selector, attribute, value) {
+            const element = document.querySelector(selector);
+            if (element && typeof value !== 'undefined') {
+                element.setAttribute(attribute, value);
+            }
+        }
+
+        function hexToRgbString(hex) {
+            const normalized = hex.replace('#', '');
+            const value = normalized.length === 3
+                ? normalized.split('').map((char) => char + char).join('')
+                : normalized;
+            const channel = (index) => Number.parseInt(value.slice(index, index + 2), 16);
+            return `${channel(0)}, ${channel(2)}, ${channel(4)}`;
+        }
+
+        function updateProductSeo(product, locale, lang) {
+            const description = locale.subtitle || pageUi[lang]?.defaultEyebrow || pageUi.en.defaultEyebrow;
+            const canonicalUrl = new URL('/product/index.html', SITE_ORIGIN);
+            canonicalUrl.searchParams.set('id', product.id);
+            if (lang !== 'en') {
+                canonicalUrl.searchParams.set('lang', lang);
+            }
+            const imageUrl = product.screenshots?.[0]
+                ? new URL(product.screenshots[0].replace(/^\.\.\//, ''), `${SITE_ORIGIN}/`).toString()
+                : `${SITE_ORIGIN}/assets/hero/strategy-middle-east.png`;
+            const pageTitle = `${product.name} | Anton Oilfield DMCC`;
+
+            document.title = pageTitle;
+            updateMetaTag('meta[name="description"]', 'content', description);
+            updateMetaTag('meta[property="og:title"]', 'content', pageTitle);
+            updateMetaTag('meta[property="og:description"]', 'content', description);
+            updateMetaTag('meta[property="og:url"]', 'content', canonicalUrl.toString());
+            updateMetaTag('meta[property="og:image"]', 'content', imageUrl);
+            updateMetaTag('meta[property="og:image:alt"]', 'content', `${product.name} product preview`);
+            updateMetaTag('meta[name="twitter:title"]', 'content', pageTitle);
+            updateMetaTag('meta[name="twitter:description"]', 'content', description);
+            updateMetaTag('meta[name="twitter:image"]', 'content', imageUrl);
+            updateMetaTag('link[rel="canonical"]', 'href', canonicalUrl.toString());
+
+            const productJsonLd = document.getElementById('structured-data-product');
+            if (productJsonLd) {
+                productJsonLd.textContent = JSON.stringify({
+                    '@context': 'https://schema.org',
+                    '@type': 'SoftwareApplication',
+                    name: product.name,
+                    applicationCategory: 'BusinessApplication',
+                    operatingSystem: 'Web',
+                    url: canonicalUrl.toString(),
+                    description,
+                    image: imageUrl,
+                    inLanguage: lang === 'zh' ? 'zh-CN' : lang,
+                    creator: {
+                        '@type': 'Organization',
+                        name: 'Anton Oilfield DMCC',
+                        url: `${SITE_ORIGIN}/`
+                    }
+                });
+            }
+        }
+
         function renderProduct(product, lang) {
             const ui = pageUi[lang] || pageUi.en;
             const locale = product.locales?.[lang] || product.locales?.en || {};
@@ -811,18 +1081,23 @@
             document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
             document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
             document.body.setAttribute('dir', document.documentElement.dir);
-            document.title = `${product.name} | Anton Oilfield DMCC`;
+            updateProductSeo(product, locale, lang);
 
             document.getElementById('back-link').textContent = lang === 'ar' ? `${ui.back} →` : `← ${ui.back}`;
             document.getElementById('back-link').setAttribute('href', `../index.html?lang=${encodeURIComponent(lang)}#systems`);
             document.getElementById('topbar-note').textContent = ui.note;
             document.getElementById('eyebrow').textContent = locale.eyebrow || ui.defaultEyebrow;
+            document.documentElement.style.setProperty('--product-accent-a', product.accentA);
+            document.documentElement.style.setProperty('--product-accent-b', product.accentB);
+            document.documentElement.style.setProperty('--product-accent-a-rgb', hexToRgbString(product.accentA));
+            document.documentElement.style.setProperty('--product-accent-b-rgb', hexToRgbString(product.accentB));
             document.getElementById('app-icon').textContent = product.icon;
             document.getElementById('app-icon').style.background = `linear-gradient(135deg, ${product.accentA}, ${product.accentB})`;
             document.getElementById('app-title').textContent = product.name;
             document.getElementById('app-subtitle').textContent = locale.subtitle || '';
             document.getElementById('screenshots-title').textContent = ui.screenshots;
             document.getElementById('overview-title').textContent = ui.overview;
+            updateThemeButton(lang);
 
             const translatedTags = (product.tags || []).map((tag) => getLocalizedTag(tag, lang));
 
@@ -862,6 +1137,14 @@
         if (embedMode) {
             document.body.classList.add('embed-mode');
         }
+
+        applyTheme(getStoredTheme());
+        document.getElementById('theme-toggle').addEventListener('click', () => cycleTheme(lang));
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+            if (getStoredTheme() === 'system') {
+                applyTheme('system');
+            }
+        });
 
         renderProduct(product, lang);
     </script>
