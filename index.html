@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anton Oil - Dubai IT Regional Hub</title>
+    <meta name="google-analytics-id" content="G-XXXXXXXXXX">
     <!-- Tailwind CSS for rapid styling -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -867,6 +868,110 @@
             color: var(--text-soft);
         }
 
+        .consent-banner {
+            position: fixed;
+            left: 1rem;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 120;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto;
+            gap: 1rem;
+            align-items: center;
+            padding: 1.1rem 1.2rem;
+            border-radius: 24px;
+            border: 1px solid var(--border-strong);
+            background: rgba(15, 24, 29, 0.92);
+            color: #f8f1e7;
+            box-shadow: 0 20px 50px rgba(7, 22, 27, 0.32);
+            backdrop-filter: blur(18px);
+        }
+
+        .consent-banner[hidden],
+        .consent-manager[hidden] {
+            display: none;
+        }
+
+        .consent-copy {
+            font-size: 0.95rem;
+            line-height: 1.65;
+            color: rgba(248, 241, 231, 0.88);
+        }
+
+        .consent-title {
+            display: block;
+            margin-bottom: 0.35rem;
+            color: #fffdf8;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .consent-actions {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: 0.75rem;
+        }
+
+        .consent-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 7.5rem;
+            padding: 0.8rem 1rem;
+            border-radius: 999px;
+            border: 1px solid transparent;
+            font-size: 0.92rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+        }
+
+        .consent-btn:hover {
+            transform: translateY(-1px);
+        }
+
+        .consent-btn-primary {
+            background: var(--accent-copper);
+            color: #fffdf8;
+        }
+
+        .consent-btn-primary:hover {
+            background: #cb6244;
+        }
+
+        .consent-btn-secondary {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.16);
+            color: #fffdf8;
+        }
+
+        .consent-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+
+        .consent-manager {
+            position: fixed;
+            right: 1rem;
+            bottom: 1rem;
+            z-index: 110;
+        }
+
+        .consent-fab {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            min-height: 2.9rem;
+            padding: 0.7rem 1rem;
+            border-radius: 999px;
+            border: 1px solid var(--border-soft);
+            background: var(--bg-card);
+            color: var(--accent-primary);
+            box-shadow: var(--shadow-soft);
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+
         @keyframes pulse-glow {
             0% { transform: scale(1); opacity: 0.8; }
             100% { transform: scale(1.08); opacity: 1; }
@@ -940,13 +1045,19 @@
         }
 
         @media (max-width: 768px) {
+            .site-header .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+
             .hero-shell {
                 padding-top: 6rem;
+                min-height: auto;
             }
 
             .hero-content {
                 padding-top: 4rem;
-                padding-bottom: 4rem;
+                padding-bottom: 2.75rem;
             }
 
             .hero-rail {
@@ -969,27 +1080,97 @@
             }
 
             .systems-header {
+                flex-direction: column;
                 align-items: flex-start;
+                gap: 1rem;
             }
 
             .systems-grid {
                 grid-template-columns: repeat(2, minmax(0, 1fr));
             }
 
+            .system-card-title {
+                font-size: 1.5rem;
+            }
+
             .system-modal-dialog {
                 grid-template-rows: minmax(20rem, 1.2fr) auto;
+                min-height: calc(100dvh - 1rem);
             }
 
         }
 
         @media (max-width: 640px) {
+            .site-header {
+                padding-top: 0.75rem;
+                padding-bottom: 0.75rem;
+            }
+
+            .site-header .container {
+                gap: 0.75rem;
+            }
+
+            .site-logo-main,
+            .site-logo-accent {
+                font-size: 1.35rem;
+            }
+
+            #theme-switcher .control-button,
+            #lang-switcher .control-button {
+                height: 2.5rem;
+            }
+
+            #theme-switcher .control-button {
+                width: 2.5rem;
+            }
+
+            #lang-switcher .control-button {
+                width: 4.5rem;
+                padding-left: 0.7rem;
+                padding-right: 0.7rem;
+                font-size: 0.8rem;
+            }
+
             .hero-title {
-                font-size: 3rem;
-                line-height: 1.05;
+                font-size: 2.4rem;
+                line-height: 1.02;
+                margin-bottom: 1.75rem;
+            }
+
+            .hero-eyebrow {
+                font-size: 0.8rem;
+                margin-bottom: 1rem;
+            }
+
+            .hero-content {
+                padding-top: 2.5rem;
+                padding-bottom: 2rem;
+            }
+
+            .hero-actions {
+                width: 100%;
+            }
+
+            .btn-primary {
+                width: 100%;
+                min-width: 0;
+                justify-content: center;
+                padding: 0.95rem 1.1rem;
+                font-size: 1rem;
+            }
+
+            .hero-rail {
+                padding-bottom: 1rem;
             }
 
             .hero-stories {
                 grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .hero-story {
+                font-size: 0.82rem;
+                line-height: 1.45;
             }
 
             .systems-section {
@@ -1003,6 +1184,16 @@
 
             .system-card {
                 min-height: 16rem;
+                padding: 1rem;
+            }
+
+            .system-card-title {
+                font-size: 1.35rem;
+            }
+
+            .section-copy {
+                font-size: 1rem;
+                line-height: 1.7;
             }
 
             .system-modal {
@@ -1016,6 +1207,7 @@
             .system-modal-head {
                 flex-direction: column;
                 align-items: flex-start;
+                gap: 1rem;
             }
 
             .system-modal-actions {
@@ -1023,14 +1215,73 @@
                 justify-content: flex-start;
             }
 
+            .system-modal-dialog {
+                min-height: calc(100dvh - 1rem);
+                grid-template-rows: minmax(16rem, 0.95fr) auto;
+            }
+
+            .system-modal-media {
+                min-height: 16rem;
+            }
+
+            .system-modal-art {
+                right: 1rem;
+                bottom: 0.75rem;
+                font-size: 4.5rem;
+            }
+
+            .system-modal-title {
+                font-size: 1.85rem;
+                line-height: 1;
+            }
+
+            .system-modal-desc {
+                font-size: 0.95rem;
+                line-height: 1.65;
+            }
+
+            .system-cta {
+                padding: 0.65rem 0.9rem;
+                font-size: 0.88rem;
+            }
+
             .system-modal-viewport-label {
                 left: 1rem;
                 bottom: 1rem;
+                font-size: 0.68rem;
+                letter-spacing: 0.12em;
             }
 
             .system-modal-dots {
                 right: 1rem;
                 bottom: 1rem;
+            }
+
+            .pattern-panel {
+                width: 100%;
+            }
+
+            #about {
+                padding-top: 4.5rem;
+                padding-bottom: 4.5rem;
+            }
+
+            #systems {
+                scroll-margin-top: 5.5rem;
+            }
+
+            .consent-banner {
+                grid-template-columns: 1fr;
+                align-items: stretch;
+                padding: 1rem;
+            }
+
+            .consent-actions {
+                justify-content: stretch;
+            }
+
+            .consent-btn {
+                width: 100%;
             }
         }
     </style>
@@ -1141,7 +1392,6 @@
                     <h2 class="section-title text-3xl lg:text-4xl font-bold mb-4" id="systems-title">Our Core IT Systems</h2>
                     <p class="section-copy" id="systems-desc">A unified suite of AI-powered digital applications empowering our engineering and enterprise management across the globe.</p>
                 </div>
-                <div class="system-modal-note" id="systems-hint">Select a system to expand into a full-screen product view.</div>
             </div>
 
             <div class="systems-grid" id="systems-container" data-aos="fade-up" data-aos-delay="160">
@@ -1182,9 +1432,44 @@
         </div>
     </footer>
 
+    <div class="consent-banner" id="consent-banner" role="dialog" aria-live="polite" aria-label="Cookie consent" hidden>
+        <div class="consent-copy">
+            <strong class="consent-title" id="consent-title">Analytics Consent</strong>
+            <span id="consent-description">We use Google Analytics in consent mode to measure visits and key interactions. Analytics stays off until you explicitly allow it.</span>
+        </div>
+        <div class="consent-actions">
+            <button type="button" class="consent-btn consent-btn-secondary" id="consent-reject">Decline</button>
+            <button type="button" class="consent-btn consent-btn-primary" id="consent-accept">Allow Analytics</button>
+        </div>
+    </div>
+
+    <div class="consent-manager" id="consent-manager" hidden>
+        <button type="button" class="consent-fab" id="consent-open">Privacy Settings</button>
+    </div>
+
     <!-- Scripts -->
     <script src="assets/vendor/js/aos.js"></script>
     <script>
+        const ANALYTICS_STORAGE_KEY = 'site_consent_v1';
+        const ANALYTICS_META_NAME = 'google-analytics-id';
+        const GOOGLE_ANALYTICS_ID = document.querySelector(`meta[name="${ANALYTICS_META_NAME}"]`)?.content?.trim() || '';
+        const CONSENT_VERSION = 2;
+        let analyticsInitialized = false;
+        let analyticsScriptLoading = false;
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+            window.dataLayer.push(arguments);
+        }
+
+        gtag('consent', 'default', {
+            analytics_storage: 'denied',
+            ad_storage: 'denied',
+            ad_user_data: 'denied',
+            ad_personalization: 'denied',
+            wait_for_update: 500
+        });
+
         // Icons mapping for theme
         const themeIcons = {
             light: '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path>',
@@ -1218,6 +1503,8 @@
             
             // Unfocus button to close dropdown on touch devices
             document.activeElement?.blur();
+            setAnalyticsUserProperties();
+            trackEvent('theme_change', { theme });
         }
 
         // Initialize Theme
@@ -1518,7 +1805,6 @@
         };
         const systemUi = {
             en: {
-                hint: 'Select a system to expand into a full-screen product view.',
                 label: 'Platform Product',
                 open: 'Open Product',
                 request: 'Request Demo',
@@ -1528,7 +1814,6 @@
                 slides: ['Overview', 'Interface', 'Operations']
             },
             zh: {
-                hint: '点击任一系统卡片，展开查看全屏产品详情。',
                 label: '产品系统',
                 open: '打开产品页',
                 request: '预约演示',
@@ -1538,7 +1823,6 @@
                 slides: ['产品总览', '界面视图', '业务场景']
             },
             ar: {
-                hint: 'اختر أي نظام لفتحه في عرض منتج كامل الشاشة.',
                 label: 'منتج المنصة',
                 open: 'فتح المنتج',
                 request: 'طلب عرض',
@@ -1551,6 +1835,188 @@
         let activeSystemName = null;
         let systemModalSlideIndex = 0;
         let systemModalSlideTimer = null;
+
+        const consentI18n = {
+            en: {
+                title: 'Analytics Consent',
+                description: 'We use Google Analytics in consent mode to measure visits and key interactions. Analytics stays off until you explicitly allow it.',
+                accept: 'Allow Analytics',
+                reject: 'Decline',
+                manage: 'Privacy Settings'
+            },
+            zh: {
+                title: '分析统计授权',
+                description: '本站使用 Google Analytics Consent Mode 统计访问与关键交互。在你明确同意前，不会启用分析上报。',
+                accept: '同意统计',
+                reject: '拒绝',
+                manage: '隐私设置'
+            },
+            ar: {
+                title: 'موافقة التحليلات',
+                description: 'نستخدم Google Analytics بوضع الموافقة لقياس الزيارات والتفاعلات الأساسية. تبقى التحليلات معطلة حتى توافق عليها صراحةً.',
+                accept: 'السماح بالتحليلات',
+                reject: 'رفض',
+                manage: 'إعدادات الخصوصية'
+            }
+        };
+
+        function hasValidAnalyticsId() {
+            return /^G-[A-Z0-9]+$/i.test(GOOGLE_ANALYTICS_ID);
+        }
+
+        function getStoredConsent() {
+            try {
+                const stored = JSON.parse(localStorage.getItem(ANALYTICS_STORAGE_KEY) || 'null');
+                if (!stored || stored.version !== CONSENT_VERSION) return null;
+                return stored;
+            } catch (error) {
+                return null;
+            }
+        }
+
+        function saveConsent(granted) {
+            localStorage.setItem(ANALYTICS_STORAGE_KEY, JSON.stringify({
+                granted,
+                version: CONSENT_VERSION,
+                updatedAt: new Date().toISOString()
+            }));
+        }
+
+        function getCurrentThemePreference() {
+            return localStorage.getItem('theme') || 'system';
+        }
+
+        function setAnalyticsUserProperties() {
+            if (!analyticsInitialized) return;
+
+            gtag('set', 'user_properties', {
+                site_language: currentLanguage,
+                site_theme: getCurrentThemePreference()
+            });
+        }
+
+        function loadGoogleAnalytics() {
+            if (analyticsInitialized || analyticsScriptLoading || !hasValidAnalyticsId()) return;
+
+            analyticsScriptLoading = true;
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GOOGLE_ANALYTICS_ID)}`;
+            script.onload = () => {
+                analyticsScriptLoading = false;
+                analyticsInitialized = true;
+                gtag('js', new Date());
+                gtag('config', GOOGLE_ANALYTICS_ID, {
+                    anonymize_ip: true,
+                    send_page_view: false,
+                    cookie_domain: 'auto',
+                    cookie_expires: 63072000,
+                    cookie_flags: 'SameSite=None;Secure',
+                    transport_type: 'beacon'
+                });
+                setAnalyticsUserProperties();
+                trackPageView();
+            };
+            script.onerror = () => {
+                analyticsScriptLoading = false;
+            };
+            document.head.appendChild(script);
+        }
+
+        function applyConsent(granted) {
+            const consentState = granted ? 'granted' : 'denied';
+            gtag('consent', 'update', {
+                analytics_storage: consentState,
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied'
+            });
+
+            if (granted) {
+                loadGoogleAnalytics();
+            }
+        }
+
+        function syncConsentUi() {
+            const stored = getStoredConsent();
+            const banner = document.getElementById('consent-banner');
+            const manager = document.getElementById('consent-manager');
+
+            if (banner) {
+                banner.hidden = Boolean(stored);
+            }
+
+            if (manager) {
+                manager.hidden = Boolean(stored);
+            }
+        }
+
+        function openConsentBanner() {
+            const banner = document.getElementById('consent-banner');
+            if (banner) banner.hidden = false;
+        }
+
+        function closeConsentBanner() {
+            const banner = document.getElementById('consent-banner');
+            if (banner) banner.hidden = true;
+        }
+
+        function updateConsentLanguage(lang) {
+            const copy = consentI18n[lang] || consentI18n.en;
+            updateElementContent('consent-title', copy.title);
+            updateElementContent('consent-description', copy.description);
+            updateElementContent('consent-accept', copy.accept);
+            updateElementContent('consent-reject', copy.reject);
+            updateElementContent('consent-open', copy.manage);
+        }
+
+        function trackEvent(name, params = {}) {
+            const stored = getStoredConsent();
+            if (!stored?.granted || !analyticsInitialized) return;
+
+            setAnalyticsUserProperties();
+            gtag('event', name, {
+                page_location: window.location.href,
+                page_path: window.location.pathname,
+                page_title: document.title,
+                language: currentLanguage,
+                ...params
+            });
+        }
+
+        function trackPageView() {
+            const stored = getStoredConsent();
+            if (!stored?.granted || !analyticsInitialized) return;
+
+            setAnalyticsUserProperties();
+            gtag('event', 'page_view', {
+                page_location: window.location.href,
+                page_path: window.location.pathname,
+                page_title: document.title,
+                language: currentLanguage
+            });
+        }
+
+        function bindConsentInteractions() {
+            document.getElementById('consent-accept')?.addEventListener('click', () => {
+                saveConsent(true);
+                applyConsent(true);
+                closeConsentBanner();
+                syncConsentUi();
+                trackEvent('consent_update', { consent_analytics: 'granted' });
+            });
+
+            document.getElementById('consent-reject')?.addEventListener('click', () => {
+                saveConsent(false);
+                applyConsent(false);
+                closeConsentBanner();
+                syncConsentUi();
+            });
+
+            document.getElementById('consent-open')?.addEventListener('click', () => {
+                openConsentBanner();
+            });
+        }
 
         function updateElementContent(id, value, useHtml = false) {
             const element = document.getElementById(id);
@@ -1741,6 +2207,7 @@
             document.getElementById('system-modal')?.classList.add('is-open');
             document.body.classList.add('system-modal-open');
             startSystemModalSlideshow();
+            trackEvent('system_open', { system_name: systemName });
         }
 
         function closeSystemModal() {
@@ -1849,6 +2316,7 @@
 
                 applyHeroSlide(i18n[currentLanguage], nextIndex, { animate: true });
                 startHeroAutoplay();
+                trackEvent('hero_story_select', { hero_index: nextIndex });
             });
         }
 
@@ -1897,22 +2365,59 @@
             // Systems
             updateElementContent('systems-title', dict.systemsTitle);
             updateElementContent('systems-desc', dict.systemsDesc);
-            updateElementContent('systems-hint', (systemUi[lang] || systemUi.en).hint);
             renderSystems(dict);
             syncSystemModalContent();
 
             // Footer
             updateElementContent('footer-text', dict.footerText, true);
+            updateConsentLanguage(lang);
             
             // Unfocus button to close dropdown
             document.activeElement?.blur();
+            setAnalyticsUserProperties();
+            trackEvent('language_change', { language_selected: lang });
+        }
+
+        function bindAnalyticsInteractions() {
+            document.getElementById('hero-btn1')?.addEventListener('click', () => {
+                const href = document.getElementById('hero-btn1')?.getAttribute('href') || '';
+                trackEvent('click', {
+                    link_id: 'hero-btn1',
+                    link_text: document.getElementById('hero-btn1')?.textContent?.trim() || '',
+                    link_url: href,
+                    outbound: href.startsWith('http')
+                });
+            });
+
+            document.getElementById('system-modal-cta')?.addEventListener('click', () => {
+                const href = document.getElementById('system-modal-cta')?.getAttribute('href') || '';
+                trackEvent('click', {
+                    link_id: 'system-modal-cta',
+                    link_text: document.getElementById('system-modal-cta')?.textContent?.trim() || '',
+                    link_url: href,
+                    outbound: href.startsWith('http'),
+                    system_name: activeSystemName || ''
+                });
+            });
+        }
+
+        function initConsentState() {
+            const stored = getStoredConsent();
+            syncConsentUi();
+
+            if (stored) {
+                applyConsent(Boolean(stored.granted));
+            }
         }
 
         // Init Default Lang
+        bindConsentInteractions();
+        bindAnalyticsInteractions();
         bindHeroInteractions();
         bindSystemInteractions();
         setLanguage('en');
         startHeroAutoplay();
+        initConsentState();
 
         // Header scroll effect
         function syncHeaderState() {
