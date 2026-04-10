@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2c4050"/><stop offset=".4" stop-color="#45657c"/><stop offset="1" stop-color="#91c6cf"/></linearGradient></defs>
+  <rect width="1600" height="900" fill="url(#bg)"/><rect width="1600" height="900" fill="#0a1218" fill-opacity=".2"/>
+  <rect x="100" y="90" width="1400" height="718" rx="32" fill="#fff7ed" fill-opacity=".08" stroke="#fff7ed" stroke-opacity=".24"/>
+  <rect x="144" y="136" width="1312" height="88" rx="22" fill="#fff7ed" fill-opacity=".1"/><rect x="144" y="260" width="864" height="510" rx="28" fill="#0b1f2a" fill-opacity=".34"/><rect x="1042" y="260" width="414" height="510" rx="28" fill="#fff7ed" fill-opacity=".11"/>
+  <rect x="222" y="332" width="706" height="120" rx="26" fill="#fff7ed" fill-opacity=".72"/><rect x="222" y="488" width="290" height="166" rx="24" fill="#45657c"/><rect x="544" y="488" width="384" height="166" rx="24" fill="#91c6cf"/><rect x="1104" y="332" width="292" height="178" rx="24" fill="#45657c"/><rect x="1104" y="542" width="292" height="112" rx="22" fill="#2c4050"/>
+  <text x="148" y="742" fill="#fff7ed" fill-opacity=".9" font-size="106" font-family="Arial, sans-serif" font-weight="700">PLMS</text>
+  <text x="1320" y="742" text-anchor="end" fill="#fff7ed" fill-opacity=".82" font-size="42" font-family="Arial, sans-serif">Travel Overview</text>
+</svg>

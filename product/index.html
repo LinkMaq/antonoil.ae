@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Index | Anton Oilfield DMCC</title>
+    <link rel="stylesheet" href="../assets/vendor/css/fonts.css">
+    <style>
+        :root {
+            --bg: #f4efe6;
+            --panel: rgba(255, 252, 246, 0.86);
+            --panel-strong: rgba(255, 252, 246, 0.96);
+            --line: rgba(17, 34, 41, 0.08);
+            --text: #132127;
+            --muted: rgba(19, 33, 39, 0.72);
+            --muted-soft: rgba(19, 33, 39, 0.5);
+            --shadow: 0 24px 60px rgba(31, 44, 51, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Noto Sans SC', 'Manrope', sans-serif;
+            color: var(--text);
+            background:
+                radial-gradient(circle at top left, rgba(255, 255, 255, 0.7), transparent 28%),
+                linear-gradient(180deg, #fbf7ef 0%, #f4efe6 100%);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .page {
+            min-height: 100dvh;
+        }
+
+        .shell {
+            width: min(1180px, calc(100% - 40px));
+            margin: 0 auto;
+            padding: 28px 0 44px;
+        }
+
+        .topbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            margin-bottom: 18px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--muted);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .topbar-note {
+            color: var(--muted-soft);
+            font-size: 13px;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .hero-card,
+        .panel {
+            background: var(--panel);
+            border: 1px solid var(--line);
+            border-radius: 28px;
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(20px);
+        }
+
+        .hero-card {
+            padding: 28px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            padding: 9px 14px;
+            border-radius: 999px;
+            background: rgba(19, 33, 39, 0.05);
+            border: 1px solid rgba(19, 33, 39, 0.08);
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+        }
+
+        .app-head {
+            display: grid;
+            grid-template-columns: auto 1fr auto;
+            gap: 18px;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .app-icon {
+            width: 92px;
+            height: 92px;
+            border-radius: 22px;
+            display: grid;
+            place-items: center;
+            color: #fffef9;
+            font-size: 30px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.28);
+        }
+
+        .app-title {
+            margin: 0;
+            font-family: 'Manrope', 'Noto Sans SC', sans-serif;
+            font-size: clamp(30px, 4vw, 56px);
+            line-height: 0.95;
+            letter-spacing: -0.05em;
+        }
+
+        .app-subtitle {
+            margin: 10px 0 0;
+            color: var(--muted);
+            font-size: 17px;
+            line-height: 1.65;
+        }
+
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 24px;
+        }
+
+        .tag {
+            padding: 8px 12px;
+            border-radius: 999px;
+            background: rgba(19, 33, 39, 0.05);
+            color: var(--muted);
+            font-size: 13px;
+            border: 1px solid rgba(19, 33, 39, 0.08);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr);
+            gap: 22px;
+            margin-top: 22px;
+        }
+
+        .stack {
+            display: grid;
+            gap: 22px;
+        }
+
+        .panel {
+            padding: 22px;
+        }
+
+        .panel-title {
+            margin: 0 0 14px;
+            font-family: 'Manrope', 'Noto Sans SC', sans-serif;
+            font-size: 28px;
+            line-height: 1;
+            letter-spacing: -0.04em;
+        }
+
+        .panel-copy,
+        .copy-block p {
+            margin: 0 0 14px;
+            color: var(--muted);
+            line-height: 1.85;
+            font-size: 15px;
+        }
+
+        .shot-strip {
+            display: grid;
+            grid-auto-flow: column;
+            grid-auto-columns: minmax(280px, 1fr);
+            gap: 14px;
+            overflow-x: auto;
+            padding-bottom: 4px;
+        }
+
+        .shot {
+            border-radius: 22px;
+            overflow: hidden;
+            border: 1px solid rgba(19, 33, 39, 0.08);
+            background: rgba(255, 255, 255, 0.52);
+        }
+
+        .shot img {
+            width: 100%;
+            aspect-ratio: 16 / 10;
+            display: block;
+            object-fit: cover;
+        }
+
+        .shot span {
+            display: block;
+            padding: 12px 14px 14px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .embed-mode .shell {
+            width: min(100%, calc(100% - 24px));
+            padding-top: 12px;
+            padding-bottom: 18px;
+        }
+
+        .embed-mode .topbar {
+            display: none;
+        }
+
+        .embed-mode .hero-card,
+        .embed-mode .panel {
+            border-radius: 24px;
+            box-shadow: 0 18px 40px rgba(31, 44, 51, 0.08);
+        }
+
+        [dir="rtl"] .topbar,
+        [dir="rtl"] .hero-card,
+        [dir="rtl"] .panel {
+            text-align: right;
+        }
+
+        @media (max-width: 720px) {
+            .shell {
+                width: min(100%, calc(100% - 24px));
+                padding-top: 16px;
+            }
+
+            .hero-card,
+            .panel {
+                padding: 18px;
+            }
+
+            .app-head {
+                grid-template-columns: 1fr;
+                align-items: flex-start;
+            }
+
+            .shot-strip {
+                grid-auto-columns: 88%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <main class="page" id="page">
+        <div class="shell">
+            <div class="topbar">
+                <a class="back-link" href="../index.html#systems" id="back-link">← Back to Products</a>
+                <div class="topbar-note" id="topbar-note">App Store Style Product Index</div>
+            </div>
+
+            <section class="hero">
+                <div class="hero-card">
+                    <div class="eyebrow" id="eyebrow">Digital Product</div>
+                    <div class="app-head">
+                        <div class="app-icon" id="app-icon">VG</div>
+                        <div>
+                            <h1 class="app-title" id="app-title">VGIS</h1>
+                            <p class="app-subtitle" id="app-subtitle"></p>
+                        </div>
+                    </div>
+                    <div class="tag-row" id="tag-row"></div>
+                </div>
+            </section>
+
+            <section class="content-grid">
+                <div class="stack">
+                    <section class="panel">
+                        <h2 class="panel-title" id="screenshots-title">Screenshots</h2>
+                        <div class="shot-strip" id="shot-strip"></div>
+                    </section>
+
+                    <section class="panel">
+                        <h2 class="panel-title" id="overview-title">Overview</h2>
+                        <div class="copy-block" id="overview-copy"></div>
+                    </section>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const pageUi = {
+            en: {
+                back: 'Back to Products',
+                note: 'Localized Product Index',
+                overview: 'Overview',
+                screenshots: 'Screenshots',
+                defaultEyebrow: 'Digital Product'
+            },
+            zh: {
+                back: '返回产品列表',
+                note: '国际化产品页',
+                overview: '产品概述',
+                screenshots: '产品截图',
+                defaultEyebrow: '数字产品'
+            },
+            ar: {
+                back: 'العودة إلى المنتجات',
+                note: 'صفحة منتج متعددة اللغات',
+                overview: 'نظرة عامة',
+                screenshots: 'لقطات الشاشة',
+                defaultEyebrow: 'منتج رقمي'
+            }
+        };
+
+        const productCatalog = {
+            vgis: {
+                id: 'vgis',
+                name: 'VGIS',
+                icon: 'VG',
+                accentA: '#0b5f6c',
+                accentB: '#d2a24f',
+                screenshots: [
+                    '../assets/products/vgis/view-1.png',
+                    '../assets/products/vgis/view-2.png',
+                    '../assets/products/vgis/view-3.png'
+                ],
+                tags: ['IoT', 'SCADA', 'ERP', 'Video', 'Spatial Layer', 'Digital Twin'],
+                locales: {
+                    en: {
+                        eyebrow: 'Spatial Digital Twin',
+                        subtitle: 'A spatial digital twin platform for oilfields that unifies production, safety, equipment, and logistics data on one map.',
+                        overview: [
+                            'VGIS is a spatial digital twin platform for oilfields. Through a map-plus-data approach, it brings together production, safety, equipment, and logistics information that was previously scattered across multiple systems.',
+                            'The platform binds wells, pipelines, equipment, and warehouses to real geographic locations, then fuses IoT, SCADA, ERP, and video data so operations can be viewed in one spatial context.',
+                            'Compared with isolated traditional systems, VGIS breaks data silos, supports expansion from a single oilfield to multiple oilfields, and evolves into a unified digital entry point and decision center.'
+                        ],
+                        screenshotsLabel: ['Map Overview', 'Spatial Analytics', 'Operations Layer']
+                    },
+                    zh: {
+                        eyebrow: '空间数字孪生',
+                        subtitle: '面向油田的空间化数字孪生平台，把生产、安全、设备与物流信息统一整合在一张图上。',
+                        overview: [
+                            'VGIS 是一个面向油田的空间化数字孪生平台，通过“地图 + 数据”的方式，将分散在各系统中的生产、安全、设备与物流信息统一整合，实现全业务的一体化可视与协同决策。',
+                            '平台以空间为核心，把井、管线、设备、仓库等资产全部绑定到真实地理位置，并融合 IoT、SCADA、ERP、视频等多源数据，在一张图上实时呈现油田运行状态。',
+                            '相比传统系统各自为政、只看局部，VGIS 打破数据孤岛，支持从单油田到多油田扩展，并兼容现有系统，成为企业数字化转型的统一入口与决策中枢。'
+                        ],
+                        screenshotsLabel: ['地图总览', '空间分析', '运营图层']
+                    },
+                    ar: {
+                        eyebrow: 'توأم رقمي مكاني',
+                        subtitle: 'منصة توأم رقمي مكاني لحقول النفط توحد بيانات الإنتاج والسلامة والمعدات والخدمات اللوجستية على خريطة واحدة.',
+                        overview: [
+                            'VGIS هي منصة توأم رقمي مكاني لحقول النفط. من خلال نموذج “الخريطة + البيانات” تجمع معلومات الإنتاج والسلامة والمعدات والخدمات اللوجستية الموزعة عبر عدة أنظمة في واجهة واحدة.',
+                            'تربط المنصة الآبار والأنابيب والمعدات والمخازن بالمواقع الجغرافية الحقيقية، وتدمج بيانات IoT وSCADA وERP والفيديو لعرض حالة التشغيل في سياق مكاني موحد.',
+                            'وبالمقارنة مع الأنظمة التقليدية المنعزلة، تكسر VGIS جزر البيانات، وتدعم التوسع من حقل واحد إلى عدة حقول، وتعمل كبوابة رقمية موحدة ومركز قرار للمؤسسة.'
+                        ],
+                        screenshotsLabel: ['نظرة عامة على الخريطة', 'تحليلات مكانية', 'طبقة التشغيل']
+                    }
+                }
+            },
+            vpms: {
+                id: 'vpms',
+                name: 'VPMS',
+                icon: 'VP',
+                accentA: '#143d5a',
+                accentB: '#8fc8d8',
+                screenshots: [
+                    '../assets/products/vpms/view-1.svg',
+                    '../assets/products/vpms/view-2.svg',
+                    '../assets/products/vpms/view-3.svg'
+                ],
+                tags: ['BIM', 'GIS', 'IoT', '4D Simulation', 'Progress', 'Quality'],
+                locales: {
+                    en: {
+                        eyebrow: 'Visual Project Management',
+                        subtitle: 'A digital and intelligent project platform for large-scale engineering, moving management from reports to scenarios.',
+                        overview: [
+                            'VPMS is built for large engineering projects and combines BIM, GIS, IoT, and data intelligence to make project delivery visible, controllable, and more predictable.',
+                            'It centers on lifecycle management from design and construction to handover, connecting schedule, quality, cost, and material data into a closed-loop management process.',
+                            'With 3D visualization and 4D construction simulation, VPMS turns project management from report-driven tracking into scenario-driven decision-making.'
+                        ],
+                        screenshotsLabel: ['Project Overview', 'Task Board', 'Execution Snapshot']
+                    },
+                    zh: {
+                        eyebrow: '可视化项目管理',
+                        subtitle: '面向大型工程建设的数字化与智能化管理平台，让项目从报表驱动走向场景驱动。',
+                        overview: [
+                            'VPMS（可视化工程项目管理系统）是一款面向大型工程建设的数字化与智能化管理平台，融合 BIM、GIS、物联网与数据智能技术，将传统工程管理升级为“可视、可控、可预测”的全新模式。',
+                            '系统以“全生命周期管理”为核心，覆盖设计、施工到交付全过程，打通进度、质量、成本、物料等关键要素，实现从数据采集到决策支持的闭环管理。',
+                            '通过三维可视化与 4D 施工模拟，VPMS 将工程从“报表驱动”升级为“场景驱动”，让复杂工程一目了然、实时掌控。'
+                        ],
+                        screenshotsLabel: ['项目总览', '任务看板', '执行快照']
+                    },
+                    ar: {
+                        eyebrow: 'إدارة مشاريع مرئية',
+                        subtitle: 'منصة رقمية وذكية للمشاريع الهندسية الكبيرة تنقل الإدارة من التقارير إلى المشاهد التشغيلية.',
+                        overview: [
+                            'VPMS مخصص للمشاريع الهندسية واسعة النطاق، ويجمع بين BIM وGIS وإنترنت الأشياء وذكاء البيانات لجعل التنفيذ أكثر وضوحًا وتحكمًا وقابلية للتنبؤ.',
+                            'يركز النظام على إدارة دورة الحياة الكاملة من التصميم والبناء حتى التسليم، مع ربط الجدول الزمني والجودة والتكلفة والمواد في حلقة إدارة موحدة.',
+                            'ومن خلال التصور ثلاثي الأبعاد ومحاكاة البناء رباعية الأبعاد، يحول VPMS إدارة المشروع من نمط يعتمد على التقارير إلى نمط يعتمد على المشاهد والقرارات الديناميكية.'
+                        ],
+                        screenshotsLabel: ['نظرة عامة على المشروع', 'لوحة المهام', 'لقطة تنفيذ']
+                    }
+                }
+            },
+            blms: {
+                id: 'blms',
+                name: 'BLMS',
+                icon: 'BL',
+                accentA: '#553723',
+                accentB: '#efc98a',
+                screenshots: [
+                    '../assets/products/blms/view-1.svg',
+                    '../assets/products/blms/view-2.svg',
+                    '../assets/products/blms/view-3.svg'
+                ],
+                tags: ['Budget', 'Approval', 'Tracking', 'Forecast', 'Governance'],
+                locales: {
+                    en: {
+                        eyebrow: 'Budget Lifecycle',
+                        subtitle: 'A budget lifecycle management system that unifies planning, execution, approval, and tracking.',
+                        overview: [
+                            'BLMS focuses on budget lifecycle management by bringing budget planning, allocation, approval, execution, and analysis into one platform.',
+                            'It helps finance and business teams work with a shared budget view, improving transparency, traceability, and coordination across departments.'
+                        ],
+                        screenshotsLabel: ['Budget Overview', 'Cost Tracking', 'Approval Flow']
+                    },
+                    zh: {
+                        eyebrow: '预算生命周期管理',
+                        subtitle: '预算生命周期管理系统，围绕预算编制、执行、审批和追踪构建统一财务管理视图。',
+                        overview: [
+                            'BLMS 聚焦预算生命周期管理，将预算编制、分解、审批、执行与分析整合到一个统一平台中，让财务管理从静态表格走向持续监控。',
+                            '系统帮助业务与财务形成同一套预算口径，提升预算透明度、执行可追溯性与跨部门协同效率。'
+                        ],
+                        screenshotsLabel: ['预算总览', '成本追踪', '审批流程']
+                    },
+                    ar: {
+                        eyebrow: 'إدارة دورة حياة الميزانية',
+                        subtitle: 'نظام لإدارة دورة حياة الميزانية يوحد التخطيط والتنفيذ والموافقة والتتبع.',
+                        overview: [
+                            'يركز BLMS على إدارة دورة حياة الميزانية من خلال جمع إعداد الميزانية وتوزيعها واعتمادها وتنفيذها وتحليلها في منصة واحدة.',
+                            'ويساعد فرق المالية والأعمال على العمل من خلال رؤية موحدة للميزانية، مما يحسن الشفافية وقابلية التتبع والتنسيق بين الإدارات.'
+                        ],
+                        screenshotsLabel: ['نظرة عامة على الميزانية', 'تتبع التكاليف', 'تدفق الموافقات']
+                    }
+                }
+            },
+            ipms: {
+                id: 'ipms',
+                name: 'IPMS',
+                icon: 'IP',
+                accentA: '#1c284f',
+                accentB: '#98b5ff',
+                screenshots: [
+                    '../assets/products/ipms/view-1.svg',
+                    '../assets/products/ipms/view-2.svg',
+                    '../assets/products/ipms/view-3.svg'
+                ],
+                tags: ['Strategy', 'Resources', 'Workflow', 'Standardization', 'Analytics'],
+                locales: {
+                    en: {
+                        eyebrow: 'Intelligent PM Center',
+                        subtitle: 'A strategy-driven intelligent project management hub that connects projects, resources, workflows, and people.',
+                        overview: [
+                            'IPMS is an intelligent project management center driven by strategy, turning fragmented execution into standardized, predictable, and continuously improvable delivery capability.',
+                            'It balances professional PM discipline with flexible adaptation to complex field scenarios, while also turning historical data and materials into reusable organizational assets.'
+                        ],
+                        screenshotsLabel: ['Intelligent Overview', 'Data Workspace', 'Decision Flow']
+                    },
+                    zh: {
+                        eyebrow: '智能项目中枢',
+                        subtitle: '以战略为核心驱动的智能化项目管理中枢，把项目、资源、流程与人员全面打通。',
+                        overview: [
+                            'IPMS 是一个以战略为核心驱动的智能化项目管理中枢，将项目、资源、流程与人员全面打通，让原本分散、不可控的项目执行，转变为标准化、可预测、可持续优化的业务能力。',
+                            '系统通过高度可视化与灵活定制能力，既遵循专业项目管理规范，又深度贴合油田等复杂业务场景，实现标准化与个性化的平衡。'
+                        ],
+                        screenshotsLabel: ['智能总览', '数据工作台', '决策流程']
+                    },
+                    ar: {
+                        eyebrow: 'مركز إدارة مشاريع ذكي',
+                        subtitle: 'مركز ذكي لإدارة المشاريع مدفوع بالاستراتيجية يربط المشاريع والموارد والعمليات والأفراد.',
+                        overview: [
+                            'IPMS هو مركز ذكي لإدارة المشاريع تقوده الاستراتيجية، يحول التنفيذ المجزأ وغير القابل للتحكم إلى قدرة تنفيذ معيارية وقابلة للتنبؤ والتحسين المستمر.',
+                            'كما يوازن بين معايير إدارة المشاريع الاحترافية والمرونة اللازمة للسيناريوهات التشغيلية المعقدة، ويحول البيانات التاريخية والمواد إلى أصول قابلة لإعادة الاستخدام.'
+                        ],
+                        screenshotsLabel: ['نظرة ذكية عامة', 'مساحة عمل البيانات', 'تدفق القرار']
+                    }
+                }
+            },
+            ezsign: {
+                id: 'ezsign',
+                name: 'EZsign',
+                icon: 'EZ',
+                accentA: '#21463e',
+                accentB: '#82d0c0',
+                screenshots: [
+                    '../assets/products/ezsign/view-1.svg',
+                    '../assets/products/ezsign/view-2.svg',
+                    '../assets/products/ezsign/view-3.svg'
+                ],
+                tags: ['PDF', 'OCR', 'Token', 'Certificate', 'Audit', 'Notification'],
+                locales: {
+                    en: {
+                        eyebrow: 'eSignature Platform',
+                        subtitle: 'A PDF-focused e-signature platform supporting multi-party signing, workflow control, and compliance traceability.',
+                        overview: [
+                            'EZsign focuses on PDF signing scenarios and supports multiple signers, sequential or parallel signing, CC, review, reminders, and external participant access.',
+                            'It supports handwritten signatures, stamps, and digital certificates, while also offering OCR, search, signature verification, and audit logging for compliance.'
+                        ],
+                        screenshotsLabel: ['Sign Overview', 'Workflow Queue', 'Signature Status']
+                    },
+                    zh: {
+                        eyebrow: '电子签名平台',
+                        subtitle: '聚焦 PDF 电子签场景的签署平台，支持多签署方、多流程模式与合规留痕。',
+                        overview: [
+                            'EZsign 聚焦 PDF 电子签场景，支持多签署方、顺序 / 并行签署、抄送与复核等协作方式，并可结合短信、邮件、站内信等渠道完成通知与催办。',
+                            '系统支持手写签名、印章、数字证书等多种签署形态，并具备 OCR 与全文检索能力，便于事后检索与合规留痕。'
+                        ],
+                        screenshotsLabel: ['签署总览', '流程队列', '签署状态']
+                    },
+                    ar: {
+                        eyebrow: 'منصة توقيع إلكتروني',
+                        subtitle: 'منصة توقيع إلكتروني تركز على PDF وتدعم تعدد الأطراف وتعدد المسارات والامتثال والتتبع.',
+                        overview: [
+                            'تركز EZsign على سيناريوهات التوقيع على ملفات PDF، وتدعم تعدد الموقّعين، والتوقيع المتسلسل أو المتوازي، والنسخ، والمراجعة، والتذكير، وإشراك المستخدمين الخارجيين.',
+                            'كما تدعم التوقيع اليدوي والأختام والشهادات الرقمية، وتوفر OCR والبحث الكامل والتحقق من التوقيع وسجلات التدقيق لدعم الامتثال.'
+                        ],
+                        screenshotsLabel: ['نظرة عامة على التوقيع', 'قائمة سير العمل', 'حالة التوقيع']
+                    }
+                }
+            },
+            hris: {
+                id: 'hris',
+                name: 'HRIS',
+                icon: 'HR',
+                accentA: '#51412c',
+                accentB: '#f1c98f',
+                screenshots: [
+                    '../assets/products/hris/view-1.svg',
+                    '../assets/products/hris/view-2.svg',
+                    '../assets/products/hris/view-3.svg'
+                ],
+                tags: ['Organization', 'Talent', 'Records', 'Workforce', 'Operations'],
+                locales: {
+                    en: {
+                        eyebrow: 'Human Resources System',
+                        subtitle: 'A human resources information system for global teams, improving organization, talent allocation, and employee data collaboration.',
+                        overview: [
+                            'HRIS is a digital platform for organizational and human resources management, bringing employee data, org structure, talent allocation, and core people workflows into one system.',
+                            'It helps enterprises improve organizational visibility and workforce efficiency across regions and teams.'
+                        ],
+                        screenshotsLabel: ['People Overview', 'Organization View', 'Talent Snapshot']
+                    },
+                    zh: {
+                        eyebrow: '人力资源系统',
+                        subtitle: '面向全球化团队的人力资源信息系统，提升组织管理、人才配置和员工信息协同效率。',
+                        overview: [
+                            'HRIS 是面向企业组织与人力资源管理的数字平台，用统一系统承载员工信息、组织结构、人才配置与基础流程协同。',
+                            '它帮助企业在跨区域、跨团队管理场景下提升组织透明度与管理效率。'
+                        ],
+                        screenshotsLabel: ['人员总览', '组织视图', '人才快照']
+                    },
+                    ar: {
+                        eyebrow: 'نظام موارد بشرية',
+                        subtitle: 'نظام معلومات للموارد البشرية للفرق العالمية يحسن إدارة التنظيم وتوزيع المواهب وتكامل بيانات الموظفين.',
+                        overview: [
+                            'HRIS منصة رقمية لإدارة الموارد البشرية والتنظيم، تجمع بيانات الموظفين والهيكل التنظيمي وتوزيع المواهب والعمليات الأساسية في نظام واحد.',
+                            'وتساعد الشركات على رفع شفافية التنظيم وكفاءة إدارة القوى العاملة عبر المناطق والفرق المختلفة.'
+                        ],
+                        screenshotsLabel: ['نظرة عامة على الأفراد', 'عرض الهيكل التنظيمي', 'لقطة المواهب']
+                    }
+                }
+            },
+            plms: {
+                id: 'plms',
+                name: 'PLMS',
+                icon: 'PL',
+                accentA: '#2c4050',
+                accentB: '#91c6cf',
+                screenshots: [
+                    '../assets/products/plms/view-1.svg',
+                    '../assets/products/plms/view-2.svg',
+                    '../assets/products/plms/view-3.svg'
+                ],
+                tags: ['Passport', 'Visa', 'Mobility', 'Compliance', 'Tracking'],
+                locales: {
+                    en: {
+                        eyebrow: 'Passport & Visa',
+                        subtitle: 'A passport and visa management system that improves international mobility tracking and compliance control.',
+                        overview: [
+                            'PLMS centralizes passport and visa management, tracking document status, processing progress, and compliance requirements for internationally mobile personnel.',
+                            'It gives enterprises better visibility into global mobility operations and reduces the risks caused by fragmented document management.'
+                        ],
+                        screenshotsLabel: ['Travel Overview', 'Visa Processing', 'Mobility Queue']
+                    },
+                    zh: {
+                        eyebrow: '护照与签证管理',
+                        subtitle: '护照和签证管理系统，提升国际人员流动、证件状态追踪与合规管理效率。',
+                        overview: [
+                            'PLMS 聚焦护照和签证管理，用统一平台跟踪国际人员的证件状态、办理进度与合规要求。',
+                            '系统帮助企业提升跨国人员流动的透明度，降低证件管理和时效跟踪的风险。'
+                        ],
+                        screenshotsLabel: ['出行总览', '签证办理', '流动队列']
+                    },
+                    ar: {
+                        eyebrow: 'إدارة الجوازات والتأشيرات',
+                        subtitle: 'نظام لإدارة الجوازات والتأشيرات يحسن تتبع التنقل الدولي والامتثال.',
+                        overview: [
+                            'يركز PLMS على إدارة الجوازات والتأشيرات من خلال منصة موحدة لتتبع حالة الوثائق وتقدم المعالجة ومتطلبات الامتثال للموظفين الدوليين.',
+                            'ويساعد الشركات على رفع شفافية التنقل الدولي وتقليل المخاطر الناتجة عن تشتت إدارة الوثائق.'
+                        ],
+                        screenshotsLabel: ['نظرة عامة على السفر', 'معالجة التأشيرات', 'قائمة التنقل']
+                    }
+                }
+            }
+        };
+
+        function getQueryValue(key) {
+            const params = new URLSearchParams(window.location.search);
+            return params.get(key);
+        }
+
+        function escapeHtml(value) {
+            return String(value)
+                .replaceAll('&', '&amp;')
+                .replaceAll('<', '&lt;')
+                .replaceAll('>', '&gt;')
+                .replaceAll('"', '&quot;')
+                .replaceAll("'", '&#39;');
+        }
+
+        function resolveLang() {
+            const lang = (getQueryValue('lang') || 'en').toLowerCase();
+            return ['en', 'zh', 'ar'].includes(lang) ? lang : 'en';
+        }
+
+        function renderProduct(product, lang) {
+            const ui = pageUi[lang] || pageUi.en;
+            const locale = product.locales?.[lang] || product.locales?.en || {};
+
+            document.documentElement.lang = lang === 'zh' ? 'zh-CN' : lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            document.body.setAttribute('dir', document.documentElement.dir);
+            document.title = `${product.name} | Anton Oilfield DMCC`;
+
+            document.getElementById('back-link').textContent = lang === 'ar' ? `${ui.back} →` : `← ${ui.back}`;
+            document.getElementById('topbar-note').textContent = ui.note;
+            document.getElementById('eyebrow').textContent = locale.eyebrow || ui.defaultEyebrow;
+            document.getElementById('app-icon').textContent = product.icon;
+            document.getElementById('app-icon').style.background = `linear-gradient(135deg, ${product.accentA}, ${product.accentB})`;
+            document.getElementById('app-title').textContent = product.name;
+            document.getElementById('app-subtitle').textContent = locale.subtitle || '';
+            document.getElementById('screenshots-title').textContent = ui.screenshots;
+            document.getElementById('overview-title').textContent = ui.overview;
+
+            document.getElementById('tag-row').innerHTML = (product.tags || []).map((tag) => `
+                <span class="tag">${escapeHtml(tag)}</span>
+            `).join('');
+
+            document.getElementById('overview-copy').innerHTML = (locale.overview || []).map((paragraph) => `
+                <p>${escapeHtml(paragraph)}</p>
+            `).join('');
+
+            document.getElementById('shot-strip').innerHTML = (product.screenshots || []).map((src, index) => `
+                <div class="shot">
+                    <img src="${escapeHtml(src)}" alt="${escapeHtml(product.name)} screenshot ${index + 1}">
+                    <span>${escapeHtml((locale.screenshotsLabel || [])[index] || `Screenshot ${index + 1}`)}</span>
+                </div>
+            `).join('');
+        }
+
+        const productId = (getQueryValue('id') || 'vgis').toLowerCase();
+        const lang = resolveLang();
+        const embedMode = getQueryValue('embed') === '1';
+        const product = productCatalog[productId] || productCatalog.vgis;
+
+        if (embedMode) {
+            document.body.classList.add('embed-mode');
+        }
+
+        renderProduct(product, lang);
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900">
+  <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#143d5a"/><stop offset=".52" stop-color="#245d8c"/><stop offset="1" stop-color="#8fc8d8"/></linearGradient></defs>
+  <rect width="1600" height="900" fill="url(#bg)"/><rect width="1600" height="900" fill="#08131d" fill-opacity=".2"/>
+  <rect x="106" y="96" width="1388" height="706" rx="30" fill="#081f2e" fill-opacity=".34" stroke="#fff7ed" stroke-opacity=".24"/>
+  <rect x="154" y="142" width="470" height="612" rx="28" fill="#fff7ed" fill-opacity=".11"/><rect x="658" y="142" width="788" height="162" rx="24" fill="#fff7ed" fill-opacity=".11"/><rect x="658" y="336" width="788" height="418" rx="28" fill="#081f2e" fill-opacity=".32"/>
+  <rect x="204" y="212" width="180" height="18" rx="9" fill="#fff7ed" fill-opacity=".82"/><rect x="204" y="264" width="212" height="14" rx="7" fill="#fff7ed" fill-opacity=".3"/><rect x="204" y="326" width="362" height="24" rx="12" fill="#1f5b88"/><rect x="204" y="374" width="312" height="24" rx="12" fill="#2d77a7"/><rect x="204" y="422" width="274" height="24" rx="12" fill="#8fc8d8"/><rect x="204" y="470" width="334" height="24" rx="12" fill="#dcb36a"/>
+  <circle cx="842" cy="530" r="96" fill="#8fc8d8" fill-opacity=".3"/><circle cx="1072" cy="576" r="72" fill="#dcb36a" fill-opacity=".42"/><circle cx="1248" cy="470" r="52" fill="#fff7ed" fill-opacity=".22"/><path d="M786 648c134-208 276-244 466-278" stroke="#fff7ed" stroke-opacity=".66" stroke-width="16" stroke-linecap="round" fill="none"/>
+  <text x="154" y="736" fill="#fff7ed" fill-opacity=".9" font-size="108" font-family="Arial, sans-serif" font-weight="700">VPMS</text>
+  <text x="1322" y="736" text-anchor="end" fill="#fff7ed" fill-opacity=".82" font-size="42" font-family="Arial, sans-serif">Task Board</text>
+</svg>

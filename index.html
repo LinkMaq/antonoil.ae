@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anton Oil - Dubai IT Regional Hub</title>
+    <title>Anton Oilfield DMCC - Dubai IT Regional Hub</title>
     <meta name="google-analytics-id" content="G-XXXXXXXXXX">
     <!-- Tailwind CSS for rapid styling -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -663,12 +663,12 @@
         }
 
         .system-modal-dialog {
-            width: min(100%, 1180px);
-            min-height: 100%;
+            width: min(100%, 1320px);
+            height: min(92dvh, 980px);
             border-radius: 32px;
             overflow: hidden;
             display: grid;
-            grid-template-rows: minmax(28rem, 1.45fr) minmax(14rem, 0.55fr);
+            grid-template-rows: auto minmax(0, 1fr);
             background: var(--bg-card);
             border: 1px solid var(--border-soft);
             box-shadow: var(--shadow-strong);
@@ -680,148 +680,59 @@
             transform: translateY(0) scale(1);
         }
 
-        .system-modal-media {
-            position: relative;
-            min-height: 28rem;
-            overflow: hidden;
-            background: #0c1c22;
-        }
-
-        .system-modal-slides {
-            position: absolute;
-            inset: 0;
-        }
-
-        .system-modal-slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 0.45s ease;
-            background-image:
-                linear-gradient(160deg, rgba(8, 16, 21, 0.18), rgba(8, 16, 21, 0.48)),
-                var(--slide-gradient, linear-gradient(135deg, rgba(15, 118, 110, 0.6), rgba(185, 138, 63, 0.5)));
-            background-size: cover;
-            background-position: center;
-        }
-
-        .system-modal-slide.is-active {
-            opacity: 1;
-        }
-
-        .system-modal-slide::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background:
-                radial-gradient(circle at top right, rgba(255, 255, 255, 0.28), transparent 28%),
-                linear-gradient(140deg, transparent 0%, rgba(255, 255, 255, 0.08) 34%, transparent 58%);
-        }
-
-        .system-modal-slide::after {
-            content: "";
-            position: absolute;
-            inset: auto 0 0 0;
-            height: 44%;
-            background: linear-gradient(180deg, transparent 0%, rgba(6, 14, 18, 0.38) 100%);
-        }
-
-        .system-modal-art {
-            position: absolute;
-            right: 2rem;
-            bottom: 1rem;
-            font-size: clamp(6rem, 14vw, 11rem);
-            line-height: 0.9;
-            font-weight: 700;
-            letter-spacing: -0.08em;
-            color: rgba(255, 248, 240, 0.18);
-        }
-
-        .system-modal-viewport-label {
-            position: absolute;
-            left: 2rem;
-            bottom: 2rem;
-            z-index: 2;
-            padding: 0.55rem 0.9rem;
-            border-radius: 999px;
-            border: 1px solid rgba(255, 248, 240, 0.16);
-            background: rgba(255, 248, 240, 0.12);
-            backdrop-filter: blur(10px);
-            color: rgba(255, 248, 240, 0.92);
-            font-size: 0.75rem;
-            letter-spacing: 0.16em;
-            text-transform: uppercase;
-        }
-
-        .system-modal-dots {
-            position: absolute;
-            right: 2rem;
-            bottom: 2rem;
-            z-index: 2;
-            display: flex;
-            gap: 0.55rem;
-        }
-
-        .system-modal-dot {
-            width: 0.6rem;
-            height: 0.6rem;
-            border-radius: 999px;
-            border: 0;
-            background: rgba(255, 248, 240, 0.28);
-        }
-
-        .system-modal-dot.is-active {
-            background: rgba(255, 248, 240, 0.9);
-        }
-
         .system-modal-panel {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            gap: 2rem;
-            padding: 2rem;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1.5rem;
+            padding: 1.2rem 1.4rem;
             background:
-                linear-gradient(180deg, rgba(255, 250, 243, 0.82), rgba(247, 236, 221, 0.64)),
+                linear-gradient(180deg, rgba(255, 250, 243, 0.9), rgba(247, 236, 221, 0.82)),
                 var(--bg-card);
+            border-bottom: 1px solid rgba(15, 118, 110, 0.08);
         }
 
         .system-modal-copy {
             display: flex;
-            flex-direction: column;
+            align-items: center;
             gap: 1rem;
+            min-width: 0;
         }
 
         .system-modal-head {
             display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            gap: 1.5rem;
+            align-items: center;
+            gap: 1rem;
+            min-width: 0;
         }
 
         .system-modal-heading {
             display: flex;
             flex-direction: column;
-            gap: 0.75rem;
+            gap: 0.3rem;
             min-width: 0;
         }
 
         .system-modal-label {
             color: var(--accent-primary);
-            font-size: 0.78rem;
-            letter-spacing: 0.16em;
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
             text-transform: uppercase;
         }
 
         .system-modal-title {
             color: var(--text-primary);
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            line-height: 0.95;
+            font-size: clamp(1.35rem, 2.4vw, 2rem);
+            line-height: 1;
+            margin: 0;
         }
 
         .system-modal-desc {
             color: var(--text-secondary);
-            font-size: 1rem;
-            line-height: 1.8;
-            max-width: 32rem;
+            font-size: 0.92rem;
+            line-height: 1.5;
+            max-width: 40rem;
+            margin: 0;
         }
 
         .system-modal-actions {
@@ -829,13 +740,14 @@
             align-items: center;
             justify-content: flex-end;
             flex-shrink: 0;
+            gap: 0.75rem;
         }
 
         .system-cta {
             display: inline-flex;
             align-items: center;
             gap: 0.45rem;
-            padding: 0.55rem 1rem;
+            padding: 0.7rem 1rem;
             border-radius: 999px;
             background: var(--accent-primary);
             color: #fffaf2;
@@ -850,9 +762,29 @@
             font-size: 0.92rem;
         }
 
-        .system-modal-note {
-            color: var(--text-soft);
-            font-size: 0.92rem;
+        .system-modal-close {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.7rem;
+            height: 2.7rem;
+            border-radius: 999px;
+            border: 1px solid rgba(15, 118, 110, 0.14);
+            background: rgba(255, 255, 255, 0.66);
+            color: var(--text-primary);
+        }
+
+        .system-modal-embed {
+            min-height: 0;
+            background: #f6f2ea;
+        }
+
+        .system-modal-frame {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+            background: #f6f2ea;
         }
 
         body.system-modal-open {
@@ -1094,8 +1026,8 @@
             }
 
             .system-modal-dialog {
-                grid-template-rows: minmax(20rem, 1.2fr) auto;
-                min-height: calc(100dvh - 1rem);
+                width: min(100%, 1000px);
+                height: min(92dvh, 900px);
             }
 
         }
@@ -1201,60 +1133,37 @@
             }
 
             .system-modal-panel {
-                padding: 1.25rem;
-            }
-
-            .system-modal-head {
                 flex-direction: column;
                 align-items: flex-start;
-                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .system-modal-copy,
+            .system-modal-head {
+                width: 100%;
+                align-items: flex-start;
             }
 
             .system-modal-actions {
                 width: 100%;
-                justify-content: flex-start;
+                justify-content: space-between;
             }
 
             .system-modal-dialog {
-                min-height: calc(100dvh - 1rem);
-                grid-template-rows: minmax(16rem, 0.95fr) auto;
-            }
-
-            .system-modal-media {
-                min-height: 16rem;
-            }
-
-            .system-modal-art {
-                right: 1rem;
-                bottom: 0.75rem;
-                font-size: 4.5rem;
+                height: calc(100dvh - 1rem);
             }
 
             .system-modal-title {
-                font-size: 1.85rem;
-                line-height: 1;
+                font-size: 1.3rem;
             }
 
             .system-modal-desc {
-                font-size: 0.95rem;
-                line-height: 1.65;
+                font-size: 0.88rem;
             }
 
             .system-cta {
                 padding: 0.65rem 0.9rem;
                 font-size: 0.88rem;
-            }
-
-            .system-modal-viewport-label {
-                left: 1rem;
-                bottom: 1rem;
-                font-size: 0.68rem;
-                letter-spacing: 0.12em;
-            }
-
-            .system-modal-dots {
-                right: 1rem;
-                bottom: 1rem;
             }
 
             .pattern-panel {
@@ -1294,8 +1203,8 @@
             <div class="flex items-center">
                 <!-- Logo -->
                 <div class="text-2xl font-bold tracking-tighter flex items-center gap-2">
-                    <span class="site-logo-main">ANTON</span>
-                    <span class="site-logo-accent font-light">OIL</span>
+                    <span class="site-logo-main">ANTON OILFIELD</span>
+                    <span class="site-logo-accent font-light">DMCC</span>
                 </div>
             </div>
             
@@ -1351,7 +1260,7 @@
             <div data-aos="fade-up" data-aos-duration="1000" class="hero-content">
                 <div class="hero-eyebrow" id="hero-tag">Dubai Regional IT Hub</div>
                 <h1 class="hero-title text-5xl lg:text-7xl leading-tight mb-8" id="hero-title">
-                    Smart regional operations.<br><span class="hero-title-accent">Built for Anton in Dubai.</span>
+                    Smart regional operations.<br><span class="hero-title-accent">Built for Anton Oilfield DMCC in Dubai.</span>
                 </h1>
                 <div class="hero-actions">
                     <a href="#systems" class="btn-primary px-8 py-4 font-semibold text-lg" id="hero-btn1">Explore Platform</a>
@@ -1378,7 +1287,7 @@
         <div class="container mx-auto px-6 lg:px-12 relative z-10">
             <div class="pattern-panel" data-aos="fade-up">
                 <p class="section-copy text-xl lg:text-2xl leading-relaxed" id="about-desc">
-                    Strategically headquartered in Dubai, our regional operations platform is dedicated to maintaining the technical superiority and professional integrity of Anton's IT infrastructure. By utilizing Dubai's robust business ecosystem, we foster synergistic development and unified management for projects throughout the Middle East and worldwide emerging sectors.
+                    Strategically headquartered in Dubai, our regional operations platform is dedicated to maintaining the technical superiority and professional integrity of Anton Oilfield DMCC's IT infrastructure. By utilizing Dubai's robust business ecosystem, we foster synergistic development and unified management for projects throughout the Middle East and worldwide emerging sectors.
                 </p>
             </div>
         </div>
@@ -1402,25 +1311,29 @@
 
     <div class="system-modal" id="system-modal" aria-hidden="true">
         <div class="system-modal-dialog">
-            <div class="system-modal-media" id="system-modal-media">
-                <div class="system-modal-slides" id="system-modal-slides"></div>
-                <div class="system-modal-art" id="system-modal-art">VGIS</div>
-                <div class="system-modal-viewport-label" id="system-modal-viewport-label">Product Views</div>
-                <div class="system-modal-dots" id="system-modal-dots"></div>
-            </div>
             <div class="system-modal-panel">
                 <div class="system-modal-copy">
                     <div class="system-modal-head">
                         <div class="system-modal-heading">
                             <div class="system-modal-label" id="system-modal-label">Platform Product</div>
                             <h3 class="section-title system-modal-title" id="system-modal-title">VGIS</h3>
-                        </div>
-                        <div class="system-modal-actions">
-                            <a href="product/vgis" class="system-cta" id="system-modal-cta" target="_blank" rel="noopener noreferrer">Open Product</a>
+                            <p class="system-modal-desc" id="system-modal-desc">Digital Oilfield Spatial Management Platform. Unified spatial layer anchoring data to physical assets.</p>
                         </div>
                     </div>
-                    <p class="system-modal-desc" id="system-modal-desc">Digital Oilfield Spatial Management Platform. Unified spatial layer anchoring data to physical assets.</p>
                 </div>
+                <div class="system-modal-actions">
+                    <a href="product/index.html?id=vgis" class="system-cta" id="system-modal-cta" target="_blank" rel="noopener noreferrer">Open Product</a>
+                    <button type="button" class="system-modal-close" id="system-modal-close" aria-label="Close product panel">✕</button>
+                </div>
+            </div>
+            <div class="system-modal-embed">
+                <iframe
+                    class="system-modal-frame"
+                    id="system-modal-frame"
+                    src="about:blank"
+                    title="Product preview"
+                    loading="lazy"
+                ></iframe>
             </div>
         </div>
     </div>
@@ -1428,7 +1341,7 @@
     <!-- Footer -->
     <footer id="footer" class="site-footer py-12 transition-colors duration-300">
         <div class="footer-copy container mx-auto px-6 lg:px-12 text-center text-sm">
-            <p id="footer-text">&copy; 2026 Anton Oilfield Services Group. All Rights Reserved. Dubai IT Regional Operations.</p>
+            <p id="footer-text">&copy; 2026 Anton Oilfield DMCC. All Rights Reserved. Dubai IT Regional Operations.</p>
         </div>
     </footer>
 
@@ -1541,18 +1454,18 @@
             en: {
                 nav: ['Contact Us'],
                 heroTag: 'Dubai Regional IT Hub',
-                heroTitle: 'Smart regional operations.<br><span class="hero-title-accent">Built for Anton in Dubai.</span>',
+                heroTitle: 'Smart regional operations.<br><span class="hero-title-accent">Built for Anton Oilfield DMCC in Dubai.</span>',
                 heroBtn1: 'Explore Platform',
                 heroBtn2: 'View Architecture',
                 heroSlides: [
                     {
                         tag: 'Middle East Strategy',
-                        title: 'Powering Anton Oil\'s regional strategy.<br><span class="hero-title-accent">Built from Dubai for the Middle East.</span>',
+                        title: 'Powering Anton Oilfield DMCC\'s regional strategy.<br><span class="hero-title-accent">Built from Dubai for the Middle East.</span>',
                         btn1: 'Explore Strategy',
                         btn1Href: '#about',
                         btn2: 'View Architecture',
                         btn2Href: '#systems',
-                        story: 'Anton Oil Middle East strategic operations platform'
+                        story: 'Anton Oilfield DMCC Middle East strategic operations platform'
                     },
                     {
                         tag: 'Leading Technology',
@@ -1583,20 +1496,20 @@
                     }
                 ],
                 heroStories: [
-                    'Anton Oil Middle East strategic operations platform',
+                    'Anton Oilfield DMCC Middle East strategic operations platform',
                     'Internationally leading digital and AI technologies',
                     'Professional services for secure field execution',
                     'Dubai-localized cloud infrastructure and delivery'
                 ],
                 heroCardTitle: 'Digital Twin & AI Hub',
-                heroCardDesc: 'Connecting seamlessly with Anton\'s global entities for unparalleled data synergy and predictive analytics.',
+                heroCardDesc: 'Connecting seamlessly with Anton Oilfield DMCC\'s global entities for unparalleled data synergy and predictive analytics.',
                 aboutTitle: 'Leading the Future of Autonomous Oilfields',
-                aboutDesc: 'Strategically headquartered in Dubai, our regional operations platform integrates advanced Machine Learning and IoT to maintain the technical superiority of Anton\'s infrastructure. We foster synergistic development and unified autonomous management for projects throughout the Middle East and worldwide emerging sectors.',
+                aboutDesc: 'Strategically headquartered in Dubai, our regional operations platform integrates advanced Machine Learning and IoT to maintain the technical superiority of Anton Oilfield DMCC\'s infrastructure. We foster synergistic development and unified autonomous management for projects throughout the Middle East and worldwide emerging sectors.',
                 systemsTitle: 'Next-Gen IT Infrastructure',
                 systemsDesc: 'A unified suite of cloud-native, AI-powered applications empowering our engineering and enterprise management across the globe.',
-                footerText: '&copy; 2026 Anton Oilfield Services Group. All Rights Reserved. AI & Data Operations Hub - Dubai.',
+                footerText: '&copy; 2026 Anton Oilfield DMCC. All Rights Reserved. AI & Data Operations Hub - Dubai.',
                 systems: [
-                    { name: 'VGIS', desc: 'Digital Oilfield Spatial Management Platform. Unified spatial layer anchoring data to physical assets.' },
+                    { name: 'VGIS', desc: 'Spatial digital twin platform for oilfields, unifying production, safety, equipment, and logistics data on one operational map.' },
                     { name: 'VPMS', desc: 'Visualized Project Management System for real-time engineering oversight.' },
                     { name: 'BLMS', desc: 'Budget Lifecycle Management System ensuring precision in financial administration.' },
                     { name: 'IPMS', desc: 'Intelligent Project Management System powered by advanced analytics.' },
@@ -1663,7 +1576,7 @@
                 systemsDesc: '统一的 AI 云原生应用矩阵，全面智能化赋能一线工程执行与高阶企业管理。',
                 footerText: '&copy; 2026 安东石油技术（集团） 版权所有 | 迪拜 AI 与数据运营中心',
                 systems: [
-                    { name: 'VGIS', desc: '数字油田空间管理平台。构建统一空间图层，将数据锚定至物理资产。' },
+                    { name: 'VGIS', desc: '面向油田的空间化数字孪生平台，将生产、安全、设备与物流信息统一整合到一张图上。' },
                     { name: 'VPMS', desc: '可视化工程项目管理系统，实现工程进度的实时监督与精准把控。' },
                     { name: 'BLMS', desc: '预算生命周期管理系统，确保跨国财务管理的合规与精细化。' },
                     { name: 'IPMS', desc: '智能项目管理系统，依托先进分析技术驱动的高效项目追踪。' },
@@ -1730,7 +1643,7 @@
                 systemsDesc: 'مجموعة موحدة سحابية مدعمة بالذكاء الاصطناعي لدفع الهندسة عبر العالم.',
                 footerText: '&copy; 2026 مجموعة أنطون. جميع الحقوق محفوظة. مركز عمليات الذكاء الاصطناعي - دبي.',
                 systems: [
-                    { name: 'VGIS', desc: 'منصة إدارة المساحات لحقول النفط الرقمية، ربط البيانات بالأصول المادية.' },
+                    { name: 'VGIS', desc: 'منصة توأم رقمي مكاني لحقول النفط توحد بيانات الإنتاج والسلامة والمعدات والخدمات اللوجستية على خريطة تشغيلية واحدة.' },
                     { name: 'VPMS', desc: 'نظام إدارة المشاريع الهندسية المرئية للإشراف المباشر.' },
                     { name: 'BLMS', desc: 'نظام إدارة دورة حياة الميزانية لضمان الدقة الإدارية المالية.' },
                     { name: 'IPMS', desc: 'نظام إدارة المشاريع الذكي المدعوم بالتحليلات المتقدمة.' },
@@ -1757,49 +1670,56 @@
                 art: 'VGIS',
                 colSpan: 5,
                 rowSpan: 3,
-                href: 'https://vgis.antonoil.ae/vgis',
+                href: 'product/index.html?id=vgis',
+                demoHref: 'https://vgis.antonoil.ae/vgis',
                 gradient: 'linear-gradient(135deg, #0b5f6c 0%, #17837d 42%, #d2a24f 100%)'
             },
             VPMS: {
                 art: 'VPMS',
                 colSpan: 4,
                 rowSpan: 2,
-                href: 'https://vpms.antonoil.ae',
+                href: 'product/index.html?id=vpms',
+                demoHref: 'https://vpms.antonoil.ae',
                 gradient: 'linear-gradient(135deg, #143d5a 0%, #245d8c 48%, #8fc8d8 100%)'
             },
             BLMS: {
                 art: 'BLMS',
                 colSpan: 3,
                 rowSpan: 2,
-                href: 'https://blms.antonoil.ae',
+                href: 'product/index.html?id=blms',
+                demoHref: 'https://blms.antonoil.ae',
                 gradient: 'linear-gradient(135deg, #553723 0%, #9f5d35 42%, #efc98a 100%)'
             },
             IPMS: {
                 art: 'IPMS',
                 colSpan: 4,
                 rowSpan: 3,
-                href: 'https://ipms.antonoil.ae',
+                href: 'product/index.html?id=ipms',
+                demoHref: 'https://ipms.antonoil.ae',
                 gradient: 'linear-gradient(135deg, #1c284f 0%, #3c4fb5 50%, #98b5ff 100%)'
             },
             EZsign: {
                 art: 'EZ',
                 colSpan: 3,
                 rowSpan: 2,
-                href: 'https://ezsign.antonoil.ae',
+                href: 'product/index.html?id=ezsign',
+                demoHref: 'https://ezsign.antonoil.ae',
                 gradient: 'linear-gradient(135deg, #21463e 0%, #2f7f72 40%, #82d0c0 100%)'
             },
             HRIS: {
                 art: 'HR',
                 colSpan: 4,
                 rowSpan: 2,
-                href: 'https://hris.antonoil.ae',
+                href: 'product/index.html?id=hris',
+                demoHref: 'https://hris.antonoil.ae',
                 gradient: 'linear-gradient(135deg, #51412c 0%, #947553 40%, #f1c98f 100%)'
             },
             PLMS: {
                 art: 'PLMS',
                 colSpan: 5,
                 rowSpan: 2,
-                href: 'https://plms.antonoil.ae',
+                href: 'product/index.html?id=plms',
+                demoHref: 'https://plms.antonoil.ae',
                 gradient: 'linear-gradient(135deg, #2c4050 0%, #45657c 40%, #91c6cf 100%)'
             }
         };
@@ -1833,8 +1753,6 @@
             }
         };
         let activeSystemName = null;
-        let systemModalSlideIndex = 0;
-        let systemModalSlideTimer = null;
 
         const consentI18n = {
             en: {
@@ -2069,48 +1987,27 @@
                 colSpan: visual.colSpan || 4,
                 rowSpan: visual.rowSpan || 2,
                 href: visual.href || '#footer',
+                demoHref: visual.demoHref || visual.href || '#footer',
                 gradient: visual.gradient || fallbackGradients[index % fallbackGradients.length]
             };
         }
 
-        function getSystemSlides(name) {
-            const visual = getSystemVisual(name);
-            return [
-                visual.gradient,
-                `linear-gradient(135deg, rgba(255,255,255,0.08), rgba(255,255,255,0)), ${visual.gradient}`,
-                `linear-gradient(135deg, rgba(9,22,28,0.08), rgba(9,22,28,0.22)), ${visual.gradient}`
-            ];
+        function getSystemId(name) {
+            return (name || '').toLowerCase();
         }
 
-        function stopSystemModalSlideshow() {
-            if (systemModalSlideTimer) {
-                clearInterval(systemModalSlideTimer);
-                systemModalSlideTimer = null;
+        function getSystemProductUrl(name, options = {}) {
+            const { embed = false } = options;
+            const id = getSystemId(name);
+            if (!id) return '#footer';
+            const params = new URLSearchParams({
+                id,
+                lang: currentLanguage
+            });
+            if (embed) {
+                params.set('embed', '1');
             }
-        }
-
-        function setSystemModalSlide(index) {
-            const slides = Array.from(document.querySelectorAll('.system-modal-slide'));
-            const dots = Array.from(document.querySelectorAll('.system-modal-dot'));
-            if (!slides.length) return;
-
-            systemModalSlideIndex = ((index % slides.length) + slides.length) % slides.length;
-            slides.forEach((slide, slideIndex) => {
-                slide.classList.toggle('is-active', slideIndex === systemModalSlideIndex);
-            });
-            dots.forEach((dot, dotIndex) => {
-                dot.classList.toggle('is-active', dotIndex === systemModalSlideIndex);
-            });
-        }
-
-        function startSystemModalSlideshow() {
-            stopSystemModalSlideshow();
-            const slides = document.querySelectorAll('.system-modal-slide');
-            if (slides.length < 2) return;
-
-            systemModalSlideTimer = window.setInterval(() => {
-                setSystemModalSlide(systemModalSlideIndex + 1);
-            }, 2600);
+            return `product/index.html?${params.toString()}`;
         }
 
         function renderSystems(dict) {
@@ -2155,49 +2052,30 @@
 
             const visual = getSystemVisual(system.name);
             const modal = document.getElementById('system-modal');
-            const modalMedia = document.getElementById('system-modal-media');
             const modalCta = document.getElementById('system-modal-cta');
-            const modalSlides = document.getElementById('system-modal-slides');
-            const modalDots = document.getElementById('system-modal-dots');
-            const gradients = getSystemSlides(system.name);
+            const modalFrame = document.getElementById('system-modal-frame');
+            const demoUrl = visual.demoHref || '#footer';
+            const embedUrl = getSystemProductUrl(system.name, { embed: true });
 
-            if (modalMedia) {
-                modalMedia.style.setProperty('--system-gradient', visual.gradient);
-            }
-
-            if (modalSlides) {
-                modalSlides.innerHTML = gradients.map((gradient, index) => `
-                    <div class="system-modal-slide${index === 0 ? ' is-active' : ''}" style="--slide-gradient:${gradient};"></div>
-                `).join('');
-            }
-
-            if (modalDots) {
-                modalDots.innerHTML = gradients.map((_, index) => `
-                    <button
-                        type="button"
-                        class="system-modal-dot${index === 0 ? ' is-active' : ''}"
-                        data-system-slide="${index}"
-                        aria-label="${(ui.slides || [])[index] || `Slide ${index + 1}`}"
-                    ></button>
-                `).join('');
-            }
-
-            updateElementContent('system-modal-art', visual.art);
             updateElementContent('system-modal-label', ui.label);
             updateElementContent('system-modal-title', system.name);
             updateElementContent('system-modal-desc', system.desc);
-            updateElementContent('system-modal-viewport-label', ui.views);
-            setSystemModalSlide(0);
 
             if (modalCta) {
-                modalCta.textContent = visual.href === '#footer' ? ui.request : ui.open;
-                modalCta.setAttribute('href', visual.href);
+                modalCta.textContent = ui.request;
+                modalCta.setAttribute('href', demoUrl);
                 modalCta.setAttribute('target', '_blank');
                 modalCta.setAttribute('rel', 'noopener noreferrer');
             }
 
+            if (modalFrame) {
+                modalFrame.setAttribute('src', embedUrl);
+                modalFrame.setAttribute('title', `${system.name} product preview`);
+            }
+
             if (modal) {
                 modal.setAttribute('aria-hidden', 'false');
+                modal.style.setProperty('--system-gradient', visual.gradient);
             }
         }
 
@@ -2206,14 +2084,13 @@
             syncSystemModalContent();
             document.getElementById('system-modal')?.classList.add('is-open');
             document.body.classList.add('system-modal-open');
-            startSystemModalSlideshow();
             trackEvent('system_open', { system_name: systemName });
         }
 
         function closeSystemModal() {
-            stopSystemModalSlideshow();
             document.getElementById('system-modal')?.classList.remove('is-open');
             document.getElementById('system-modal')?.setAttribute('aria-hidden', 'true');
+            document.getElementById('system-modal-frame')?.setAttribute('src', 'about:blank');
             document.body.classList.remove('system-modal-open');
             activeSystemName = null;
         }
@@ -2232,12 +2109,9 @@
                 if (event.target === modal) {
                     closeSystemModal();
                 }
-
-                const dot = event.target.closest('[data-system-slide]');
-                if (!dot) return;
-                setSystemModalSlide(Number(dot.getAttribute('data-system-slide')));
-                startSystemModalSlideshow();
             });
+
+            document.getElementById('system-modal-close')?.addEventListener('click', closeSystemModal);
 
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape') {
