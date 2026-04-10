@@ -533,7 +533,7 @@
             box-shadow: var(--shadow-soft);
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: flex-start;
             gap: 1rem;
             text-align: left;
             isolation: isolate;
@@ -595,17 +595,37 @@
             z-index: 2;
         }
 
+        .system-card-bottom {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            flex: 1;
+            margin-top: 2.35rem;
+            min-height: 0;
+        }
+
+        .system-card-meta {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+            flex: 2;
+            min-height: 0;
+        }
+
         .system-label {
             display: inline-flex;
             width: fit-content;
-            padding: 0.45rem 0.75rem;
+            margin-top: 0.2rem;
+            padding: 0.3rem 0.58rem;
             border-radius: 999px;
             background: rgba(255, 247, 237, 0.18);
             border: 1px solid rgba(255, 247, 237, 0.22);
             backdrop-filter: blur(10px);
-            letter-spacing: 0.18em;
+            letter-spacing: 0.12em;
             text-transform: uppercase;
-            font-size: 0.7rem;
+            font-size: 0.62rem;
+            line-height: 1;
             color: rgba(255, 248, 240, 0.88);
         }
 
@@ -614,6 +634,7 @@
             font-family: 'Manrope', sans-serif;
             font-weight: 500;
             letter-spacing: -0.02em;
+            margin: 0;
         }
 
         body[dir="rtl"] .site-logo-main,
@@ -630,8 +651,11 @@
         }
 
         .system-card-text {
+            flex: 3;
+            margin-top: 0;
             color: rgba(252, 245, 236, 0.82);
             font-weight: 400;
+            overflow: hidden;
         }
 
         .system-modal {
@@ -688,7 +712,7 @@
 
         .system-modal-copy {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 1rem;
             min-width: 0;
         }
@@ -698,6 +722,29 @@
             align-items: center;
             gap: 1rem;
             min-width: 0;
+        }
+
+        .system-modal-app {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            min-width: 0;
+        }
+
+        .system-modal-icon {
+            width: 3.6rem;
+            height: 3.6rem;
+            border-radius: 1rem;
+            display: grid;
+            place-items: center;
+            flex-shrink: 0;
+            color: #fffaf2;
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26);
+            background: var(--system-gradient, linear-gradient(135deg, #0f766e, #d7ab59));
         }
 
         .system-modal-heading {
@@ -714,6 +761,12 @@
             text-transform: uppercase;
         }
 
+        .system-modal-eyebrow {
+            color: var(--text-soft);
+            font-size: 0.78rem;
+            line-height: 1.35;
+        }
+
         .system-modal-title {
             color: var(--text-primary);
             font-size: clamp(1.35rem, 2.4vw, 2rem);
@@ -727,6 +780,25 @@
             line-height: 1.5;
             max-width: 40rem;
             margin: 0;
+        }
+
+        .system-modal-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.55rem;
+            margin-top: 0.8rem;
+        }
+
+        .system-modal-tag {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.45rem 0.72rem;
+            border-radius: 999px;
+            background: rgba(15, 118, 110, 0.06);
+            border: 1px solid rgba(15, 118, 110, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.76rem;
+            line-height: 1;
         }
 
         .system-modal-actions {
@@ -1113,6 +1185,14 @@
                 padding: 1rem;
             }
 
+            .system-card-bottom {
+                margin-top: 1.9rem;
+            }
+
+            .system-card-meta {
+                flex: 2;
+            }
+
             .system-card-title {
                 font-size: 1.35rem;
             }
@@ -1134,6 +1214,11 @@
 
             .system-modal-copy,
             .system-modal-head {
+                width: 100%;
+                align-items: flex-start;
+            }
+
+            .system-modal-app {
                 width: 100%;
                 align-items: flex-start;
             }
@@ -1308,12 +1393,17 @@
             <div class="system-modal-panel">
                 <div class="system-modal-copy">
                     <div class="system-modal-head">
-                        <div class="system-modal-heading">
-                            <div class="system-modal-label" id="system-modal-label">Platform Product</div>
-                            <h3 class="section-title system-modal-title" id="system-modal-title">VGIS</h3>
-                            <p class="system-modal-desc" id="system-modal-desc">Digital Oilfield Spatial Management Platform. Unified spatial layer anchoring data to physical assets.</p>
+                        <div class="system-modal-app">
+                            <div class="system-modal-icon" id="system-modal-icon">VG</div>
+                            <div class="system-modal-heading">
+                                <div class="system-modal-label" id="system-modal-label">Platform Product</div>
+                                <div class="system-modal-eyebrow" id="system-modal-eyebrow"></div>
+                                <h3 class="section-title system-modal-title" id="system-modal-title">VGIS</h3>
+                                <p class="system-modal-desc" id="system-modal-desc">Digital Oilfield Spatial Management Platform. Unified spatial layer anchoring data to physical assets.</p>
+                            </div>
                         </div>
                     </div>
+                    <div class="system-modal-tags" id="system-modal-tags"></div>
                 </div>
                 <div class="system-modal-actions">
                     <a href="product/index.html?id=vgis" class="system-cta" id="system-modal-cta" target="_blank" rel="noopener noreferrer">Open Product</a>
@@ -1508,13 +1598,13 @@
                 systemsDesc: 'A unified suite of cloud-native, AI-powered applications empowering our engineering and enterprise management across the globe.',
                 footerText: '&copy; 2026 Anton Oilfield DMCC. All Rights Reserved. AI & Data Operations Hub - Dubai.',
                 systems: [
-                    { name: 'VGIS', desc: 'Spatial digital twin platform for oilfields, unifying production, safety, equipment, and logistics data on one operational map.' },
-                    { name: 'VPMS', desc: 'Visualized Project Management System for real-time engineering oversight.' },
-                    { name: 'BLMS', desc: 'Budget Lifecycle Management System ensuring precision in financial administration.' },
-                    { name: 'IPMS', desc: 'Strategy-driven project management hub connecting projects, resources, workflows, and people into standardized execution.' },
-                    { name: 'EZsign', desc: 'PDF e-signature platform supporting multi-party signing, external participants, OCR search, and compliant audit trails.' },
-                    { name: 'HRIS', desc: 'Human Resources Information System for optimized global talent management.' },
-                    { name: 'PLMS', desc: 'Passport and Visa Management System facilitating global mobility and compliance.' }
+                    { name: 'VGIS', type: 'Spatial Twin', desc: 'Spatial digital twin platform for oilfields, unifying production, safety, equipment, and logistics data on one operational map.' },
+                    { name: 'VPMS', type: 'Project Delivery', desc: 'Engineering delivery platform combining BIM, GIS, IoT, and 4D simulation to make complex projects visible, controllable, and predictable.' },
+                    { name: 'BLMS', type: 'Budget Control', desc: 'Budget Lifecycle Management System ensuring precision in financial administration.' },
+                    { name: 'IPMS', type: 'Project Intelligence', desc: 'Strategy-driven project management hub connecting projects, resources, workflows, and people into standardized execution.' },
+                    { name: 'EZsign', type: 'eSignature', desc: 'Enterprise PDF e-signature platform for multi-party workflows, external signing, OCR retrieval, signature verification, and audit-ready compliance.' },
+                    { name: 'HRIS', type: 'People Operations', desc: 'Human Resources Information System for optimized global talent management.' },
+                    { name: 'PLMS', type: 'Mobility Compliance', desc: 'Passport and Visa Management System facilitating global mobility and compliance.' }
                 ]
             },
             zh: {
@@ -1575,13 +1665,13 @@
                 systemsDesc: '统一的 AI 云原生应用矩阵，全面智能化赋能一线工程执行与高阶企业管理。',
                 footerText: '&copy; 2026 安东石油技术（集团） 版权所有 | 迪拜 AI 与数据运营中心',
                 systems: [
-                    { name: 'VGIS', desc: '面向油田的空间化数字孪生平台，将生产、安全、设备与物流信息统一整合到一张图上。' },
-                    { name: 'VPMS', desc: '可视化工程项目管理系统，实现工程进度的实时监督与精准把控。' },
-                    { name: 'BLMS', desc: '预算生命周期管理系统，确保跨国财务管理的合规与精细化。' },
-                    { name: 'IPMS', desc: '以战略为核心驱动的智能项目管理中枢，打通项目、资源、流程与人员。' },
-                    { name: 'EZsign', desc: '聚焦 PDF 电子签场景，支持多方签署、外部链接签署、OCR 检索与合规留痕。' },
-                    { name: 'HRIS', desc: '人力资源管理系统，优化安东全球化人才配置与团队发展。' },
-                    { name: 'PLMS', desc: '护照和签证管理系统，高效保障国际人员流动与属地合规。' }
+                    { name: 'VGIS', type: '空间孪生', desc: '面向油田的空间化数字孪生平台，将生产、安全、设备与物流信息统一整合到一张图上。' },
+                    { name: 'VPMS', type: '项目交付', desc: '面向大型工程建设的可视化项目交付平台，融合 BIM、GIS、物联网与 4D 模拟，实现工程执行可视、可控、可预测。' },
+                    { name: 'BLMS', type: '预算管控', desc: '预算生命周期管理系统，确保跨国财务管理的合规与精细化。' },
+                    { name: 'IPMS', type: '项目智能', desc: '以战略为核心驱动的智能项目管理中枢，打通项目、资源、流程与人员。' },
+                    { name: 'EZsign', type: '电子签署', desc: '面向企业文档流转的 PDF 电子签平台，支持多方协作签署、外部签署、OCR 检索、验真与合规留痕。' },
+                    { name: 'HRIS', type: '人力运营', desc: '人力资源管理系统，优化安东全球化人才配置与团队发展。' },
+                    { name: 'PLMS', type: '流动合规', desc: '护照和签证管理系统，高效保障国际人员流动与属地合规。' }
                 ]
             },
             ar: {
@@ -1642,13 +1732,13 @@
                 systemsDesc: 'مجموعة موحدة سحابية مدعمة بالذكاء الاصطناعي لدفع الهندسة عبر العالم.',
                 footerText: '&copy; 2026 مجموعة أنطون. جميع الحقوق محفوظة. مركز عمليات الذكاء الاصطناعي - دبي.',
                 systems: [
-                    { name: 'VGIS', desc: 'منصة توأم رقمي مكاني لحقول النفط توحد بيانات الإنتاج والسلامة والمعدات والخدمات اللوجستية على خريطة تشغيلية واحدة.' },
-                    { name: 'VPMS', desc: 'نظام إدارة المشاريع الهندسية المرئية للإشراف المباشر.' },
-                    { name: 'BLMS', desc: 'نظام إدارة دورة حياة الميزانية لضمان الدقة الإدارية المالية.' },
-                    { name: 'IPMS', desc: 'مركز ذكي لإدارة المشاريع مدفوع بالاستراتيجية يربط المشاريع والموارد والعمليات والأفراد.' },
-                    { name: 'EZsign', desc: 'منصة توقيع إلكتروني لملفات PDF تدعم تعدد الأطراف والتوقيع الخارجي والبحث وترك أثر تدقيقي متوافق.' },
-                    { name: 'HRIS', desc: 'نظام معلومات الموارد البشرية لتحسين إدارة المواهب العالمية.' },
-                    { name: 'PLMS', desc: 'نظام إدارة الجوازات والتأشيرات لتسهيل التنقل والامتثال العالمي.' }
+                    { name: 'VGIS', type: 'التوأم المكاني', desc: 'منصة توأم رقمي مكاني لحقول النفط توحد بيانات الإنتاج والسلامة والمعدات والخدمات اللوجستية على خريطة تشغيلية واحدة.' },
+                    { name: 'VPMS', type: 'تسليم المشاريع', desc: 'منصة لتسليم المشاريع الهندسية تجمع بين BIM وGIS وإنترنت الأشياء والمحاكاة رباعية الأبعاد لجعل التنفيذ أكثر وضوحًا وتحكمًا وقابلية للتنبؤ.' },
+                    { name: 'BLMS', type: 'ضبط الميزانية', desc: 'نظام إدارة دورة حياة الميزانية لضمان الدقة الإدارية المالية.' },
+                    { name: 'IPMS', type: 'ذكاء المشاريع', desc: 'مركز ذكي لإدارة المشاريع مدفوع بالاستراتيجية يربط المشاريع والموارد والعمليات والأفراد.' },
+                    { name: 'EZsign', type: 'التوقيع الإلكتروني', desc: 'منصة مؤسسية للتوقيع الإلكتروني على PDF تدعم سير العمل متعدد الأطراف، والتوقيع الخارجي، والبحث عبر OCR، والتحقق، والامتثال التدقيقي.' },
+                    { name: 'HRIS', type: 'عمليات الموارد البشرية', desc: 'نظام معلومات الموارد البشرية لتحسين إدارة المواهب العالمية.' },
+                    { name: 'PLMS', type: 'امتثال التنقل', desc: 'نظام إدارة الجوازات والتأشيرات لتسهيل التنقل والامتثال العالمي.' }
                 ]
             }
         };
@@ -1657,6 +1747,7 @@
         let currentHeroIndex = 0;
         let heroAutoplayTimer = null;
         let heroTransitionTimer = null;
+        let activeSystemEmbedUrl = '';
         const HERO_AUTOPLAY_MS = 10000;
         const heroSlideImages = [
             'assets/hero/strategy-middle-east.png',
@@ -2073,14 +2164,14 @@
                     >
                         <div class="system-card-media" aria-hidden="true"></div>
                         <div class="system-card-media-art" aria-hidden="true">${visual.art}</div>
-                        <div class="system-card-top">
-                            <span class="system-label">${sys.name}</span>
-                        </div>
                         <div class="system-card-bottom">
-                            <h3 class="system-card-title text-2xl lg:text-3xl mb-3 flex items-center gap-2">
-                                ${sys.name}
-                                <svg class="system-card-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                            </h3>
+                            <div class="system-card-meta">
+                                <h3 class="system-card-title text-2xl lg:text-3xl flex items-center gap-2">
+                                    ${sys.name}
+                                    <svg class="system-card-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                                </h3>
+                                <span class="system-label">${sys.type || sys.name}</span>
+                            </div>
                             <p class="system-card-text text-sm leading-relaxed">${sys.desc}</p>
                         </div>
                     </button>
@@ -2100,12 +2191,19 @@
             const modal = document.getElementById('system-modal');
             const modalCta = document.getElementById('system-modal-cta');
             const modalFrame = document.getElementById('system-modal-frame');
+            const modalTags = document.getElementById('system-modal-tags');
             const demoUrl = visual.demoHref || '#footer';
             const embedUrl = getSystemProductUrl(system.name, { embed: true });
+            activeSystemEmbedUrl = embedUrl;
 
             updateElementContent('system-modal-label', ui.label);
+            updateElementContent('system-modal-eyebrow', '');
             updateElementContent('system-modal-title', system.name);
             updateElementContent('system-modal-desc', system.desc);
+            updateElementContent('system-modal-icon', visual.art);
+            if (modalTags) {
+                modalTags.innerHTML = '';
+            }
 
             if (modalCta) {
                 modalCta.textContent = ui.request;
@@ -2137,8 +2235,13 @@
             document.getElementById('system-modal')?.classList.remove('is-open');
             document.getElementById('system-modal')?.setAttribute('aria-hidden', 'true');
             document.getElementById('system-modal-frame')?.setAttribute('src', 'about:blank');
+            const modalTags = document.getElementById('system-modal-tags');
+            if (modalTags) {
+                modalTags.innerHTML = '';
+            }
             document.body.classList.remove('system-modal-open');
             activeSystemName = null;
+            activeSystemEmbedUrl = '';
         }
 
         function bindSystemInteractions() {
@@ -2162,6 +2265,33 @@
             document.addEventListener('keydown', (event) => {
                 if (event.key === 'Escape') {
                     closeSystemModal();
+                }
+            });
+
+            window.addEventListener('message', (event) => {
+                const payload = event.data;
+                if (!payload || payload.type !== 'product-embed-meta' || !activeSystemName) return;
+
+                const modalFrame = document.getElementById('system-modal-frame');
+                if (modalFrame?.contentWindow && event.source !== modalFrame.contentWindow) return;
+                if (payload.embedUrl && activeSystemEmbedUrl && payload.embedUrl !== activeSystemEmbedUrl) return;
+
+                updateElementContent('system-modal-eyebrow', payload.eyebrow || '');
+                updateElementContent('system-modal-title', payload.name || activeSystemName);
+                updateElementContent('system-modal-desc', payload.subtitle || '');
+                updateElementContent('system-modal-icon', payload.icon || '');
+
+                const modalTags = document.getElementById('system-modal-tags');
+                if (modalTags && Array.isArray(payload.tags)) {
+                    modalTags.innerHTML = payload.tags.map((tag) => {
+                        const safeTag = String(tag)
+                            .replaceAll('&', '&amp;')
+                            .replaceAll('<', '&lt;')
+                            .replaceAll('>', '&gt;')
+                            .replaceAll('"', '&quot;')
+                            .replaceAll("'", '&#39;');
+                        return `<span class="system-modal-tag">${safeTag}</span>`;
+                    }).join('');
                 }
             });
         }

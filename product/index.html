@@ -186,11 +186,13 @@
             overflow-x: auto;
             padding-bottom: 4px;
             justify-content: start;
-            justify-items: start;
-            align-items: start;
+            justify-items: stretch;
+            align-items: stretch;
         }
 
         .shot {
+            width: 100%;
+            min-width: 0;
             border-radius: 22px;
             overflow: hidden;
             border: 1px solid rgba(19, 33, 39, 0.08);
@@ -199,6 +201,7 @@
 
         .shot img {
             width: 100%;
+            height: 100%;
             aspect-ratio: 16 / 10;
             display: block;
             object-fit: cover;
@@ -213,6 +216,14 @@
 
         .embed-mode .topbar {
             display: none;
+        }
+
+        .embed-mode .hero {
+            display: none;
+        }
+
+        .embed-mode .content-grid {
+            margin-top: 0;
         }
 
         .embed-mode .hero-card,
@@ -513,39 +524,39 @@
                 accentA: '#143d5a',
                 accentB: '#8fc8d8',
                 screenshots: [
-                    '../assets/products/vpms/view-1.svg',
-                    '../assets/products/vpms/view-2.svg',
-                    '../assets/products/vpms/view-3.svg'
+                    '../assets/products/vpms/view-1.png',
+                    '../assets/products/vpms/view-2.png',
+                    '../assets/products/vpms/view-3.png'
                 ],
                 tags: ['BIM', 'GIS', 'IoT', '4D Simulation', 'Progress', 'Quality'],
                 locales: {
                     en: {
                         eyebrow: 'Visual Project Management',
-                        subtitle: 'A digital and intelligent project platform for large-scale engineering, moving management from reports to scenarios.',
+                        subtitle: 'A lifecycle engineering delivery platform that combines BIM, GIS, IoT, and 4D simulation to make complex projects visible, controllable, and predictable.',
                         overview: [
-                            'VPMS is built for large engineering projects and combines BIM, GIS, IoT, and data intelligence to make project delivery visible, controllable, and more predictable.',
-                            'It centers on lifecycle management from design and construction to handover, connecting schedule, quality, cost, and material data into a closed-loop management process.',
-                            'With 3D visualization and 4D construction simulation, VPMS turns project management from report-driven tracking into scenario-driven decision-making.'
+                            'VPMS is a digital and intelligent management platform for large-scale engineering projects, combining BIM, GIS, IoT, and data intelligence to transform traditional project control into a visible, controllable, and predictable delivery model.',
+                            'Built around lifecycle management, it covers design, construction, and handover while connecting schedule, quality, cost, and materials into a closed-loop workflow from data capture to decision support.',
+                            'With 3D visualization and 4D construction simulation, VPMS shifts project management from report-driven tracking to scenario-driven execution, making progress, risks, and quality issues easier to understand and act on in context.'
                         ],
                         screenshotsLabel: ['Project Overview', 'Task Board', 'Execution Snapshot']
                     },
                     zh: {
                         eyebrow: '可视化项目管理',
-                        subtitle: '面向大型工程建设的数字化与智能化管理平台，让项目从报表驱动走向场景驱动。',
+                        subtitle: '融合 BIM、GIS、物联网与 4D 模拟的工程项目交付平台，让复杂工程实现可视、可控、可预测。',
                         overview: [
                             'VPMS（可视化工程项目管理系统）是一款面向大型工程建设的数字化与智能化管理平台，融合 BIM、GIS、物联网与数据智能技术，将传统工程管理升级为“可视、可控、可预测”的全新模式。',
-                            '系统以“全生命周期管理”为核心，覆盖设计、施工到交付全过程，打通进度、质量、成本、物料等关键要素，实现从数据采集到决策支持的闭环管理。',
-                            '通过三维可视化与 4D 施工模拟，VPMS 将工程从“报表驱动”升级为“场景驱动”，让复杂工程一目了然、实时掌控。'
+                            '系统以“全生命周期管理”为核心，覆盖设计、施工到交付全过程，打通进度、质量、成本、物料等关键要素，实现从数据采集到决策支持的闭环管理，让复杂工程一目了然、实时掌控。',
+                            '通过三维可视化与 4D 施工模拟，VPMS 将工程从“报表驱动”升级为“场景驱动”，使项目进展、风险预警与质量问题都能在统一场景中直观呈现并支撑动态决策。'
                         ],
                         screenshotsLabel: ['项目总览', '任务看板', '执行快照']
                     },
                     ar: {
                         eyebrow: 'إدارة مشاريع مرئية',
-                        subtitle: 'منصة رقمية وذكية للمشاريع الهندسية الكبيرة تنقل الإدارة من التقارير إلى المشاهد التشغيلية.',
+                        subtitle: 'منصة لتسليم المشاريع الهندسية عبر دورة الحياة تجمع بين BIM وGIS وإنترنت الأشياء والمحاكاة رباعية الأبعاد لجعل المشاريع المعقدة أكثر وضوحًا وتحكمًا وقابلية للتنبؤ.',
                         overview: [
-                            'VPMS مخصص للمشاريع الهندسية واسعة النطاق، ويجمع بين BIM وGIS وإنترنت الأشياء وذكاء البيانات لجعل التنفيذ أكثر وضوحًا وتحكمًا وقابلية للتنبؤ.',
-                            'يركز النظام على إدارة دورة الحياة الكاملة من التصميم والبناء حتى التسليم، مع ربط الجدول الزمني والجودة والتكلفة والمواد في حلقة إدارة موحدة.',
-                            'ومن خلال التصور ثلاثي الأبعاد ومحاكاة البناء رباعية الأبعاد، يحول VPMS إدارة المشروع من نمط يعتمد على التقارير إلى نمط يعتمد على المشاهد والقرارات الديناميكية.'
+                            'VPMS هو منصة رقمية وذكية لإدارة المشاريع الهندسية واسعة النطاق، تجمع بين BIM وGIS وإنترنت الأشياء وذكاء البيانات لتحويل الإدارة التقليدية إلى نموذج تنفيذ مرئي وقابل للتحكم وأكثر قابلية للتنبؤ.',
+                            'يرتكز النظام على إدارة دورة الحياة الكاملة من التصميم والإنشاء وحتى التسليم، مع ربط الجدول الزمني والجودة والتكلفة والمواد في حلقة عمل مغلقة من جمع البيانات إلى دعم القرار.',
+                            'ومن خلال التصور ثلاثي الأبعاد ومحاكاة البناء رباعية الأبعاد، ينقل VPMS إدارة المشروع من المتابعة المعتمدة على التقارير إلى التنفيذ المعتمد على المشاهد، بحيث تظهر التقدمات والمخاطر وقضايا الجودة ضمن سياق موحد يسهل اتخاذ القرار.'
                         ],
                         screenshotsLabel: ['نظرة عامة على المشروع', 'لوحة المهام', 'لقطة تنفيذ']
                     }
@@ -653,17 +664,17 @@
                 locales: {
                     en: {
                         eyebrow: 'eSignature Platform',
-                        subtitle: 'A PDF-focused e-signature platform supporting multi-party signing, external participants, OCR search, and compliance traceability.',
+                        subtitle: 'An enterprise PDF e-signature platform for multi-party collaboration, external signing, OCR retrieval, signature verification, and compliance traceability.',
                         overview: [
-                            'EZsign focuses on PDF signing workflows and supports multiple signers, sequential or parallel signing, CC, review, transfer, reminders, and external participant access through secure links, tokens, and verification codes.',
-                            'The platform supports handwritten signatures, company or personal stamps, and digital certificates, while also covering PDF generation, signature fields, stamping, and attachment handling.',
-                            'Beyond signing, EZsign includes OCR-based text extraction, full-text search, signature verification, audit logging, notifications, and organizational permission controls, making it suitable for enterprise-grade compliant document workflows.'
+                            'EZsign focuses on PDF-based signing workflows and supports multiple signers, sequential or parallel signing, CC, review, transfer, batch delivery, and reminder flows across SMS, email, and in-app notifications.',
+                            'It supports handwritten signatures, corporate or personal seals, and digital certificates, while also covering PDF generation and processing, signature fields, stamp placement, and supplementary attachments for document completion.',
+                            'Beyond signing itself, EZsign provides OCR text extraction, full-text retrieval, signature verification, audit logs, permission governance, and notification capabilities, making it well suited to enterprise-grade compliant document circulation.'
                         ],
                         screenshotsLabel: ['Sign Overview', 'Workflow Queue', 'Signature Status']
                     },
                     zh: {
                         eyebrow: '电子签名平台',
-                        subtitle: '聚焦 PDF 电子签场景的签署平台，支持多方签署、外部签署、OCR 检索与合规留痕。',
+                        subtitle: '面向企业文档流转的 PDF 电子签平台，支持多方协作签署、外部签署、OCR 检索、验真与合规留痕。',
                         overview: [
                             'EZsign 聚焦 PDF 电子签场景，支持多签署方、顺序 / 并行签署、抄送、复核、转交与批量发送，并可结合短信、邮件、站内信等渠道完成通知与催办。',
                             '系统支持手写签名、企业 / 个人印章、数字证书等多种签署形态，同时覆盖 PDF 生成与处理、签署字段、签名落章、补充图片等文档处理能力。',
@@ -673,11 +684,11 @@
                     },
                     ar: {
                         eyebrow: 'منصة توقيع إلكتروني',
-                        subtitle: 'منصة توقيع إلكتروني تركز على PDF وتدعم تعدد الأطراف والتوقيع الخارجي والبحث والامتثال والتتبع.',
+                        subtitle: 'منصة مؤسسية للتوقيع الإلكتروني على PDF تدعم التعاون متعدد الأطراف، والتوقيع الخارجي، والبحث عبر OCR، والتحقق، وإمكانية التتبع المتوافق.',
                         overview: [
-                            'تركز EZsign على سير عمل التوقيع على ملفات PDF، وتدعم تعدد الموقّعين، والتوقيع المتسلسل أو المتوازي، والنسخ، والمراجعة، والتحويل، والتذكير، وإشراك المستخدمين الخارجيين عبر الروابط الآمنة والرموز وأكواد التحقق.',
-                            'كما تدعم التوقيع اليدوي، والأختام المؤسسية أو الشخصية، والشهادات الرقمية، إلى جانب إنشاء ملفات PDF ومعالجتها وحقول التوقيع وإضافة الأختام والمواد المرفقة.',
-                            'وإلى جانب التوقيع، توفر EZsign استخراج النص عبر OCR، والبحث الكامل، والتحقق من التوقيع، وسجلات التدقيق، والإشعارات، وضبط الصلاحيات التنظيمية، مما يجعلها مناسبة لسير العمل المؤسسي المتوافق.'
+                            'تركز EZsign على سير عمل التوقيع على ملفات PDF، وتدعم تعدد الموقّعين، والتوقيع المتسلسل أو المتوازي، والنسخ، والمراجعة، والتحويل، والإرسال الدفعي، والتذكير عبر الرسائل القصيرة والبريد الإلكتروني والإشعارات داخل النظام.',
+                            'كما تدعم التوقيع اليدوي، والأختام المؤسسية أو الشخصية، والشهادات الرقمية، إلى جانب إنشاء ملفات PDF ومعالجتها وحقول التوقيع ووضع الأختام وإرفاق المواد التكميلية لإكمال المستندات.',
+                            'وإلى جانب التوقيع، توفر EZsign استخراج النص عبر OCR، والبحث الكامل، والتحقق من التوقيع، وسجلات التدقيق، والحوكمة الخاصة بالصلاحيات، والإشعارات، مما يجعلها مناسبة لسير العمل المؤسسي المتوافق.'
                         ],
                         screenshotsLabel: ['نظرة عامة على التوقيع', 'قائمة سير العمل', 'حالة التوقيع']
                     }
@@ -813,8 +824,10 @@
             document.getElementById('screenshots-title').textContent = ui.screenshots;
             document.getElementById('overview-title').textContent = ui.overview;
 
-            document.getElementById('tag-row').innerHTML = (product.tags || []).map((tag) => `
-                <span class="tag">${escapeHtml(getLocalizedTag(tag, lang))}</span>
+            const translatedTags = (product.tags || []).map((tag) => getLocalizedTag(tag, lang));
+
+            document.getElementById('tag-row').innerHTML = translatedTags.map((tag) => `
+                <span class="tag">${escapeHtml(tag)}</span>
             `).join('');
 
             document.getElementById('overview-copy').innerHTML = (locale.overview || []).map((paragraph) => `
@@ -826,6 +839,19 @@
                     <img src="${escapeHtml(src)}" alt="${escapeHtml(product.name)} screenshot ${index + 1}">
                 </div>
             `).join('');
+
+            if (embedMode && window.parent && window.parent !== window) {
+                window.parent.postMessage({
+                    type: 'product-embed-meta',
+                    embedUrl: window.location.pathname + window.location.search,
+                    id: product.id,
+                    name: product.name,
+                    icon: product.icon,
+                    eyebrow: locale.eyebrow || ui.defaultEyebrow,
+                    subtitle: locale.subtitle || '',
+                    tags: translatedTags
+                }, '*');
+            }
         }
 
         const productId = (getQueryValue('id') || 'vgis').toLowerCase();
