@@ -318,15 +318,22 @@
         }
 
         .shot-strip {
+            position: relative;
+            overflow: hidden;
+            padding-bottom: 4px;
+        }
+
+        .shot-track {
             display: grid;
             grid-auto-flow: column;
-            grid-auto-columns: minmax(280px, 1fr);
+            grid-auto-columns: calc((100% - 28px) / 3);
             gap: 14px;
-            overflow-x: auto;
-            padding-bottom: 4px;
-            justify-content: start;
-            justify-items: stretch;
-            align-items: stretch;
+            transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform;
+        }
+
+        .shot-strip.is-transitioning .shot-track {
+            transition-duration: 0.52s;
         }
 
         .shot {
@@ -346,6 +353,46 @@
             display: block;
             object-fit: cover;
             object-position: left top;
+        }
+
+        .shot-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 42px;
+            height: 42px;
+            border-radius: 999px;
+            border: 1px solid rgba(var(--product-accent-b-rgb), 0.22);
+            background: rgba(12, 26, 31, 0.18);
+            color: #fffaf3;
+            backdrop-filter: blur(14px);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2;
+            cursor: pointer;
+            transition: background-color 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
+        }
+
+        .shot-nav:hover {
+            background: rgba(var(--product-accent-a-rgb), 0.34);
+            border-color: rgba(var(--product-accent-b-rgb), 0.34);
+        }
+
+        .shot-nav:active {
+            transform: translateY(-50%) scale(0.96);
+        }
+
+        .shot-nav.prev {
+            left: 12px;
+        }
+
+        .shot-nav.next {
+            right: 12px;
+        }
+
+        .shot-nav[hidden] {
+            display: none;
         }
 
         .embed-mode .shell {
@@ -405,7 +452,16 @@
             }
 
             .shot-strip {
-                grid-auto-columns: 88%;
+                padding-inline: 0;
+            }
+
+            .shot-track {
+                grid-auto-columns: 100%;
+            }
+
+            .shot-nav {
+                width: 38px;
+                height: 38px;
             }
         }
     </style>
@@ -439,7 +495,11 @@
                 <div class="stack">
                     <section class="panel">
                         <h2 class="panel-title" id="screenshots-title">Screenshots</h2>
-                        <div class="shot-strip" id="shot-strip"></div>
+                        <div class="shot-strip" id="shot-strip">
+                            <button class="shot-nav prev" id="shot-prev" type="button" aria-label="Previous screenshots" hidden>&larr;</button>
+                            <div class="shot-track" id="shot-track"></div>
+                            <button class="shot-nav next" id="shot-next" type="button" aria-label="Next screenshots" hidden>&rarr;</button>
+                        </div>
                     </section>
 
                     <section class="panel">
@@ -489,6 +549,14 @@
         const SITE_ORIGIN = 'https://antonoil.ae';
 
         const themeOrder = ['system', 'light', 'dark'];
+        const SCREENSHOT_WINDOW_SIZE = 3;
+        const SCREENSHOT_ROTATE_MS = 3200;
+        const SCREENSHOT_GAP_PX = 14;
+        let screenshotRotationTimer = null;
+        let screenshotResumeTimer = null;
+        let currentScreenshotSources = [];
+        let currentScreenshotVisibleCount = SCREENSHOT_WINDOW_SIZE;
+        let currentScreenshotRenderedIndex = 0;
 
         function getStoredTheme() {
             return localStorage.getItem('theme') || 'system';
@@ -907,41 +975,44 @@
                 id: 'hris',
                 name: 'HRIS',
                 icon: 'HR',
-                accentA: '#51412c',
-                accentB: '#f1c98f',
+                accentA: '#5a3e31',
+                accentB: '#f28b2f',
                 screenshots: [
-                    '../assets/products/hris/view-1.svg',
-                    '../assets/products/hris/view-2.svg',
-                    '../assets/products/hris/view-3.svg'
+                    '../assets/products/hris/view-1.webp',
+                    '../assets/products/hris/view-2.webp',
+                    '../assets/products/hris/view-3.webp'
                 ],
-                tags: ['Organization', 'Talent', 'Records', 'Workforce', 'Operations'],
+                tags: ['Organization', 'Lifecycle', 'Attendance', 'Performance', 'Workflow', 'Records'],
                 locales: {
                     en: {
-                        eyebrow: 'Human Resources System',
-                        subtitle: 'A human resources information system for global teams, improving organization, talent allocation, and employee data collaboration.',
+                        eyebrow: 'Organization Engine',
+                        subtitle: 'An enterprise HR platform that unifies organization, employee lifecycle, attendance, performance, and workflows into one flexible digital foundation.',
                         overview: [
-                            'HRIS is a digital platform for organizational and human resources management, bringing employee data, org structure, talent allocation, and core people workflows into one system.',
-                            'It helps enterprises improve organizational visibility and workforce efficiency across regions and teams.'
+                            'HRIS is built as an enterprise-grade digital foundation for human resources management. With full-process integration and flexible configuration, it connects organization structure, employee data, attendance, performance, and workflow modules into one unified platform.',
+                            'The system supports the full employee lifecycle from onboarding, transfer, and role change to offboarding, reducing repetitive HR operations through automation while making organizational management more transparent and standardized.',
+                            'By combining organizational visualization, intelligent attendance, online performance flows, digital records, and permission controls, HRIS turns HR from transaction processing into a data-driven engine for organizational efficiency and talent value creation.'
                         ],
-                        screenshotsLabel: ['People Overview', 'Organization View', 'Talent Snapshot']
+                        screenshotsLabel: ['HR Dashboard', 'Workflow Center', 'Organization Chart']
                     },
                     zh: {
-                        eyebrow: '人力资源系统',
-                        subtitle: '面向全球化团队的人力资源信息系统，提升组织管理、人才配置和员工信息协同效率。',
+                        eyebrow: '组织引擎',
+                        subtitle: '企业级 HR 数字化平台，统一承载组织、人事、考勤、绩效与流程协同，打造灵活可配置的人力运营底座。',
                         overview: [
-                            'HRIS 是面向企业组织与人力资源管理的数字平台，用统一系统承载员工信息、组织结构、人才配置与基础流程协同。',
-                            '它帮助企业在跨区域、跨团队管理场景下提升组织透明度与管理效率。'
+                            'HRIS 以“全流程一体化 + 高度灵活配置”为核心，构建企业级人力资源数字化底座，打通组织、人员、考勤、绩效与流程引擎等关键模块，让分散的人力管理能力统一沉淀到一个系统中。',
+                            '系统覆盖员工“入、转、调、离”全生命周期，通过流程自动化、数据联通与权限分级，大幅压缩 HR 事务处理时间，同时提升组织演进、架构调整与员工管理的透明度与规范性。',
+                            '结合组织可视化、智能考勤、绩效线上化、电子档案与安全管控能力，HRIS 不只是事务系统，更是驱动组织效率提升和人才价值释放的数据化引擎。'
                         ],
-                        screenshotsLabel: ['人员总览', '组织视图', '人才快照']
+                        screenshotsLabel: ['HR 总览', '流程中心', '组织架构']
                     },
                     ar: {
-                        eyebrow: 'نظام موارد بشرية',
-                        subtitle: 'نظام معلومات للموارد البشرية للفرق العالمية يحسن إدارة التنظيم وتوزيع المواهب وتكامل بيانات الموظفين.',
+                        eyebrow: 'محرك تنظيمي',
+                        subtitle: 'منصة موارد بشرية مؤسسية توحد الهيكل التنظيمي ودورة حياة الموظف والحضور والأداء وسير العمل ضمن أساس رقمي مرن وقابل للتخصيص.',
                         overview: [
-                            'HRIS منصة رقمية لإدارة الموارد البشرية والتنظيم، تجمع بيانات الموظفين والهيكل التنظيمي وتوزيع المواهب والعمليات الأساسية في نظام واحد.',
-                            'وتساعد الشركات على رفع شفافية التنظيم وكفاءة إدارة القوى العاملة عبر المناطق والفرق المختلفة.'
+                            'تم تصميم HRIS كأساس رقمي مؤسسي لإدارة الموارد البشرية، حيث يجمع الهيكل التنظيمي وبيانات الموظفين والحضور والأداء وسير العمل في منصة موحدة تدعم التكامل الكامل والتهيئة المرنة.',
+                            'يغطي النظام دورة حياة الموظف بالكامل من التعيين والنقل والتغيير الوظيفي وحتى المغادرة، مما يقلل الأعمال اليدوية المتكررة ويرفع مستوى الشفافية والانضباط في إدارة التنظيم والموارد البشرية.',
+                            'ومن خلال التصور التنظيمي وإدارة الحضور الذكية وتدفقات الأداء الإلكترونية والأرشفة الرقمية وضبط الصلاحيات، يحول HRIS الموارد البشرية من وظيفة إجرائية إلى محرك مدفوع بالبيانات لرفع الكفاءة وإطلاق قيمة المواهب.'
                         ],
-                        screenshotsLabel: ['نظرة عامة على الأفراد', 'عرض الهيكل التنظيمي', 'لقطة المواهب']
+                        screenshotsLabel: ['لوحة HR', 'مركز سير العمل', 'الهيكل التنظيمي']
                     }
                 }
             },
@@ -949,41 +1020,45 @@
                 id: 'plms',
                 name: 'PLMS',
                 icon: 'PL',
-                accentA: '#2c4050',
-                accentB: '#91c6cf',
+                accentA: '#0d418f',
+                accentB: '#8cc0ff',
                 screenshots: [
-                    '../assets/products/plms/view-1.svg',
-                    '../assets/products/plms/view-2.svg',
-                    '../assets/products/plms/view-3.svg'
+                    '../assets/products/plms/view-1.webp',
+                    '../assets/products/plms/view-2.webp',
+                    '../assets/products/plms/view-3.webp',
+                    '../assets/products/plms/view-4.webp'
                 ],
-                tags: ['Passport', 'Visa', 'Mobility', 'Compliance', 'Tracking'],
+                tags: ['LOI', 'Visa', 'Travel', 'Medical', 'Dispatch', 'Tracking'],
                 locales: {
                     en: {
-                        eyebrow: 'Passport & Visa',
-                        subtitle: 'A passport and visa management system that improves international mobility tracking and compliance control.',
+                        eyebrow: 'Personnel Mobility Platform',
+                        subtitle: 'A cross-border personnel mobility platform that turns LOI, visa, travel, medical, and dispatch workflows into one visible and traceable operating system.',
                         overview: [
-                            'PLMS centralizes passport and visa management, tracking document status, processing progress, and compliance requirements for internationally mobile personnel.',
-                            'It gives enterprises better visibility into global mobility operations and reduces the risks caused by fragmented document management.'
+                            'PLMS is built for high-frequency cross-border personnel mobilization scenarios. It consolidates LOI processing, visa handling, travel booking, shuttle coordination, medical checks, and related approvals into one closed-loop digital platform.',
+                            'The system is structured around people, itinerary, qualification, and approval data. From request initiation to execution, each mobility task becomes standardized, trackable, and easier to manage across multiple teams and external dependencies.',
+                            'By linking travel and dispatch planning with real-time status updates, document validity tracking, and warning dashboards, PLMS shifts mobility management from fragmented manual coordination to proactive operational control.'
                         ],
-                        screenshotsLabel: ['Travel Overview', 'Visa Processing', 'Mobility Queue']
+                        screenshotsLabel: ['LOI Workspace', 'Batch Operations', 'Mobility Dashboard', 'Expiry Monitoring']
                     },
                     zh: {
-                        eyebrow: '护照与签证管理',
-                        subtitle: '护照和签证管理系统，提升国际人员流动、证件状态追踪与合规管理效率。',
+                        eyebrow: '人员动迁平台',
+                        subtitle: '面向跨国人员动迁场景的一体化平台，把 LOI、签证、出行、体检与接驳流程整合为统一可追溯的运营系统。',
                         overview: [
-                            'PLMS 聚焦护照和签证管理，用统一平台跟踪国际人员的证件状态、办理进度与合规要求。',
-                            '系统帮助企业提升跨国人员流动的透明度，降低证件管理和时效跟踪的风险。'
+                            'PLMS 专注解决高频跨国人员动迁场景下的复杂管理问题，将 LOI 办理、签证流程、机票预订、班车调度、体检管理与审批协同整合为一体化平台，实现动迁全流程线上闭环。',
+                            '系统围绕“人、行程、资质、审批”四大核心要素，构建从申请发起到执行落地的全链路数字化流程，让每一次动迁都具备清晰状态、审批留痕与过程可追溯能力。',
+                            '通过对证件有效期、人员状态、行程接驳与风险节点进行实时监控和预警，PLMS 将跨国动迁从传统人工协调模式升级为标准化、精细化、可预测的运营体系。'
                         ],
-                        screenshotsLabel: ['出行总览', '签证办理', '流动队列']
+                        screenshotsLabel: ['LOI 工作台', '批次作业', '动迁总览', '到期监控']
                     },
                     ar: {
-                        eyebrow: 'إدارة الجوازات والتأشيرات',
-                        subtitle: 'نظام لإدارة الجوازات والتأشيرات يحسن تتبع التنقل الدولي والامتثال.',
+                        eyebrow: 'منصة تنقل الأفراد',
+                        subtitle: 'منصة موحدة لحركة الأفراد عبر الحدود تربط خطابات LOI والتأشيرات والسفر والفحوصات الطبية وعمليات النقل في نظام تشغيلي واحد قابل للتتبع.',
                         overview: [
-                            'يركز PLMS على إدارة الجوازات والتأشيرات من خلال منصة موحدة لتتبع حالة الوثائق وتقدم المعالجة ومتطلبات الامتثال للموظفين الدوليين.',
-                            'ويساعد الشركات على رفع شفافية التنقل الدولي وتقليل المخاطر الناتجة عن تشتت إدارة الوثائق.'
+                            'صُمم PLMS للتعامل مع سيناريوهات التنقل الدولي المتكرر للأفراد، حيث يجمع إجراءات LOI والتأشيرات وحجوزات السفر وجدولة النقل والفحوصات الطبية والموافقات ضمن منصة رقمية مغلقة الحلقة.',
+                            'يرتكز النظام على أربعة محاور أساسية هي الأفراد والرحلات والمؤهلات والموافقات، مما يحول كل مهمة تنقل من عملية مجزأة ومعتمة إلى سير عمل معياري واضح وقابل للتتبع عبر جميع المراحل.',
+                            'ومن خلال الربط الذكي بين تخطيط السفر والمتابعة التشغيلية والتنبيهات الخاصة بصلاحية الوثائق وحالة الأفراد، يساعد PLMS المؤسسات على الانتقال من المعالجة اليدوية اللاحقة إلى التحكم الاستباقي في عمليات التنقل.'
                         ],
-                        screenshotsLabel: ['نظرة عامة على السفر', 'معالجة التأشيرات', 'قائمة التنقل']
+                        screenshotsLabel: ['مساحة عمل LOI', 'عمليات الدفعات', 'لوحة التنقل', 'مراقبة الانتهاء']
                     }
                 }
             }
@@ -1011,6 +1086,113 @@
         function getLocalizedTag(tag, lang) {
             if (lang === 'en') return tag;
             return tagTranslations[tag]?.[lang] || tag;
+        }
+
+        function clearScreenshotRotation() {
+            if (screenshotRotationTimer) {
+                window.clearInterval(screenshotRotationTimer);
+                screenshotRotationTimer = null;
+            }
+            if (screenshotResumeTimer) {
+                window.clearTimeout(screenshotResumeTimer);
+                screenshotResumeTimer = null;
+            }
+        }
+
+        function getScreenshotVisibleCount() {
+            return window.innerWidth <= 720 ? 1 : SCREENSHOT_WINDOW_SIZE;
+        }
+
+        function buildScreenshotSlides(product, sources) {
+            return sources.map((src, index) => `
+                <div class="shot">
+                    <img src="${escapeHtml(src)}" alt="${escapeHtml(product.name)} screenshot ${index + 1}">
+                </div>
+            `).join('');
+        }
+
+        function updateScreenshotPosition(animate = true) {
+            const strip = document.getElementById('shot-strip');
+            const track = document.getElementById('shot-track');
+            if (!strip || !track || !currentScreenshotSources.length) return;
+
+            strip.classList.toggle('is-transitioning', animate);
+            const slideWidthPercent = 100 / currentScreenshotVisibleCount;
+            track.style.transform = `translateX(calc(-${currentScreenshotRenderedIndex * slideWidthPercent}% - ${currentScreenshotRenderedIndex * SCREENSHOT_GAP_PX}px))`;
+        }
+
+        function updateScreenshotControls() {
+            const shouldShowControls = currentScreenshotSources.length > SCREENSHOT_WINDOW_SIZE;
+            document.getElementById('shot-prev')?.toggleAttribute('hidden', !shouldShowControls);
+            document.getElementById('shot-next')?.toggleAttribute('hidden', !shouldShowControls);
+        }
+
+        function normalizeScreenshotLoop() {
+            const cloneCount = Math.min(currentScreenshotVisibleCount, currentScreenshotSources.length);
+            const track = document.getElementById('shot-track');
+            const strip = document.getElementById('shot-strip');
+            if (!track || !strip || currentScreenshotSources.length <= currentScreenshotVisibleCount) return;
+
+            if (currentScreenshotRenderedIndex >= currentScreenshotSources.length + cloneCount) {
+                currentScreenshotRenderedIndex = cloneCount;
+                updateScreenshotPosition(false);
+                strip.classList.remove('is-transitioning');
+            } else if (currentScreenshotRenderedIndex < cloneCount) {
+                currentScreenshotRenderedIndex = currentScreenshotSources.length + cloneCount - 1;
+                updateScreenshotPosition(false);
+                strip.classList.remove('is-transitioning');
+            }
+        }
+
+        function stepScreenshots(direction = 1, pauseAuto = false) {
+            if (currentScreenshotSources.length <= currentScreenshotVisibleCount) return;
+            currentScreenshotRenderedIndex += direction;
+            updateScreenshotPosition(true);
+
+            if (pauseAuto) {
+                clearScreenshotRotation();
+                screenshotResumeTimer = window.setTimeout(() => {
+                    startScreenshotRotation();
+                }, SCREENSHOT_ROTATE_MS);
+            }
+        }
+
+        function startScreenshotRotation() {
+            clearScreenshotRotation();
+            if (currentScreenshotSources.length <= currentScreenshotVisibleCount) return;
+            screenshotRotationTimer = window.setInterval(() => {
+                stepScreenshots(1, false);
+            }, SCREENSHOT_ROTATE_MS);
+        }
+
+        function renderScreenshots(product) {
+            const strip = document.getElementById('shot-strip');
+            const track = document.getElementById('shot-track');
+            currentScreenshotSources = product.screenshots || [];
+            currentScreenshotVisibleCount = Math.min(getScreenshotVisibleCount(), Math.max(1, currentScreenshotSources.length));
+
+            clearScreenshotRotation();
+
+            if (!strip || !track) return;
+            if (!currentScreenshotSources.length) {
+                track.innerHTML = '';
+                updateScreenshotControls();
+                return;
+            }
+
+            if (currentScreenshotSources.length > currentScreenshotVisibleCount) {
+                const cloneCount = currentScreenshotVisibleCount;
+                const head = currentScreenshotSources.slice(0, cloneCount);
+                const tail = currentScreenshotSources.slice(-cloneCount);
+                track.innerHTML = buildScreenshotSlides(product, [...tail, ...currentScreenshotSources, ...head]);
+                currentScreenshotRenderedIndex = cloneCount;
+            } else {
+                track.innerHTML = buildScreenshotSlides(product, currentScreenshotSources);
+                currentScreenshotRenderedIndex = 0;
+            }
+            updateScreenshotControls();
+            updateScreenshotPosition(false);
+            startScreenshotRotation();
         }
 
         function updateMetaTag(selector, attribute, value) {
@@ -1109,11 +1291,7 @@
                 <p>${escapeHtml(paragraph)}</p>
             `).join('');
 
-            document.getElementById('shot-strip').innerHTML = (product.screenshots || []).map((src, index) => `
-                <div class="shot">
-                    <img src="${escapeHtml(src)}" alt="${escapeHtml(product.name)} screenshot ${index + 1}">
-                </div>
-            `).join('');
+            renderScreenshots(product);
 
             if (embedMode && window.parent && window.parent !== window) {
                 window.parent.postMessage({
@@ -1139,12 +1317,17 @@
         }
 
         applyTheme(getStoredTheme());
+        document.getElementById('shot-track')?.addEventListener('transitionend', normalizeScreenshotLoop);
+        document.getElementById('shot-prev')?.addEventListener('click', () => stepScreenshots(-1, true));
+        document.getElementById('shot-next')?.addEventListener('click', () => stepScreenshots(1, true));
         document.getElementById('theme-toggle').addEventListener('click', () => cycleTheme(lang));
         window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
             if (getStoredTheme() === 'system') {
                 applyTheme('system');
             }
         });
+        window.addEventListener('resize', () => renderScreenshots(product));
+        window.addEventListener('beforeunload', clearScreenshotRotation);
 
         renderProduct(product, lang);
     </script>
