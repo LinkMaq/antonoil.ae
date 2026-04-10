@@ -533,7 +533,8 @@
             box-shadow: var(--shadow-soft);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 1rem;
             text-align: left;
             isolation: isolate;
             cursor: pointer;
@@ -631,13 +632,6 @@
         .system-card-text {
             color: rgba(252, 245, 236, 0.82);
             font-weight: 400;
-        }
-
-        .system-card-hint {
-            color: rgba(255, 248, 240, 0.88);
-            font-size: 0.8rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
         }
 
         .system-modal {
@@ -1729,7 +1723,6 @@
                 open: 'Open Product',
                 request: 'Request Demo',
                 close: 'Close system panel',
-                tap: 'Tap To Expand',
                 views: 'Product Views',
                 slides: ['Overview', 'Interface', 'Operations']
             },
@@ -1738,7 +1731,6 @@
                 open: '打开产品页',
                 request: '预约演示',
                 close: '关闭产品弹层',
-                tap: '点击展开',
                 views: '产品画面',
                 slides: ['产品总览', '界面视图', '业务场景']
             },
@@ -1747,7 +1739,6 @@
                 open: 'فتح المنتج',
                 request: 'طلب عرض',
                 close: 'إغلاق نافذة النظام',
-                tap: 'اضغط للتوسيع',
                 views: 'مشاهد المنتج',
                 slides: ['نظرة عامة', 'الواجهة', 'سيناريو التشغيل']
             }
@@ -2035,7 +2026,6 @@
                                 <svg class="system-card-icon w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
                             </h3>
                             <p class="system-card-text text-sm leading-relaxed">${sys.desc}</p>
-                            <div class="system-card-hint mt-5">${ui.tap}</div>
                         </div>
                     </button>
                 `;
