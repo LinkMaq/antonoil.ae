@@ -897,6 +897,20 @@
             font-size: 0.92rem;
         }
 
+        .system-cta-demo {
+            background: rgba(15, 118, 110, 0.08);
+            color: var(--accent-primary);
+            border: 1px solid rgba(15, 118, 110, 0.25);
+            box-shadow: none;
+        }
+
+        html.dark .system-cta-demo {
+            background: rgba(15, 118, 110, 0.15);
+            color: var(--accent-primary);
+            border-color: rgba(15, 118, 110, 0.35);
+            box-shadow: none;
+        }
+
         .system-modal-close {
             display: inline-flex;
             align-items: center;
@@ -1489,7 +1503,7 @@
                     <div class="system-modal-tags" id="system-modal-tags"></div>
                 </div>
                 <div class="system-modal-actions">
-                    <a href="product/index.html?id=vgis" class="system-cta" id="system-modal-cta" target="_blank" rel="noopener noreferrer">Open Product</a>
+                    <a href="https://vgis.antonoil.ae/vgis" class="system-cta system-cta-demo" id="system-modal-demo" target="_blank" rel="noopener noreferrer">Request Demo</a>
                     <button type="button" class="system-modal-close" id="system-modal-close" aria-label="Close product panel">✕</button>
                 </div>
             </div>
@@ -1688,6 +1702,7 @@
                     { name: 'IPMS', type: 'Project Intelligence', desc: 'Strategy-driven project management hub connecting projects, resources, workflows, and people into standardized execution.' },
                     { name: 'EZsign', type: 'eSignature', desc: 'Enterprise PDF e-signature platform for multi-party workflows, external signing, OCR retrieval, signature verification, and audit-ready compliance.' },
                     { name: 'HRIS', type: 'Organization Engine', desc: 'Enterprise HR platform connecting organization, employee lifecycle, attendance, and performance into one configurable, data-driven operating foundation.' },
+                    { name: 'EAMS', type: 'Asset Operations', desc: 'Enterprise asset management system covering inventory, maintenance, tracking, reporting, and approval workflows across the full asset lifecycle.' },
                     { name: 'PLMS', type: 'Personnel Mobility', desc: 'Cross-border personnel mobility platform connecting LOI, visa, travel, medical, and dispatch workflows into one traceable operating system.' }
                 ]
             },
@@ -1755,6 +1770,7 @@
                     { name: 'IPMS', type: '项目智能', desc: '以战略为核心驱动的智能项目管理中枢，打通项目、资源、流程与人员。' },
                     { name: 'EZsign', type: '电子签署', desc: '面向企业文档流转的 PDF 电子签平台，支持多方协作签署、外部签署、OCR 检索、验真与合规留痕。' },
                     { name: 'HRIS', type: '组织引擎', desc: '企业级 HR 平台，打通组织、人事、考勤、绩效与员工全生命周期，形成统一、灵活、数据驱动的运营底座。' },
+                    { name: 'EAMS', type: '资产运营', desc: '企业资产管理系统，覆盖台账、盘点、维护、追踪、报表与审批流程，实现资产全生命周期透明化管理。' },
                     { name: 'PLMS', type: '人员动迁', desc: '跨国人员动迁平台，打通 LOI、签证、出行、体检与接驳流程，实现全过程可视、可控、可追溯。' }
                 ]
             },
@@ -1822,6 +1838,7 @@
                     { name: 'IPMS', type: 'ذكاء المشاريع', desc: 'مركز ذكي لإدارة المشاريع مدفوع بالاستراتيجية يربط المشاريع والموارد والعمليات والأفراد.' },
                     { name: 'EZsign', type: 'التوقيع الإلكتروني', desc: 'منصة مؤسسية للتوقيع الإلكتروني على PDF تدعم سير العمل متعدد الأطراف، والتوقيع الخارجي، والبحث عبر OCR، والتحقق، والامتثال التدقيقي.' },
                     { name: 'HRIS', type: 'محرك تنظيمي', desc: 'منصة موارد بشرية مؤسسية تربط الهيكل التنظيمي ودورة حياة الموظف والحضور والأداء ضمن أساس تشغيلي موحد وقابل للتخصيص ومدفوع بالبيانات.' },
+                    { name: 'EAMS', type: 'عمليات الأصول', desc: 'نظام مؤسسي لإدارة الأصول يغطي الجرد والصيانة والتتبع والتقارير وسير الموافقات عبر دورة حياة الأصل بالكامل.' },
                     { name: 'PLMS', type: 'تنقل الأفراد', desc: 'منصة لإدارة حركة الأفراد عبر الحدود تربط خطابات LOI والتأشيرات والسفر والفحوصات الطبية والنقل ضمن سير عمل موحد وقابل للتتبع.' }
                 ]
             }
@@ -1886,6 +1903,14 @@
                 href: 'product/index.html?id=hris',
                 demoHref: 'https://hris.antonoil.ae',
                 gradient: 'linear-gradient(135deg, #5a3e31 0%, #f28b2f 42%, #ffd28c 100%)'
+            },
+            EAMS: {
+                art: 'EA',
+                colSpan: 4,
+                rowSpan: 2,
+                href: 'product/index.html?id=eams',
+                demoHref: 'https://eams.antonoil.ae',
+                gradient: 'linear-gradient(135deg, #24413d 0%, #3f7a67 42%, #b7d98a 100%)'
             },
             PLMS: {
                 art: 'PLMS',
@@ -2303,7 +2328,6 @@
 
             const visual = getSystemVisual(system.name);
             const modal = document.getElementById('system-modal');
-            const modalCta = document.getElementById('system-modal-cta');
             const modalFrame = document.getElementById('system-modal-frame');
             const modalTags = document.getElementById('system-modal-tags');
             const demoUrl = visual.demoHref || '#footer';
@@ -2319,11 +2343,12 @@
                 modalTags.innerHTML = '';
             }
 
-            if (modalCta) {
-                modalCta.textContent = ui.request;
-                modalCta.setAttribute('href', demoUrl);
-                modalCta.setAttribute('target', '_blank');
-                modalCta.setAttribute('rel', 'noopener noreferrer');
+            const modalDemo = document.getElementById('system-modal-demo');
+            if (modalDemo) {
+                modalDemo.textContent = ui.request;
+                modalDemo.setAttribute('href', demoUrl);
+                modalDemo.setAttribute('target', '_blank');
+                modalDemo.setAttribute('rel', 'noopener noreferrer');
             }
 
             if (modalFrame) {
@@ -2572,16 +2597,7 @@
                 });
             });
 
-            document.getElementById('system-modal-cta')?.addEventListener('click', () => {
-                const href = document.getElementById('system-modal-cta')?.getAttribute('href') || '';
-                trackEvent('click', {
-                    link_id: 'system-modal-cta',
-                    link_text: document.getElementById('system-modal-cta')?.textContent?.trim() || '',
-                    link_url: href,
-                    outbound: href.startsWith('http'),
-                    system_name: activeSystemName || ''
-                });
-            });
+
         }
 
         function initConsentState() {
